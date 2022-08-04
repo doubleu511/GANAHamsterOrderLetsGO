@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleRocketLuncherArm : ModuleDefaultArm
+public class ModuleRocketLauncherArm : ModuleDefaultArm
 {
     public GameObject RocketPrefab;
     private int RocketCount = 0;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleMineLuncherArm : ModuleDefaultArm
+public class ModuleMineLauncherArm : ModuleDefaultArm
 {
     public GameObject MinePrefab;
     private int mineCount = 0;
