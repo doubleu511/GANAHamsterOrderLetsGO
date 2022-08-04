@@ -237,6 +237,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1531112378893365765, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
+      propertyPath: rope
+      value: 
+      objectReference: {fileID: 6356912261391775883, guid: b6a2810d5e6e5574398acc208f6e4bab, type: 3}
+    - target: {fileID: 1531112378893365765, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
       propertyPath: moduleInfo
       value: 
       objectReference: {fileID: 11400000, guid: 83e01335ea2d37443a775172a52d8904, type: 2}
