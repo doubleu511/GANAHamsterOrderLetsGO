@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class ModuleDashLeg : Module
 {
+    private int dashCount = 0;
+    private void Awake()
+    {
+        GameManager.Player.OnGroundCollision += () => { dashCount = 0; };
+    }
+
     public override void ModuleEquip()
     {
 
@@ -11,11 +17,11 @@ public class ModuleDashLeg : Module
 
     public override void ModuleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.F) && GameManager.Player.DashCount == 0)
+        if(Input.GetKeyDown(KeyCode.F) && dashCount == 0)
         {
             
             GameManager.Player.Rigid.AddForce(new Vector2(Mathf.Sign(GameManager.Player.Rigid.velocity.x) *6, 0), ForceMode2D.Impulse);
-            GameManager.Player.DashCount++;
+            dashCount++;
         }
     }
 }

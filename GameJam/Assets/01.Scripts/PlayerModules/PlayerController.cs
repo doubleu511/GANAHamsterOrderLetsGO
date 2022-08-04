@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     public Action OnGroundCollision { get; set; }
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
-    public int DashCount { get; set; } = 0;
 
     private void Awake()
     {
@@ -54,7 +53,6 @@ public class PlayerController : MonoBehaviour
         if(IsGround && IsFalling)
         {
             JumpCount = 0;
-            DashCount = 0;
             OnGroundCollision?.Invoke();
         }
     }

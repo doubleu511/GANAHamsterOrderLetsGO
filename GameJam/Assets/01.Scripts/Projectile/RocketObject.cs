@@ -5,6 +5,7 @@ using System;
 public class RocketObject : MonoBehaviour
 {
     private float rocketSpeed = 10;
+    private bool isCollision = false;
     public void RocketMove(Vector3 dir,Action act)
     {
         StartCoroutine(MoveProcess(dir.normalized, act));
@@ -18,12 +19,16 @@ public class RocketObject : MonoBehaviour
             yield return new WaitForEndOfFrame();
             count++;
             transform.position += dir * Time.deltaTime * rocketSpeed;
-            if(count > 1000)
+            if(count > 1000 || isCollision)
             {
+                act?.Invoke();
                 break;
             }
         }
-        act?.Invoke();
         
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        isCollision = true;
     }
 }
