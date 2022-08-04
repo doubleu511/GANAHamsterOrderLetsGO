@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3957906db764fde4494d77ad62066048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
 --- !u!1 &4936901992334272961
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,6 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f634648edf1420349b002c7523926be1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
 --- !u!1 &4936901992879039778
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb4e7a0180a1ff43a6d54cd11f066c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
 --- !u!1 &4936901993051692637
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7af9067e8a18cd47854a6ce9afa91ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4936901993353020147}
+  faceAnimator: {fileID: 4936901993353020147}
+  footAnimator: {fileID: 0}
 --- !u!1 &4936901993227560747
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0500ba3449df3cc4cb3ad23ed0320acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
 --- !u!1 &4936901993353020144
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc9a3a5a18f0114ba1b7d892e9d6565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
   RocketPrefab: {fileID: 6502433247013186289, guid: 835d3ef27ce31bb45a10b15e104558fb, type: 3}
 --- !u!212 &4936901993932223843
 SpriteRenderer:
@@ -601,3 +607,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a3fbe95939acb842b54685fb39e8013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleInfo: {fileID: 0}
