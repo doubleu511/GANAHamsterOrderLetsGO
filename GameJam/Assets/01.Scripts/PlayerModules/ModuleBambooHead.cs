@@ -32,6 +32,7 @@ public class ModuleBambooHead : Module
                 if(flyTime <= 0) // 처음 날때 방향고정
                 {
                     playerDir = Input.GetAxisRaw("Horizontal");
+                    GameManager.Player.SpriteFlipX(playerDir > 0);
                 }
 
                 flyTime += Time.deltaTime;

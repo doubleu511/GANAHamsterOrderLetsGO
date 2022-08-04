@@ -32,6 +32,11 @@ public class ModuleDefaultLeg : Module
         if (playerDir != 0)
         {
             GameManager.Player.SpriteFlipX(playerDir > 0);
+            GameManager.Player.SetWalkAnim(true);
+        }
+        else
+        {
+            GameManager.Player.SetWalkAnim(false);
         }
         Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed * chargingSpeedScale, 
                                     GameManager.Player.Rigid.velocity.y);

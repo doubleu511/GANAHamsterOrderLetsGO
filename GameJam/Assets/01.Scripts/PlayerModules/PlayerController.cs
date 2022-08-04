@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float PlayerSpeed = 3;
 
     Module[] modules;
+    PlayerAnimation PlayerAnim;
 
     public bool IsFalling
     {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();
+        PlayerAnim = GetComponent<PlayerAnimation>();
         modules = GetComponentsInChildren<Module>(true);
         playerSprites = GetComponentsInChildren<SpriteRenderer>(true);
     }
@@ -62,10 +64,20 @@ public class PlayerController : MonoBehaviour
 
     public void SpriteFlipX(bool value)
     {
-        for (int i = 0; i < playerSprites.Length; i++)
-        {
-            playerSprites[i].flipX = value;
-        }
+        float xFlip = value == true ? -1 : 1;
+        transform.localScale = new Vector3(xFlip,
+            transform.localScale.y, transform.localScale.z);
+
+        //for (int i = 0; i < playerSprites.Length; i++)
+        //{
+        //    playerSprites[i].flipX = value;
+        //}
+    }
+
+    public void SetWalkAnim(bool isWalk)
+    {
+        if (!IsGround) isWalk = true;
+        PlayerAnim.SetIsMove(isWalk);
     }
 
     private void OnDrawGizmos()
