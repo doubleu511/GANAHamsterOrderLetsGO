@@ -13,6 +13,11 @@ public class ModuleBambooHead : Module
         Debug.Log("대나무 장착");
     }
 
+    public override void ModuleUnequip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         Fly();

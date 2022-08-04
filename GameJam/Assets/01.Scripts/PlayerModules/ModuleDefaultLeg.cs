@@ -20,6 +20,11 @@ public class ModuleDefaultLeg : Module
 
     }
 
+    public override void ModuleUnequip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         JumpInput();

@@ -8,7 +8,12 @@ public class ModuleDoubleJumpLeg : Module
 
     public override void ModuleEquip()
     {
-        GameManager.Player.JumpMaxCount++;
+        GameManager.Player.JumpMaxCount = 2;
+    }
+
+    public override void ModuleUnequip()
+    {
+
     }
 
     public override void ModuleUpdate()

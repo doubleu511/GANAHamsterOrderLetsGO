@@ -25,4 +25,9 @@ public class ModuleDefaultArm : Module
         var angle = Mathf.Atan2(dir.normalized.y, dir.normalized.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
+
+    public override void ModuleUnequip()
+    {
+
+    }
 }

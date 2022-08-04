@@ -12,6 +12,12 @@ public class ModuleGoggleHead : Module
         CameraMove.ZoomCam(goggleSight, 2f);
     }
 
+    public override void ModuleUnequip()
+    {
+        Debug.Log("고글 장착 해제");
+        CameraMove.ZoomCam(3.75f, 2f);
+    }
+
     public override void ModuleUpdate()
     {
 

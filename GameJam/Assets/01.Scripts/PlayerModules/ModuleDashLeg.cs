@@ -24,4 +24,9 @@ public class ModuleDashLeg : Module
             dashCount++;
         }
     }
+
+    public override void ModuleUnequip()
+    {
+
+    }
 }
