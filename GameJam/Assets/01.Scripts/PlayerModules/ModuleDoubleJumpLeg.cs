@@ -6,6 +6,11 @@ public class ModuleDoubleJumpLeg : Module
 {
     private float jumpPressedTime = 0f;
 
+    public override void ModuleEquip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         JumpInput();

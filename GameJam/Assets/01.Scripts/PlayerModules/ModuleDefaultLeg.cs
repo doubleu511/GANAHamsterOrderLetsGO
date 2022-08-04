@@ -15,10 +15,14 @@ public class ModuleDefaultLeg : Module
         }
     }
 
+    public override void ModuleEquip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         JumpInput();
-
         if (!GameManager.Player.IsGround) return;
 
         // 플레이어 이동 코드가 실행될꺼임

@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ModuleDashLeg : Module
 {
+    public override void ModuleEquip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         if(Input.GetKeyDown(KeyCode.F) && GameManager.Player.DashCount == 0)
