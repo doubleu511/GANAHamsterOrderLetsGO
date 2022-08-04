@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool IsGround { get; set; } = false;
+
+    public Action OnGroundCollision { get; set; }
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
     public int DashCount { get; set; } = 0;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             JumpCount = 0;
             DashCount = 0;
+            OnGroundCollision?.Invoke();
         }
     }
 

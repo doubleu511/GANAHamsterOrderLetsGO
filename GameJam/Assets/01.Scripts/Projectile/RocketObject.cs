@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 public class RocketObject : MonoBehaviour
 {
-    private float rocketSpeed = 2;
+    private float rocketSpeed = 10;
     public void RocketMove(Vector3 dir,Action act)
     {
-        StartCoroutine(MoveProcess(dir, act));
+        StartCoroutine(MoveProcess(dir.normalized, act));
     }
 
     private IEnumerator MoveProcess(Vector3 dir,Action act)

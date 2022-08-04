@@ -21,7 +21,7 @@ public class ModuleDefaultArm : Module
         pos.z = 0;
         Vector3 playerPos = GameManager.Player.gameObject.transform.position;
         dir = pos - playerPos;
-        transform.position = playerPos + Vector3.ClampMagnitude(dir, 2.5f);
+        transform.position = playerPos + Vector3.ClampMagnitude(dir, 2f);
         var angle = Mathf.Atan2(dir.normalized.y, dir.normalized.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
     }
