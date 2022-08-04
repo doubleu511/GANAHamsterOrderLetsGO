@@ -8,12 +8,17 @@ public class ModuleHookArm : ModuleDefaultArm
     public KeyCode hookKey = KeyCode.LeftShift;
     
     private HingeJoint2D _hj;
-    private float _hookDist = 15f;
     private Rigidbody2D _hitPointRigid;
-
+    private float _hookDist = 15f;
+    private int _hookCount = 0;
+    
     private void Start()
     {
-        GameManager.Player.OnGroundCollision += () => { _hj.enabled = false; };
+        GameManager.Player.OnGroundCollision += () => 
+        { 
+            _hj.enabled = false;
+            _hookCount = 0;
+        };
 
         GameObject tempObj = new GameObject("hitPoint");
         tempObj.transform.parent = transform;
@@ -35,7 +40,7 @@ public class ModuleHookArm : ModuleDefaultArm
     }
     public override void ArmMoving()
     {
-        if (!GameManager.Player.IsGround)
+        if (!GameManager.Player.IsGround && _hookCount == 0)
         {
             if(Input.GetKeyDown(hookKey))
             {
@@ -58,7 +63,12 @@ public class ModuleHookArm : ModuleDefaultArm
             if(Input.GetKeyUp(hookKey))
             {
                 _hj.enabled = false;
+                _hookCount++;
             }
+        }
+        else
+        {
+            _hj.enabled = false;
         }
     }
 }
