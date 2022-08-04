@@ -6,6 +6,11 @@ public class ModuleBambooHead : Module
 {
     private float flyTime = 0f;
 
+    public override void ModuleEquip()
+    {
+        Debug.Log("대나무 장착");
+    }
+
     public override void ModuleUpdate()
     {
         Fly();
