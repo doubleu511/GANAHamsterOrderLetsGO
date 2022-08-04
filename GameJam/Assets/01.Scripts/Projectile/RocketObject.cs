@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 public class RocketObject : MonoBehaviour
 {
+    [SerializeField]
     private float rocketSpeed = 10;
     private bool isCollision = false;
     public void RocketMove(Vector3 dir,Action act)
