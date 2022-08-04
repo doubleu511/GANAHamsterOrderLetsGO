@@ -2112,6 +2112,7 @@ GameObject:
   - component: {fileID: 6438268520792417844}
   - component: {fileID: 6438268520792417845}
   - component: {fileID: 6438268520792417835}
+  - component: {fileID: 6438268520792417847}
   - component: {fileID: 6438268520792417834}
   - component: {fileID: 6438268520792417833}
   - component: {fileID: 6438268520792417832}
@@ -2122,6 +2123,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!233 &6438268520792417847
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6438268520792417846}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 3.5, y: -8.8}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!1 &6438268520845664064
 GameObject:
   m_ObjectHideFlags: 0
