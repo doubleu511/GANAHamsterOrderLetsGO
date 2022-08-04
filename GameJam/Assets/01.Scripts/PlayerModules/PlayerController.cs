@@ -24,10 +24,13 @@ public class PlayerController : MonoBehaviour
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
 
+    private SpriteRenderer[] playerSprites;
+
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();
         modules = GetComponentsInChildren<Module>(true);
+        playerSprites = GetComponentsInChildren<SpriteRenderer>(true);
     }
 
     private void Start()
@@ -54,6 +57,14 @@ public class PlayerController : MonoBehaviour
         {
             JumpCount = 0;
             OnGroundCollision?.Invoke();
+        }
+    }
+
+    public void SpriteFlipX(bool value)
+    {
+        for (int i = 0; i < playerSprites.Length; i++)
+        {
+            playerSprites[i].flipX = value;
         }
     }
 

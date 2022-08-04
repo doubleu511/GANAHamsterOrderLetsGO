@@ -5,7 +5,7 @@ using UnityEngine;
 public class ModuleDashLeg : Module
 {
     private int dashCount = 0;
-    private void Awake()
+    private void Start()
     {
         GameManager.Player.OnGroundCollision += () => { dashCount = 0; };
     }

@@ -29,6 +29,10 @@ public class ModuleDefaultLeg : Module
         float chargingSpeedScale = isJumpCharging ? 0.2f : 1f;
 
         float playerDir = Input.GetAxisRaw("Horizontal");
+        if (playerDir != 0)
+        {
+            GameManager.Player.SpriteFlipX(playerDir > 0);
+        }
         Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed * chargingSpeedScale, 
                                     GameManager.Player.Rigid.velocity.y);
         GameManager.Player.Rigid.velocity = dir;
