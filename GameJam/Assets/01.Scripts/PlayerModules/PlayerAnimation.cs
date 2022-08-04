@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    [SerializeField] Animator animator;
+    [SerializeField] Animator faceAnimator;
+    [SerializeField] Animator footAnimator;
 
     private readonly int hashIsMove = Animator.StringToHash("isMove");
 
     public void SetIsMove(bool value)
     {
-        animator.SetBool(hashIsMove, value);
+        faceAnimator.SetBool(hashIsMove, value);
+        footAnimator.SetBool(hashIsMove, value);
     }
 }

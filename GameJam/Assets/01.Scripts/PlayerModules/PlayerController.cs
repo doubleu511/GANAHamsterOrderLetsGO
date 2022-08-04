@@ -55,6 +55,11 @@ public class PlayerController : MonoBehaviour
 
         IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
+        if(!IsGround)
+        {
+            SetWalkAnim(false);
+        }
+
         if(IsGround && IsFalling)
         {
             JumpCount = 0;
@@ -76,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetWalkAnim(bool isWalk)
     {
-        if (!IsGround) isWalk = true;
+        if (!IsGround) isWalk = false; // 점프하면 Idle
         PlayerAnim.SetIsMove(isWalk);
     }
 
