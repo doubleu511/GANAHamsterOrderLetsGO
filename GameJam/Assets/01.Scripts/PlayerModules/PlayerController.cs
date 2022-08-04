@@ -20,12 +20,21 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGround { get; set; } = false;
     public int JumpCount { get; set; } = 0;
+    public int JumpMaxCount { get; set; } = 1;
     public int DashCount { get; set; } = 0;
 
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();
         modules = GetComponentsInChildren<Module>(true);
+    }
+
+    private void Start()
+    {
+        foreach (Module module in modules) // 모듈들 장착
+        {
+            module.ModuleEquip();
+        }
     }
 
     public void Update()

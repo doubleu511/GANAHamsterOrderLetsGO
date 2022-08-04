@@ -23,7 +23,7 @@ public class ModuleBambooHead : Module
 
     private void Fly()
     {
-        if(GameManager.Player.JumpCount == 2)
+        if(GameManager.Player.JumpCount == GameManager.Player.JumpMaxCount)
         {
             if(Input.GetKey(KeyCode.Space) && flyTime <= 1f)
             {
