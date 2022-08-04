@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class ModuleDefaultArm : Module
 {
+    public override void ModuleEquip()
+    {
+
+    }
+
     public override void ModuleUpdate()
     {
         Vector3 pos = Camera.main.ScreenToWorldPoint( Input.mousePosition);
