@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGround { get; set; } = false;
     public int JumpCount { get; set; } = 0;
+    public int DashCount { get; set; } = 0;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         if(IsGround && IsFalling)
         {
             JumpCount = 0;
+            DashCount = 0;
         }
     }
 
