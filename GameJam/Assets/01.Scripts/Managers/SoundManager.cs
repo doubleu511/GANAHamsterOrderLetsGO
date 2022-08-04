@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SoundManager
 {
+    float masterVolume = 1.0f;
+
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
+    float[] volumes = new float[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
 
     public void Init()
@@ -25,6 +28,43 @@ public class SoundManager
 
             _audioSources[(int)Define.Sound.Bgm].loop = true; // bgm 재생기는 무한 반복 재생
         }
+
+        // 여기에 저장된 볼륨 불러오기.
+        masterVolume = SecurityPlayerPrefs.GetFloat("option.masterVolume", 0.5f);
+
+        for (int i = 0; i < volumes.Length; i++)
+        {
+            volumes[i] = SecurityPlayerPrefs.GetFloat($"option.{(Define.Sound)i}", 0.5f);
+        }
+    }
+
+    public void SetMasterVolume(float value)
+    {
+        masterVolume = value;
+        SecurityPlayerPrefs.SetFloat("option.masterVolume", masterVolume);
+
+        for (int i = 0; i < (int)Define.Sound.MaxCount; i++)
+        {
+            SetVolume((Define.Sound)i, volumes[i]);
+        }
+    }
+
+    public float GetMasterVolume()
+    {
+        return masterVolume;
+    }
+
+    public void SetVolume(Define.Sound soundType, float value)
+    {
+        volumes[(int)soundType] = value;
+        SecurityPlayerPrefs.SetFloat($"option.{soundType}", volumes[(int)soundType]);
+
+        _audioSources[(int)soundType].volume = value * masterVolume;
+    }
+
+    public float[] GetVolumes()
+    {
+        return volumes;
     }
 
     public void Clear()
