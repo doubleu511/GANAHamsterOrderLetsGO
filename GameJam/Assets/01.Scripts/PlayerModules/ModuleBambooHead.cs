@@ -5,6 +5,8 @@ using UnityEngine;
 public class ModuleBambooHead : Module
 {
     private float flyTime = 0f;
+    private float flyMaxTime = 0.4f;
+    private float playerDir;
 
     public override void ModuleEquip()
     {
@@ -25,10 +27,14 @@ public class ModuleBambooHead : Module
     {
         if(GameManager.Player.JumpCount == GameManager.Player.JumpMaxCount)
         {
-            if(Input.GetKey(KeyCode.Space) && flyTime <= 1f)
+            if(Input.GetKey(KeyCode.Space) && flyTime <= flyMaxTime)
             {
+                if(flyTime <= 0) // 처음 날때 방향고정
+                {
+                    playerDir = Input.GetAxisRaw("Horizontal");
+                }
+
                 flyTime += Time.deltaTime;
-                float playerDir = Input.GetAxisRaw("Horizontal");
                 GameManager.Player.Rigid.velocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 3f);
             }
         }
