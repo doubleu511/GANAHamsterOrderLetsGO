@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_HookArm
       objectReference: {fileID: 0}
+    - target: {fileID: 1531112378893365787, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
 --- !u!4 &134747076 stripped

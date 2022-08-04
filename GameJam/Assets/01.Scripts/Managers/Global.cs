@@ -61,7 +61,7 @@ public class Global : MonoBehaviour
 
             //초기화들
             s_instance._sound.Init();
-            //s_instance._loadScene.Init();
+            s_instance._loadScene.Init();
             Transform poolObjectBox = managementObj.transform.Find("@Pool");
 
             if (poolObjectBox == null)
