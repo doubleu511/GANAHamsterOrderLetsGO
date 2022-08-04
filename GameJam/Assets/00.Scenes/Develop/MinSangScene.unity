@@ -1728,6 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc9a3a5a18f0114ba1b7d892e9d6565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RocketPrefab: {fileID: 6502433247013186289, guid: 835d3ef27ce31bb45a10b15e104558fb, type: 3}
 --- !u!1 &1718856572
 GameObject:
   m_ObjectHideFlags: 0
