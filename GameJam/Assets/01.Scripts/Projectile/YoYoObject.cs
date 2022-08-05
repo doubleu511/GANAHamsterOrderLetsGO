@@ -138,7 +138,6 @@ public class YoYoObject : MonoBehaviour
         // 언제나 하드코딩을 실생활에서 사용 할수 있도록 하자.
         rope.transform.rotation = Quaternion.LookRotation((GameManager.Player.transform.position - transform.position).normalized) * Quaternion.Euler(90, 0, 0);
         rope.transform.localRotation *= Quaternion.Euler(0, -90, 0);
-        Debug.Log(Vector3.Distance(GameManager.Player.transform.position, transform.position));
         rope.transform.localScale = new Vector3(0.05f, Vector3.Distance(GameManager.Player.transform.position, transform.position), 1f);
     }
 
