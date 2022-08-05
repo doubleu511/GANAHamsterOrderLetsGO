@@ -39,13 +39,18 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    private void OpenOrClose()
+    public void OpenOrClose()
     {
         isOpen = !isOpen;
+        OpenOrClose(isOpen);
+    }
+
+    public void OpenOrClose(bool open)
+    {
         inventoryPanel.DOKill();
         CanvasGroup inventoryGroup = inventoryPanel.GetComponent<CanvasGroup>();
 
-        if (isOpen)
+        if (open)
         {
             Global.UI.UIFade(inventoryGroup, true);
             inventoryPanel.DOSizeDelta(new Vector2(160, 800), 1);

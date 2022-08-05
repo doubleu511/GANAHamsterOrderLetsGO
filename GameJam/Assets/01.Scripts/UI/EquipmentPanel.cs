@@ -2,16 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EquipmentPanel : MonoBehaviour
 {
-    private readonly string NONE = "없음!";
+    private CanvasGroup canvasGroup;
+    public Button cancelButton;
 
     public TextMeshProUGUI[] abilityLores = new TextMeshProUGUI[(int)Define.ItemSlot.MAXCOUNT];
+
+    private readonly string NONE = "없음!";
+
+    private void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     private void Start()
     {
         LoreInit();
+
+        cancelButton.onClick.AddListener(() =>
+        {
+            Global.UI.UIFade(canvasGroup, false);
+            WorkPlace.IsWorkPlaceOpen = false;
+        });
+    }
+
+    public void PanelOpen()
+    {
+        Global.UI.UIFade(canvasGroup, true);
+        GameManager.Player.Inventory.OpenOrClose(true);
     }
 
     private void LoreInit()
