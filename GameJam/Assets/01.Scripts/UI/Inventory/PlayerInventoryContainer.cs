@@ -34,6 +34,11 @@ public class PlayerInventoryContainer : MonoBehaviour, IPointerEnterHandler, IPo
 
     public void OnDrop(PointerEventData eventData)
     {
+        ItemUnequip();
+    }
+
+    public void ItemUnequip()
+    {
         Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)

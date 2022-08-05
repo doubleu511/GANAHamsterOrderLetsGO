@@ -47,6 +47,11 @@ public class CharacterSlotContainer : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
+        ItemEquip();
+    }
+
+    public void ItemEquip()
+    {
         Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)

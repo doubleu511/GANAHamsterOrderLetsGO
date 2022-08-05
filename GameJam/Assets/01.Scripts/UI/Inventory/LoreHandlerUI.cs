@@ -33,7 +33,12 @@ public class LoreHandlerUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(block != null)
+        ExitFunc();
+    }
+
+    public void ExitFunc()
+    {
+        if (block != null)
         {
             block.Disappear();
             block = null;

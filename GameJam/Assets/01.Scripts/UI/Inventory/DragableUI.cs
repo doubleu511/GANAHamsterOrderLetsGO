@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Image myImg;
     private LoreHandlerUI myLoreHandler;
@@ -13,6 +13,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     protected bool isDragging = false;
 
     public bool bEquipmentInventory = false;
+    private bool isEntering = false;
 
     private void Awake()
     {
@@ -52,7 +53,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (!myImg.enabled || myImg.sprite == null)
+        if (!myImg.enabled || myImg.sprite == null || !WorkPlace.IsWorkPlaceOpen)
         {
             return;
         }
@@ -113,5 +114,47 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         GameManager.Game.DragAndDropContainer.gameObject.SetActive(false);
         GameManager.Game.DragAndDropContainer.SetModule(null);
         GameManager.Game.DragAndDropContainer.fromSlot = null;
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isEntering = true;
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isEntering = false;
+
+    }
+
+    private void Update()
+    {
+        if (!myImg.enabled || myImg.sprite == null || !WorkPlace.IsWorkPlaceOpen)
+        {
+            return;
+        }
+
+        if (isEntering)
+        {
+            if(Input.GetMouseButtonDown(1))
+            {
+                // Set Data
+                GameManager.Game.DragAndDropContainer.SetModule(myModule);
+                GameManager.Game.DragAndDropContainer.fromSlot = this;
+
+                if (bEquipmentInventory)
+                {
+                    GameManager.Game.PlayerInventoryContainer.ItemUnequip();
+                }
+                else
+                {
+                    GameManager.Game.CharacterSlotContainer.ItemEquip();
+                }
+                myLoreHandler.ExitFunc();
+                GameManager.Game.DragAndDropContainer.SetModule(null);
+                GameManager.Game.DragAndDropContainer.fromSlot = null;
+            }
+        }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class LoreblockUI : MonoBehaviour
@@ -58,6 +59,7 @@ public class LoreblockUI : MonoBehaviour
         yield return null;
         yield return null;
         lorePanel.anchoredPosition = Vector2.zero;
+        LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)lorePanel.transform);
         blockRect.DOSizeDelta(new Vector2(lorePanel.sizeDelta.x * 2, 150), 0.25f);
     }
 }
