@@ -39,8 +39,6 @@ public class YoYoObject : MonoBehaviour
 
     private void Update()
     {
-
-
         if(isYoYoMovingEnd || isPlayerMovingEnd)
         {
             YoYoMove();
@@ -137,6 +135,7 @@ public class YoYoObject : MonoBehaviour
         transform.parent = myParent;
         curTime = 0;
         transform.localPosition = new Vector2(0.35f, -0.175f);
+        transform.localScale = Vector3.one; // 아주 간편 코드 굿
     }
 
     private bool IsCameraInObject()
