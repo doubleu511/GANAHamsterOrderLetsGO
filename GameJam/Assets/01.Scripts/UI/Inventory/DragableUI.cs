@@ -24,11 +24,13 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         {
             if (myModule != null)
             {
+                myModule.gameObject.SetActive(false);
                 myModule.ModuleUnequip();
             }
 
             if (module != null)
             {
+                module.gameObject.SetActive(true);
                 module.ModuleEquip();
             }
         }
