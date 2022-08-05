@@ -9,6 +9,7 @@ public class RocketObject : MonoBehaviour
     private bool isCollision = false;
     public void RocketMove(Vector3 dir,Action act)
     {
+        act += () => { isCollision = false; };
         StartCoroutine(MoveProcess(dir.normalized, act));
     }
 
@@ -30,6 +31,9 @@ public class RocketObject : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isCollision = true;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Slope"))
+        {
+            isCollision = true;
+        }
     }
 }

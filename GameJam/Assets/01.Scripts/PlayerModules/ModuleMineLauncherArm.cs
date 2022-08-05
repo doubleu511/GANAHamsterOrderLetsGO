@@ -20,7 +20,8 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
 
             Vector3 playerPos = GameManager.Player.gameObject.transform.position;
 
-            RaycastHit2D hit = Physics2D.Raycast(playerPos, dir.normalized, Vector3.Distance(playerPos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
+
+            RaycastHit2D hit = Physics2D.Raycast(playerPos, dirs[0].normalized, Vector3.Distance(playerPos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
             if (hit.collider != null)
             {
                 mineObj.transform.position = hit.point;
@@ -31,7 +32,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
                 mineObj.transform.position = transform.position;
             }
             this.GetComponent<SpriteRenderer>().enabled = false;
-            mineObj.MineMove(dir, () => { mineObj.gameObject.SetActive(false); mineCount--; this.GetComponent<SpriteRenderer>().enabled = true; });
+            mineObj.MineMove(dirs[0], () => { mineObj.gameObject.SetActive(false); mineCount--; this.GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
         }
     }
