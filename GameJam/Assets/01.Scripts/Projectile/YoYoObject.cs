@@ -12,6 +12,7 @@ public class YoYoObject : MonoBehaviour
     }
 
     public LayerMask whatIsGround;
+    public GameObject rope;
 
     private bool isYoYoMovingEnd = false;
     private bool isPlayerMovingEnd = false;
@@ -33,6 +34,8 @@ public class YoYoObject : MonoBehaviour
 
     private void Start()
     {
+        rope = Instantiate(rope);
+        rope.transform.parent = this.transform;
         myParent = transform.parent;
         mainCam = Camera.main;
     }
@@ -69,6 +72,7 @@ public class YoYoObject : MonoBehaviour
         this.yoyoDistance = yoyoDistance;
         beforePos = transform.position;
         moveCallback = callback;
+        rope.SetActive(true);
     }
 
     private void YoYoMove()
@@ -106,11 +110,12 @@ public class YoYoObject : MonoBehaviour
         }
         else if(isPlayerMovingEnd)
         {
-            if(GameManager.Player.JumpCount == 0)
-                GameManager.Player.ResetJumpCharge(); // 버그가 죽기를 기원하며 함수 루프 돌리기
-
+            
             if (yoyoEnum == YoYoEnum.IsCollision)
             {
+                if (GameManager.Player.JumpCount == 0)
+                    GameManager.Player.ResetJumpCharge(); // 버그가 죽기를 기원하며 함수 루프 돌리기
+
                 GameManager.Player.transform.position = Vector3.Lerp(playerPos, afterPos, t);
 
                 if (t >= 1)
@@ -128,6 +133,11 @@ public class YoYoObject : MonoBehaviour
                 }
             }
         }
+
+        rope.transform.position = Vector3.Lerp(playerPos, transform.position, 0.5f);
+        // 언제나 하드코딩을 실생활에서 사용 할수 있도록 하자.
+        rope.transform.rotation = Quaternion.LookRotation((playerPos - transform.position).normalized) * Quaternion.Euler(90, 0, 0);
+        rope.transform.localRotation *= Quaternion.Euler(0, -90, 0);
     }
 
     private void End()
@@ -143,6 +153,7 @@ public class YoYoObject : MonoBehaviour
     private bool IsCameraInObject()
     {
         Vector3 viewPos = mainCam.WorldToViewportPoint(transform.position);
+        rope.SetActive(false);
 
         if (!(viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0))
         {
