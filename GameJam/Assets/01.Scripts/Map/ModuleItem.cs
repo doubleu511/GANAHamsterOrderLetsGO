@@ -3,41 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ModuleItem : MonoBehaviour
+public class ModuleItem : CollisionItem
 {
     private SpriteRenderer sr;
-    private Collider2D coll;
-
     public Module moduleItem;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         sr = GetComponent<SpriteRenderer>();
-        coll = GetComponent<Collider2D>();
     }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         sr.sprite = moduleItem.moduleInfo.moduleIconSpr;
-
-        Vector2 pos = transform.position;
-        transform.DOMove(new Vector2(pos.x, pos.y + .1f), 1).SetLoops(-1, LoopType.Yoyo);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void OnEnter()
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        GameManager.Player.Inventory.InventoryAdd(moduleItem);
+
+        transform.DOKill();
+        transform.DOMoveY(1, 1).SetRelative();
+        sr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
         {
-            coll.enabled = false;
-
-            GameManager.Player.Inventory.InventoryAdd(moduleItem);
-
-            transform.DOKill();
-            transform.DOMoveY(1, 1).SetRelative();
-            sr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
-            {
-                Destroy(gameObject);
-            });
-        }
+            Destroy(gameObject);
+        });
     }
 }
