@@ -758,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_GoggleHead
       objectReference: {fileID: 0}
+    - target: {fileID: 2170053287572840579, guid: 9387c1a6dbc600844b95eff6b3cb7249, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6427003124028764471, guid: 9387c1a6dbc600844b95eff6b3cb7249, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -944,9 +948,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5640404329242572854}
     m_Modifications:
+    - target: {fileID: 1411327148352156781, guid: e073a625eeff2a14790ced93b209df63, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4187471102747123886, guid: e073a625eeff2a14790ced93b209df63, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4561994165654213119, guid: e073a625eeff2a14790ced93b209df63, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195656117459101606, guid: e073a625eeff2a14790ced93b209df63, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 7781477210492472389, guid: e073a625eeff2a14790ced93b209df63, type: 3}
       propertyPath: m_Name
       value: Module_MineLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7781477210492472389, guid: e073a625eeff2a14790ced93b209df63, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7781477210492472389, guid: e073a625eeff2a14790ced93b209df63, type: 3}
       propertyPath: m_IsActive
@@ -1305,6 +1329,10 @@ PrefabInstance:
     - target: {fileID: 1531112378893365787, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
       propertyPath: m_Name
       value: Module_HookArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531112378893365787, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
