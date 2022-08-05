@@ -41,12 +41,14 @@ public class PlayerAnimation : MonoBehaviour
     public void SetIsJump(bool value)
     {
         footAnimator.SetBool(hashIsJump, value);
+        headAnimator.SetBool(hashIsJump, value);
         isJumping = value;
     }
 
     public void SetIsFall(bool value)
     {
         footAnimator.SetBool(hashIsFall, value);
+        headAnimator.SetBool(hashIsFall, value);
         isFalling = value;
     }
 }

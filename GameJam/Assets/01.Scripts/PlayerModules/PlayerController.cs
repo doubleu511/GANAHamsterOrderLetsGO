@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        
+
         IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
         if (!IsGround) // 공중에있음
@@ -83,10 +85,21 @@ public class PlayerController : MonoBehaviour
 
         if (IsGround && IsFalling)
         {
+            Debug.Log("착치");
             JumpCount = 0;
             OnGroundCollision?.Invoke();
             SetJumpAnim(false);
             SetFallAnim(false);
+        }
+
+        if (!CanMove)
+        {
+            SetFaceAnim(false);
+            SetHeadAnim(true);
+            SetWalkAnim(false);
+            SetFallAnim(false);
+            SetJumpAnim(false);
+            return;
         }
     }
 
