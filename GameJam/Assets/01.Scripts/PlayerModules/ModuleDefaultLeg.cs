@@ -107,8 +107,8 @@ public class ModuleDefaultLeg : Module, IJumpReset
             jumpPressedTime = 0f;
             GameManager.Player.head.transform.DOKill();
             GameManager.Player.head.transform.DOScaleY(1f, 0.6f).SetEase(Ease.OutBack);
+            GameManager.Player.JumpCount++;
         }
-        GameManager.Player.JumpCount++;
     }
 
 }

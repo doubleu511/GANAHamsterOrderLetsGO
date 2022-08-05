@@ -46,7 +46,7 @@ public class ModuleDoubleJumpLeg : Module, IJumpReset
         if (jumpPressedTime != 0)
         {
             jumpPressedTime = 0f;
+            GameManager.Player.JumpCount++;
         }
-        GameManager.Player.JumpCount++;
     }
 }
