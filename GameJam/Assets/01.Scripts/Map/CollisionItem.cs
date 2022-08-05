@@ -23,6 +23,7 @@ public abstract class CollisionItem : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             coll.enabled = false;
+            OnEnter();
         }
     }
 
