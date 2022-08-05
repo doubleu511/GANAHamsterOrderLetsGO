@@ -276,4 +276,12 @@ MonoBehaviour:
   - {fileID: 5040538678263374433}
   - {fileID: 7797707535955392211}
   dirs: []
+  armDistance: 0.2
+  armAngle: 90
   RocketPrefab: {fileID: 6502433247013186289, guid: 835d3ef27ce31bb45a10b15e104558fb, type: 3}
+  onImg:
+  - {fileID: 21300000, guid: dfe965bedafc5914db0ab4f3651c54a1, type: 3}
+  - {fileID: 21300000, guid: a52aa42eba82fac4fa51c75caf79aa57, type: 3}
+  offImg:
+  - {fileID: 21300000, guid: 8a96fe3abb63f7c4488f104e92ad73dd, type: 3}
+  - {fileID: 21300000, guid: d3ed270c1a0283a429ac2b423ff0291f, type: 3}

@@ -7,6 +7,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
 {
     public GameObject MinePrefab;
     private int mineCount = 0;
+   
 
     private void Start()
     {
@@ -32,7 +33,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
                 mineObj.transform.rotation = Quaternion.Euler(rotation);
                 mineObj.transform.localPosition = hit.point + new Vector2(0,0.125f);
                 mineObj.isCollision = true;
-                StartCoroutine(mineObj.collProcess());
+                StartCoroutine(mineObj.CollProcess());
 
             }
             else

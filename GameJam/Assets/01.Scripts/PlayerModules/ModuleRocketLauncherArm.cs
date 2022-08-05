@@ -7,11 +7,22 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
 {
     public GameObject RocketPrefab;
     private int RocketCount = 0;
-    
+    [SerializeField]
+    private Sprite[] onImg;
+    [SerializeField]
+    private Sprite[] offImg;
     private void Start()
     {
         Global.Pool.CreatePool<RocketObject>(RocketPrefab, GameManager.Game.transform);
-        GameManager.Player.OnGroundCollision += ()=> { RocketCount = 0; };
+
+        GameManager.Player.OnGroundCollision += () =>
+        {
+            RocketCount = 0;
+            for (int i = 0; i < arms.Length; i++)
+            {
+                arms[i].GetComponent<SpriteRenderer>().sprite = onImg[i];
+            }
+        };
     }
     public override void ArmMoving()
     {
@@ -26,6 +37,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
                 rocketObj.transform.position = arms[i].position;
                 rocketObj.RocketMove(dirs[i], () => { rocketObj.gameObject.SetActive(false); });
                 GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 5, ForceMode2D.Impulse);
+                arms[i].GetComponent<SpriteRenderer>().sprite = offImg[i];
                 RocketCount++;
             }
         }
