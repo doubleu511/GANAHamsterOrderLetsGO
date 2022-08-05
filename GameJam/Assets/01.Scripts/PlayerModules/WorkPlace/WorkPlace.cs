@@ -13,6 +13,7 @@ public class WorkPlace : InteractionObject
             EquipmentPanel equipmentPanel = FindObjectOfType<EquipmentPanel>();
             equipmentPanel.PanelOpen();
             IsWorkPlaceOpen = true;
+            GameManager.Player.CanMove = false;
         }
     }
 }

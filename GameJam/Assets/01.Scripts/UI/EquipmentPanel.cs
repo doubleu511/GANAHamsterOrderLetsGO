@@ -26,6 +26,7 @@ public class EquipmentPanel : MonoBehaviour
         {
             Global.UI.UIFade(canvasGroup, false);
             WorkPlace.IsWorkPlaceOpen = false;
+            GameManager.Player.CanMove = true;
         });
     }
 
