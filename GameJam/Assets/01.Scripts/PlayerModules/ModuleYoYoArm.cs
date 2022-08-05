@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ModuleYoYoArm : ModuleDefaultArm
 {
@@ -47,8 +48,8 @@ public class ModuleYoYoArm : ModuleDefaultArm
     {
         if (_yoyoCount == 0)
             base.ArmMoving();
-
-        if (Input.GetMouseButtonDown(0) && _yoyoCount == 0)
+        
+        if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0) && _yoyoCount == 0)
         {
             Vector3 playerPos = GameManager.Player.transform.position;
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

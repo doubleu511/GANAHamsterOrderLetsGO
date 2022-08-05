@@ -91,6 +91,7 @@ public class YoYoObject : MonoBehaviour
 
             if (t >= 1)
             {
+                GameManager.Player.ResetJumpCharge();
                 playerPos = GameManager.Player.transform.position;
                 curTime = 0; 
                 isYoYoMovingEnd = false;
@@ -99,7 +100,6 @@ public class YoYoObject : MonoBehaviour
                 
                 if(hit.collider != null)
                 {
-
                     afterPos = (Vector3)hit.point - (((Vector3)hit.point - playerPos).normalized * 0.5f);
                     dist = Vector3.Distance(playerPos, afterPos);
                 }
@@ -107,7 +107,7 @@ public class YoYoObject : MonoBehaviour
         }
         else if(isPlayerMovingEnd)
         {
-            if(yoyoEnum == YoYoEnum.IsCollision)
+            if (yoyoEnum == YoYoEnum.IsCollision)
             {
                 GameManager.Player.transform.position = Vector3.Lerp(playerPos, afterPos, t);
 

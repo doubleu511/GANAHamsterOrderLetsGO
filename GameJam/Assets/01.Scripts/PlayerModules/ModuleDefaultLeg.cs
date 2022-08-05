@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ModuleDefaultLeg : Module
+public class ModuleDefaultLeg : Module, IJumpReset
 {
     // 변수 넣는 용도로 Monobehaviour로 한걸로
     private float jumpPressedTime = 0f;
@@ -15,7 +15,6 @@ public class ModuleDefaultLeg : Module
             return jumpPressedTime > 0;
         }
     }
-
     public override void ModuleEquip()
     {
 
@@ -100,4 +99,13 @@ public class ModuleDefaultLeg : Module
             }
         }
     }
+
+    public void JumpReset()
+    {
+        Debug.Log("디버그를 찍는다.");
+        jumpPressedTime = 0f;
+
+        GameManager.Player.JumpCount = GameManager.Player.IsGround ? 0 : 1;
+    }
+
 }

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleDoubleJumpLeg : Module
+public class ModuleDoubleJumpLeg : Module, IJumpReset
 {
     private float jumpPressedTime = 0f;
-
     public override void ModuleEquip()
     {
         GameManager.Player.JumpMaxCount = 2;
@@ -39,5 +38,11 @@ public class ModuleDoubleJumpLeg : Module
                 jumpPressedTime = 0;
             }
         }
+    }
+
+    public void JumpReset()
+    {
+        jumpPressedTime = 0f;
+        GameManager.Player.JumpCount = GameManager.Player.IsGround ? 0 : 1;
     }
 }
