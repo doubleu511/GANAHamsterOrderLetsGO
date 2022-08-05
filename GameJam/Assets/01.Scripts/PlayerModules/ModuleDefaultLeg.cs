@@ -27,16 +27,14 @@ public class ModuleDefaultLeg : Module, IJumpReset
 
     public override void ModuleUpdate()
     {
-        Debug.Log(GameManager.Player.head.transform.localScale.y);
+        if (!GameManager.Player.CanMove)
+        {
+            return;
+        }
 
         JumpInput();
         if (!GameManager.Player.IsGround) return;
         if (jumpPressedTime > 0) return;
-        if (!GameManager.Player.CanMove)
-        {
-
-            return;
-        }
 
         // 플레이어 이동 코드가 실행될꺼임
         float chargingSpeedScale = isJumpCharging ? 0.2f : 1f;
