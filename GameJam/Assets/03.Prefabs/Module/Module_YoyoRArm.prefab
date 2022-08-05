@@ -98,4 +98,4 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 72
-  rope: {fileID: 0}
+  rope: {fileID: 6356912261391775883, guid: b6a2810d5e6e5574398acc208f6e4bab, type: 3}
