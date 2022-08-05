@@ -30,7 +30,11 @@ public class ModuleDefaultLeg : Module
         JumpInput();
         if (!GameManager.Player.IsGround) return;
         if (jumpPressedTime > 0) return;
-        if (!GameManager.Player.CanMove) return;
+        if (!GameManager.Player.CanMove)
+        {
+
+            return;
+        }
 
         // 플레이어 이동 코드가 실행될꺼임
         float chargingSpeedScale = isJumpCharging ? 0.2f : 1f;
@@ -80,8 +84,8 @@ public class ModuleDefaultLeg : Module
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 GameManager.Player.JumpCount++;
-                jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0f, 0.6f);
-                GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 37.2f + 3.2f), ForceMode2D.Impulse);
+                jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0.4f, 1.2f);
+                GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 8), ForceMode2D.Impulse);
                 
 
                 jumpPressedTime = 0;
