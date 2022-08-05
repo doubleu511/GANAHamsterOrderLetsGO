@@ -97,4 +97,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
+  rope: {fileID: 0}
