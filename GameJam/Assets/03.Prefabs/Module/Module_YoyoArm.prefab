@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5326285447038552861}
   - component: {fileID: 3698382497267633959}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hook_LHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7592293599339533172}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7592293601265185036}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6403686039365328017}
   - component: {fileID: 6425369901870488371}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Module_YoyoArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,6 +249,10 @@ PrefabInstance:
     - target: {fileID: 1531112378893365787, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
       propertyPath: m_Name
       value: Module_YoyoRArm
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531112378893365787, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4421166087622250542, guid: dd8c2db01ab0c1e4dafaec2f4fd54402, type: 3}
       propertyPath: m_SortingOrder
