@@ -101,6 +101,7 @@ public class YoYoObject : MonoBehaviour
                 
                 if(hit.collider != null)
                 {
+
                     afterPos = (Vector3)hit.point - (((Vector3)hit.point - playerPos).normalized * 0.5f);
                     dist = Vector3.Distance(playerPos, afterPos);
                 }
@@ -135,6 +136,7 @@ public class YoYoObject : MonoBehaviour
         isPlayerMovingEnd = false;
         transform.parent = myParent;
         curTime = 0;
+        transform.localPosition = new Vector2(0.35f, -0.175f);
     }
 
     private bool IsCameraInObject()

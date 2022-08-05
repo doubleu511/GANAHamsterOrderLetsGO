@@ -13,28 +13,31 @@ public class ModuleYoYoArm : ModuleDefaultArm
     2. 요요를 통해 이동이 끝났을 때
     */
 
+    public YoYoObject yoyo;
     public float _yoyoSpeed = 6f;
     public float _yoyoDistance = 10f;
     private int _yoyoCount = 0;
 
     private Action yoyoCallback;
-    private YoYoObject yoyo;
 
     private void Start()
     {
-        yoyo = GetComponent<YoYoObject>();
-
         if (yoyo == null)
         {
             Debug.LogWarning("YoYoObject 스크립트가 없어요");
         }
 
-        GameManager.Player.OnGroundCollision += () => { _yoyoCount = 0; };
+        GameManager.Player.OnGroundCollision += () => 
+        { 
+            _yoyoCount = 0;
+        };
 
         yoyoCallback = () =>
        {
            if (GameManager.Player.IsGround)
+           {
                _yoyoCount = 0;
+           }
 
            GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 0);
        };
