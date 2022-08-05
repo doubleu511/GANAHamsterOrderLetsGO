@@ -44,7 +44,7 @@ public class ModuleBoosterHead : Module
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 2);
+            GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 3.5f);
 
             // 머리앵그리 다리idle
             GameManager.Player.SetFaceAnim(true);

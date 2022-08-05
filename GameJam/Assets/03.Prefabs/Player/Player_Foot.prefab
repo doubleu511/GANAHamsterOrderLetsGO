@@ -263,7 +263,10 @@ MonoBehaviour:
   - playerInventoryTab: {fileID: 0}
   - playerInventoryTab: {fileID: 0}
   - playerInventoryTab: {fileID: 0}
-  inventoryCount: 6
+  - playerInventoryTab: {fileID: 0}
+  - playerInventoryTab: {fileID: 0}
+  - playerInventoryTab: {fileID: 0}
+  inventoryCount: 9
   testItems:
   - {fileID: 9133817819915811153}
 --- !u!1 &2372832886353460280
@@ -845,8 +848,8 @@ MonoBehaviour:
   leftFootTrail: {fileID: 8892115299356208168}
   rightFootSpr: {fileID: 5640404327667620123}
   rightFootTrail: {fileID: 2372832886353460280}
-  leftDefaultFootSpr: {fileID: 21300000, guid: 8c329b52de0c2f74092e27aaa2fa5f60, type: 3}
-  rightDefaultFootSpr: {fileID: 21300000, guid: fa639a6727b92df4996703f64e7559c7, type: 3}
+  leftDefaultFootSpr: {fileID: 21300000, guid: 46d5e01008a0c99419b1e0ad4f09d588, type: 3}
+  rightDefaultFootSpr: {fileID: 21300000, guid: 0803a099d0b0c654b8dee2ac398d359f, type: 3}
 --- !u!1 &5640404329242572849
 GameObject:
   m_ObjectHideFlags: 0
