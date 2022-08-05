@@ -20,7 +20,7 @@ public class ModuleDashLeg : Module
         if(Input.GetKeyDown(KeyCode.F) && dashCount == 0)
         {
             
-            GameManager.Player.Rigid.AddForce(new Vector2(Mathf.Sign(GameManager.Player.Rigid.velocity.x) *6, 0), ForceMode2D.Impulse);
+            GameManager.Player.Rigid.AddForce(new Vector2(Mathf.Sign(GameManager.Player.transform.localScale.x * -1) *6, 0), ForceMode2D.Impulse);
             dashCount++;
         }
     }
