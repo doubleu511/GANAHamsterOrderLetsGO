@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool CanMove { get; set; } = true;
+
     public bool IsGround { get; set; } = false;
 
     public Action OnGroundCollision { get; set; }
