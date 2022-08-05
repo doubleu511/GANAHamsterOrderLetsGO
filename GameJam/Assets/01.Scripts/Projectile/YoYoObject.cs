@@ -134,10 +134,12 @@ public class YoYoObject : MonoBehaviour
             }
         }
 
-        rope.transform.position = Vector3.Lerp(playerPos, transform.position, 0.5f);
+        rope.transform.position = Vector3.Lerp(GameManager.Player.transform.position, transform.position, 0.5f);
         // 언제나 하드코딩을 실생활에서 사용 할수 있도록 하자.
-        rope.transform.rotation = Quaternion.LookRotation((playerPos - transform.position).normalized) * Quaternion.Euler(90, 0, 0);
+        rope.transform.rotation = Quaternion.LookRotation((GameManager.Player.transform.position - transform.position).normalized) * Quaternion.Euler(90, 0, 0);
         rope.transform.localRotation *= Quaternion.Euler(0, -90, 0);
+        Debug.Log(Vector3.Distance(GameManager.Player.transform.position, transform.position));
+        rope.transform.localScale = new Vector3(0.1f, Vector3.Distance(GameManager.Player.transform.position, transform.position), 1f);
     }
 
     private void End()
@@ -148,12 +150,12 @@ public class YoYoObject : MonoBehaviour
         curTime = 0;
         transform.localPosition = new Vector2(0.35f, -0.175f);
         transform.localScale = Vector3.one; // 아주 간편 코드 굿
+        rope.SetActive(false);
     }
 
     private bool IsCameraInObject()
     {
         Vector3 viewPos = mainCam.WorldToViewportPoint(transform.position);
-        rope.SetActive(false);
 
         if (!(viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0))
         {
