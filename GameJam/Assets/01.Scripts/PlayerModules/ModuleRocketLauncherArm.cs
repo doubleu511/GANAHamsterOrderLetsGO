@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ModuleRocketLauncherArm : ModuleDefaultArm
 {
@@ -15,7 +16,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     public override void ArmMoving()
     {
         base.ArmMoving();
-        if(Input.GetMouseButtonDown(0) && RocketCount == 0)
+        if(Input.GetMouseButtonDown(0) && RocketCount == 0 && !EventSystem.current.IsPointerOverGameObject())
         {
            
             GameManager.Player.Rigid.velocity = Vector2.zero;
