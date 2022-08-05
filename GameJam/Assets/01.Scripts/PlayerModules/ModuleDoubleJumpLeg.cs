@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class ModuleDoubleJumpLeg : Module, IJumpReset
 {
+    public Sprite leftFeetSpr;
+    public Sprite rightFeetSpr;
+
     private float jumpPressedTime = 0f;
     public override void ModuleEquip()
     {
         GameManager.Player.JumpMaxCount = 2;
+        GameManager.Player.Feet.SetFeet(leftFeetSpr, rightFeetSpr);
     }
 
     public override void ModuleUnequip()
     {
-
+        GameManager.Player.Feet.ResetFeet();
     }
 
     public override void ModuleUpdate()
