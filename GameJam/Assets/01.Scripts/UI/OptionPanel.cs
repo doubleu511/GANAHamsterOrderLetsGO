@@ -6,6 +6,8 @@ using DG.Tweening;
 
 public class OptionPanel : MonoBehaviour
 {
+    private bool isOpen = false;
+
     private CanvasGroup canvasGroup;
     public CanvasGroup panelCanvasgroup;
 
@@ -29,6 +31,7 @@ public class OptionPanel : MonoBehaviour
     {
         cancelButton.onClick.AddListener(() =>
         {
+            isOpen = false;
             panelCanvasgroup.DOComplete();
             panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 
@@ -84,13 +87,29 @@ public class OptionPanel : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            panelCanvasgroup.DOComplete();
-            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+            if (isOpen)
+            {
+                isOpen = false;
+                panelCanvasgroup.DOComplete();
+                panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 
-            Global.UI.UIFade(canvasGroup, true);
-            Global.UI.UIFade(panelCanvasgroup, true);
+                Global.UI.UIFade(canvasGroup, false);
+                Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
+            }
+            else
+            {
+                if (!WorkPlace.IsWorkPlaceOpen)
+                {
+                    panelCanvasgroup.DOComplete();
+                    panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+                    Global.UI.UIFade(canvasGroup, true);
+                    Global.UI.UIFade(panelCanvasgroup, true);
+                    isOpen = true;
+                }
+            }
         }
     }
 

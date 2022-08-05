@@ -30,6 +30,19 @@ public class EquipmentPanel : MonoBehaviour
         });
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (WorkPlace.IsWorkPlaceOpen)
+            {
+                Global.UI.UIFade(canvasGroup, false);
+                WorkPlace.IsWorkPlaceOpen = false;
+                GameManager.Player.CanMove = true;
+            }
+        }
+    }
+
     public void PanelOpen()
     {
         Global.UI.UIFade(canvasGroup, true);
