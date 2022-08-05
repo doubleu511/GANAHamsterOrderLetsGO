@@ -21,7 +21,7 @@ public class MineObject : MonoBehaviour
         };
         StartCoroutine(MoveProcess(dir));
     }
-
+    
 
     private IEnumerator MoveProcess(Vector3 dir)
     {
@@ -60,7 +60,7 @@ public class MineObject : MonoBehaviour
                 
             }
         }
-        else if (!collision.GetComponent<MineObject>())
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") || collision.gameObject.layer == LayerMask.NameToLayer("Slope"))
         {
             isCollision = true;
             StartCoroutine(collProcess());
