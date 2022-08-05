@@ -1154,6 +1154,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955004386}
   m_CullTransparentMesh: 1
+--- !u!212 &1144039303 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1126954726159209525, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+  m_PrefabInstance: {fileID: 1731188000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1204106288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1718,6 +1723,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1441251423169697016, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441251423169697016, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.4572
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640404327522803176, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -7579514597365515472, guid: 50980e14a8fe3714fa44ca2e75b45458, type: 3}
     - target: {fileID: 5640404329441034565, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1766,6 +1783,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Foot
       objectReference: {fileID: 0}
+    - target: {fileID: 5640404329441034584, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 1144039303}
     - target: {fileID: 5640404329441034585, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: headAnimator
       value: 

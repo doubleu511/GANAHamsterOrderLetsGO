@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ModuleDefaultLeg : Module
 {
@@ -27,6 +28,8 @@ public class ModuleDefaultLeg : Module
 
     public override void ModuleUpdate()
     {
+        Debug.Log(GameManager.Player.head.transform.localScale.y);
+
         JumpInput();
         if (!GameManager.Player.IsGround) return;
         if (jumpPressedTime > 0) return;
@@ -69,6 +72,9 @@ public class ModuleDefaultLeg : Module
             if(Input.GetKeyDown(KeyCode.Space))
             {
                 GameManager.Player.Rigid.velocity = Vector2.zero;
+
+                GameManager.Player.head.transform.DOKill();
+                GameManager.Player.head.transform.DOScaleY(0.8f, 0.6f);
             }
 
             if (Input.GetKey(KeyCode.Space))
@@ -84,9 +90,11 @@ public class ModuleDefaultLeg : Module
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 GameManager.Player.JumpCount++;
-                jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0.4f, 1.2f);
-                GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 8), ForceMode2D.Impulse);
-                
+                jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0f, 0.6f);
+                GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 8.3f + 3.2f), ForceMode2D.Impulse);
+
+                GameManager.Player.head.transform.DOKill();
+                GameManager.Player.head.transform.DOScaleY(1f, 0.6f).SetEase(Ease.OutBack);
 
                 jumpPressedTime = 0;
             }

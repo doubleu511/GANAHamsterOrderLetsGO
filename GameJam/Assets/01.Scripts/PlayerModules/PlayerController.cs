@@ -28,14 +28,13 @@ public class PlayerController : MonoBehaviour
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
 
-    private SpriteRenderer[] playerSprites;
+    public SpriteRenderer head;
 
     private void Awake()
     {
         Rigid = GetComponent<Rigidbody2D>();
         PlayerAnim = GetComponent<PlayerAnimation>();
         modules = GetComponentsInChildren<Module>(true);
-        playerSprites = GetComponentsInChildren<SpriteRenderer>(true);
     }
 
     private void Start()
