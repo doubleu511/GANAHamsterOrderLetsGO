@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public PlayerInventory Inventory;
+    public PlayerFoot Feet;
     public Rigidbody2D Rigid;
     public float PlayerSpeed = 3;
 

@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moduleInfo: {fileID: 11400000, guid: 1bf92175ff02cee46b43d0a049b28d76, type: 2}
+  leftFeetSpr: {fileID: 21300000, guid: 8c329b52de0c2f74092e27aaa2fa5f60, type: 3}
+  rightFeetSpr: {fileID: 21300000, guid: fa639a6727b92df4996703f64e7559c7, type: 3}

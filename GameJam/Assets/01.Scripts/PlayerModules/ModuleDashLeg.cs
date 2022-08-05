@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class ModuleDashLeg : Module
 {
+    public Sprite leftFeetSpr;
+    public Sprite rightFeetSpr;
+
     private int dashCount = 0;
+
     private void Start()
     {
         GameManager.Player.OnGroundCollision += () => { dashCount = 0; };
@@ -12,7 +16,7 @@ public class ModuleDashLeg : Module
 
     public override void ModuleEquip()
     {
-
+        GameManager.Player.Feet.SetFeet(leftFeetSpr, rightFeetSpr);
     }
 
     public override void ModuleUpdate()
@@ -27,6 +31,6 @@ public class ModuleDashLeg : Module
 
     public override void ModuleUnequip()
     {
-
+        GameManager.Player.Feet.ResetFeet();
     }
 }
