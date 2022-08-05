@@ -34,10 +34,10 @@ public class YoYoObject : MonoBehaviour
 
     private void Start()
     {
-        rope = Instantiate(rope);
-        rope.transform.parent = this.transform;
         myParent = transform.parent;
         mainCam = Camera.main;
+        rope = Instantiate(rope);
+        rope.transform.parent = this.transform;
     }
 
     private void Update()
