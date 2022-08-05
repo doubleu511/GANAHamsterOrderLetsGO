@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private Image myImg;
+    private LoreHandlerUI myLoreHandler;
     public Module myModule;
     protected bool isDragging = false;
 
@@ -16,6 +17,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     private void Awake()
     {
         myImg = GetComponent<Image>();
+        myLoreHandler = transform.parent.GetComponent<LoreHandlerUI>();
     }
 
     public void SetModule(Module module)
@@ -24,18 +26,17 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         {
             if (myModule != null)
             {
-                myModule.gameObject.SetActive(false);
-                myModule.ModuleUnequip();
+                myModule.Unequip();
             }
 
             if (module != null)
             {
-                module.gameObject.SetActive(true);
-                module.ModuleEquip();
+                module.Equip();
             }
         }
 
         myModule = module;
+        myLoreHandler.SetInfo(myModule?.moduleInfo);
 
         if (module != null)
         {
@@ -58,18 +59,18 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
 
         if (!bEquipmentInventory)
         {
-            GameManager.Global.CharacterSlotContainer.gameObject.SetActive(true);
+            GameManager.Game.CharacterSlotContainer.gameObject.SetActive(true);
         }
         else
         {
-            GameManager.Global.PlayerInventoryContainer.gameObject.SetActive(true);
+            GameManager.Game.PlayerInventoryContainer.gameObject.SetActive(true);
         }
 
         // Activate Container
-        GameManager.Global.DragAndDropContainer.gameObject.SetActive(true);
+        GameManager.Game.DragAndDropContainer.gameObject.SetActive(true);
         // Set Data
-        GameManager.Global.DragAndDropContainer.SetModule(myModule);
-        GameManager.Global.DragAndDropContainer.fromSlot = this;
+        GameManager.Game.DragAndDropContainer.SetModule(myModule);
+        GameManager.Game.DragAndDropContainer.fromSlot = this;
         myImg.color = new Color(1, 1, 1, 0);
         myImg.sprite = null;
         myImg.enabled = false;
@@ -80,7 +81,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         if (isDragging)
         {
-            GameManager.Global.DragAndDropContainer.transform.position = eventData.position;
+            GameManager.Game.DragAndDropContainer.transform.position = eventData.position;
         }
     }
 
@@ -88,20 +89,29 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
     {
         if (!bEquipmentInventory)
         {
-            GameManager.Global.CharacterSlotContainer.gameObject.SetActive(false);
+            GameManager.Game.CharacterSlotContainer.gameObject.SetActive(false);
         }
         else
         {
-            GameManager.Global.PlayerInventoryContainer.gameObject.SetActive(false);
+            GameManager.Game.PlayerInventoryContainer.gameObject.SetActive(false);
         }
 
-        SetModule(myModule);
+        if (myModule != null)
+        {
+            myImg.color = Color.white;
+            myImg.sprite = myModule.moduleInfo.moduleIconSpr;
+        }
+        else
+        {
+            myImg.color = new Color(1, 1, 1, 0);
+            myImg.sprite = null;
+        }
         myImg.enabled = true;
         isDragging = false;
 
         // Reset Contatiner
-        GameManager.Global.DragAndDropContainer.gameObject.SetActive(false);
-        GameManager.Global.DragAndDropContainer.SetModule(null);
-        GameManager.Global.DragAndDropContainer.fromSlot = null;
+        GameManager.Game.DragAndDropContainer.gameObject.SetActive(false);
+        GameManager.Game.DragAndDropContainer.SetModule(null);
+        GameManager.Game.DragAndDropContainer.fromSlot = null;
     }
 }

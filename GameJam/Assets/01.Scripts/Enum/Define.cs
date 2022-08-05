@@ -35,6 +35,7 @@ public class Define
     {
         HEAD,
         ARM,
-        LEG
+        LEG,
+        MAXCOUNT
     }
 }

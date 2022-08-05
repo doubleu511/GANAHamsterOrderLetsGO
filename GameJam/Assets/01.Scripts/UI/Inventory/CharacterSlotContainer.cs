@@ -13,7 +13,7 @@ public class CharacterSlotContainer : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Module module = GameManager.Global.DragAndDropContainer.savedModule;
+        Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)
         {
@@ -47,7 +47,7 @@ public class CharacterSlotContainer : MonoBehaviour, IPointerEnterHandler, IPoin
 
     public void OnDrop(PointerEventData eventData)
     {
-        Module module = GameManager.Global.DragAndDropContainer.savedModule;
+        Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)
         {
@@ -71,12 +71,12 @@ public class CharacterSlotContainer : MonoBehaviour, IPointerEnterHandler, IPoin
                 // ½º¿Ò ÀåÂø
                 Module tempModule = targetSlot.myModule;
                 targetSlot.SetModule(module);
-                GameManager.Global.DragAndDropContainer.fromSlot.SetModule(tempModule);
+                GameManager.Game.DragAndDropContainer.fromSlot.SetModule(tempModule);
             }
             else
             {
                 // ÀåÂø!
-                GameManager.Global.DragAndDropContainer.fromSlot.SetModule(null);
+                GameManager.Game.DragAndDropContainer.fromSlot.SetModule(null);
                 targetSlot.SetModule(module);
             }
 

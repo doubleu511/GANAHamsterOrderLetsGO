@@ -9,7 +9,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
 
     private void Start()
     {
-        Global.Pool.CreatePool<MineObject>(MinePrefab, GameManager.Global.transform);
+        Global.Pool.CreatePool<MineObject>(MinePrefab, GameManager.Game.transform);
     }
     public override void ArmMoving()
     {

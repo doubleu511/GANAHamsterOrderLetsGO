@@ -8,4 +8,7 @@ public class ModuleInfoSO : ScriptableObject
     public string moduleName;
     public Define.ItemSlot moduleSlot;
     public Sprite moduleIconSpr;
+
+    [TextArea(3, 5)]
+    public string moduleLore;
 }

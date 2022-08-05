@@ -5,19 +5,27 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static PlayerController Player;
-    public static GameManager Global;
+    public static GameManager Game;
 
     public CharacterSlotContainer CharacterSlotContainer;
     public PlayerInventoryContainer PlayerInventoryContainer;
     public DragAndDropContainer DragAndDropContainer;
 
+    public Transform loreBlockTrm;
+
     private void Awake()
     {
-        if (!Global)
+        if (!Game)
         {
-            Global = this;
+            Game = this;
         }
 
         Player = FindObjectOfType<PlayerController>();
+    }
+
+    private void Start()
+    {
+        GameObject loreBlock = Global.Resource.Load<GameObject>("UI/Loreblock");
+        Global.Pool.CreatePool<LoreblockUI>(loreBlock, loreBlockTrm, 5);
     }
 }

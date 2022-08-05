@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: GoggleHead
   m_EditorClassIdentifier: 
   moduleName: "\uACE0\uAE00"
+  moduleSlot: 0
   moduleIconSpr: {fileID: 21300000, guid: cce44a3ccfe468a4b83e7d68f99887a3, type: 3}
+  moduleLore: "\uC2DC\uC57C\uAC00 \uB354\uC6B1 \uB113\uC5B4\uC9D1\uB2C8\uB2E4!"

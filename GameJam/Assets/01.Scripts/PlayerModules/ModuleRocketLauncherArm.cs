@@ -9,7 +9,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     
     private void Start()
     {
-        Global.Pool.CreatePool<RocketObject>(RocketPrefab, GameManager.Global.transform);
+        Global.Pool.CreatePool<RocketObject>(RocketPrefab, GameManager.Game.transform);
         GameManager.Player.OnGroundCollision += ()=> { RocketCount = 0; };
     }
     public override void ArmMoving()

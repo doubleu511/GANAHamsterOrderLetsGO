@@ -9,7 +9,7 @@ public class PlayerInventoryContainer : MonoBehaviour, IPointerEnterHandler, IPo
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Module module = GameManager.Global.DragAndDropContainer.savedModule;
+        Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)
         {
@@ -34,7 +34,7 @@ public class PlayerInventoryContainer : MonoBehaviour, IPointerEnterHandler, IPo
 
     public void OnDrop(PointerEventData eventData)
     {
-        Module module = GameManager.Global.DragAndDropContainer.savedModule;
+        Module module = GameManager.Game.DragAndDropContainer.savedModule;
 
         if (module != null)
         {
@@ -43,7 +43,7 @@ public class PlayerInventoryContainer : MonoBehaviour, IPointerEnterHandler, IPo
 
             if (targetSlot != null)
             {
-                GameManager.Global.DragAndDropContainer.fromSlot.SetModule(null);
+                GameManager.Game.DragAndDropContainer.fromSlot.SetModule(null);
                 targetSlot.SetModule(module);
             }
 
