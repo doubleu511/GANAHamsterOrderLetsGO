@@ -67,7 +67,7 @@ public class MineObject : MonoBehaviour
         }
 
     }
-    private IEnumerator collProcess()
+    public IEnumerator collProcess()
     {
         yield return new WaitForSeconds(.3f);
         isBomb = true;

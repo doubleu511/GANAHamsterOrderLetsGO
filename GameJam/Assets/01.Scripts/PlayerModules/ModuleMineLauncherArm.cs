@@ -25,8 +25,15 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             RaycastHit2D hit = Physics2D.Raycast(anglePos, dirs[mineCount].normalized, Vector3.Distance(anglePos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
             if (hit.collider != null)
             {
-                mineObj.transform.position = hit.point + new Vector2(0,0.125f);
+
+                Vector2 normal = hit.normal;
+                float angle = Vector2.SignedAngle(Vector2.up, normal);
+                Vector3 rotation = mineObj.transform.eulerAngles + new Vector3(0, 0, angle);
+                mineObj.transform.rotation = Quaternion.Euler(rotation);
+                mineObj.transform.localPosition = hit.point + new Vector2(0,0.125f);
                 mineObj.isCollision = true;
+                StartCoroutine(mineObj.collProcess());
+
             }
             else
             {
