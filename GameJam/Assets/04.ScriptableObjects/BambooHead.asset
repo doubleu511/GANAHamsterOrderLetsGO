@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleName: "\uB300\uB098\uBB34 \uD5EC\uB9AC\uCF65\uD130"
   moduleSlot: 0
-  moduleIconSpr: {fileID: 21300000, guid: cce44a3ccfe468a4b83e7d68f99887a3, type: 3}
+  moduleIconSpr: {fileID: 21300000, guid: 79ec24a600d85cf48967da854ab3bf7f, type: 3}
   moduleLore: "\uACF5\uC911\uC5D0\uC11C \uC0AC\uC6A9 \uAC00\uB2A5\uD558\uBA70, \uC810\uD504
     \uC774\uD6C4 \uC810\uD504 \uD0A4\uB97C \uB204\uB974\uBA74 \uC7A0\uAE50 \uB3D9\uC548
     \uB0A0 \uC218 \uC788\uC2B5\uB2C8\uB2E4!"

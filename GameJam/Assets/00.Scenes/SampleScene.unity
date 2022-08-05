@@ -2638,6 +2638,10 @@ PrefabInstance:
       propertyPath: inventoryTabs.Array.data[5].playerInventoryTab
       value: 
       objectReference: {fileID: 2030635910}
+    - target: {fileID: 5640404329062087224, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5640404329441034565, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -11085,17 +11089,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1165649837 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5640404328001071742, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
-  m_PrefabInstance: {fileID: 233520324}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cc9a3a5a18f0114ba1b7d892e9d6565, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1181589384
 GameObject:
   m_ObjectHideFlags: 0
@@ -14817,7 +14810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d265ad739d91c4989a39984c816a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moduleItem: {fileID: 1165649837}
+  moduleItem: {fileID: 1891053404}
 --- !u!58 &1680903870
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -16829,6 +16822,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1891053404 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5640404329062087230, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+  m_PrefabInstance: {fileID: 233520324}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fb4e7a0180a1ff43a6d54cd11f066c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1905404530
 GameObject:
   m_ObjectHideFlags: 0

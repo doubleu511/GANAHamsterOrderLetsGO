@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class ModuleBambooHead : Module
 {
+    private Animator propellerAnimator;
+
     private float flyTime = 0f;
     private float flyMaxTime = 0.4f;
     private float playerDir;
 
+    private void Awake()
+    {
+        propellerAnimator = GetComponentInChildren<Animator>();
+    }
+
     public override void ModuleEquip()
     {
-        Debug.Log("´ë³ª¹« ÀåÂø");
+
     }
 
     public override void ModuleUnequip()
@@ -25,6 +32,7 @@ public class ModuleBambooHead : Module
         if(GameManager.Player.IsGround)
         {
             flyTime = 0f;
+            propellerAnimator.SetBool("isMove", false);
         }
     }
 
@@ -38,6 +46,7 @@ public class ModuleBambooHead : Module
                 {
                     playerDir = Input.GetAxisRaw("Horizontal");
                     GameManager.Player.SpriteFlipX(playerDir > 0);
+                    propellerAnimator.SetBool("isMove", true);
                 }
 
                 flyTime += Time.deltaTime;
