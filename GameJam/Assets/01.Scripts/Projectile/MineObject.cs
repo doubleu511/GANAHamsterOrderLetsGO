@@ -15,15 +15,24 @@ public class MineObject : MonoBehaviour
     private Action act;
     [SerializeField]
     private Sprite[] img;
+    [SerializeField]
+    private GameObject light;
+
+    private Rigidbody2D rigid;
+    
     public void MineMove(Vector3 dir, Action act)
     {
+        rigid = GetComponent<Rigidbody2D>();
         this.act = act;
         this.act += () => {
             isCollision = false;
             isBomb = false;
             GetComponent<SpriteRenderer>().sprite = img[0];
             transform.rotation = Quaternion.Euler(Vector3.zero);
+            light.SetActive(false);
+            rigid.gravityScale = 1;
         };
+        rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
         StartCoroutine(MoveProcess(dir));
     }
     
@@ -33,14 +42,18 @@ public class MineObject : MonoBehaviour
         while (true)
         {
             yield return new WaitForEndOfFrame();
+            
             if (!isCollision)
             {
-                transform.position += dir.normalized * Time.deltaTime * moveSpeed;
-                Debug.DrawRay(transform.position, dir.normalized ,Color.red,.2f);
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, .4f, (1 << LayerMask.NameToLayer("Ground") )+ ( 1<<  LayerMask.NameToLayer("Slope")));
+                dir = rigid.velocity.normalized;
+                Debug.DrawRay(transform.position, dir.normalized, Color.red, .2f);
+                rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x, -10, 10), Mathf.Clamp(rigid.velocity.y, -10, 10));
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, .4f, (1 << LayerMask.NameToLayer("Ground")) + (1 << LayerMask.NameToLayer("Slope")));
                 if (hit.collider != null)
                 {
                     isCollision = true;
+                    rigid.velocity = Vector2.zero;
+                    rigid.gravityScale = 0;
                     print(hit.transform.name);
                     Vector2 normal = hit.normal;
                     float angle = Vector2.SignedAngle(Vector2.up, normal);
@@ -53,8 +66,28 @@ public class MineObject : MonoBehaviour
 
                     StartCoroutine(BombProcess());
                     StartCoroutine(CollProcess());
-                 
+
                 }
+                /* transform.position += dir.normalized * Time.deltaTime * moveSpeed;
+                 Debug.DrawRay(transform.position, dir.normalized ,Color.red,.2f);
+                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, .4f, (1 << LayerMask.NameToLayer("Ground") )+ ( 1<<  LayerMask.NameToLayer("Slope")));
+                 if (hit.collider != null)
+                 {
+                     isCollision = true;
+                     print(hit.transform.name);
+                     Vector2 normal = hit.normal;
+                     float angle = Vector2.SignedAngle(Vector2.up, normal);
+                     print(angle);
+                     transform.position = hit.point;
+                     Debug.DrawRay(hit.transform.position, hit.normal, Color.red, 10.0f);
+                     Vector3 rotation = transform.eulerAngles + new Vector3(0, 0, angle);
+                     transform.rotation = Quaternion.Euler(rotation);
+                     transform.position += transform.up * 0.125f;
+
+                     StartCoroutine(BombProcess());
+                     StartCoroutine(CollProcess());
+
+                 }*/
             }
         }
 
@@ -68,6 +101,7 @@ public class MineObject : MonoBehaviour
         {
             yield return new WaitForSeconds(.15f);
             GetComponent<SpriteRenderer>().sprite = img[isOn ? 0:1];
+            light.SetActive(isOn);
             isOn = !isOn;
             print(isOn);
         }

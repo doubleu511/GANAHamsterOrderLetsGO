@@ -7,7 +7,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
 {
     public GameObject MinePrefab;
     private int mineCount = 0;
-   
+    
 
     private void Start()
     {
