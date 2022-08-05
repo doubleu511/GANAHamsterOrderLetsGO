@@ -32,7 +32,7 @@ public class MineObject : MonoBehaviour
             count++;
             if(!isCollision)
             {
-                transform.position += dir * Time.deltaTime * moveSpeed;
+                transform.position += dir.normalized * Time.deltaTime * moveSpeed;
             }
             if (count > 1000 )
             {
@@ -44,7 +44,7 @@ public class MineObject : MonoBehaviour
     }
     private IEnumerator collProcess()
     {
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(.3f);
         isBomb = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -55,7 +55,7 @@ public class MineObject : MonoBehaviour
             {
                 Vector3 dir = collision.transform.position - transform.position;
                 GameManager.Player.Rigid.velocity = new Vector2(0, 0);
-                GameManager.Player.Rigid.AddForce((dir.normalized) * 10, ForceMode2D.Impulse);
+                GameManager.Player.Rigid.AddForce(dir.normalized * 10, ForceMode2D.Impulse);
                 act?.Invoke();
                 
             }

@@ -14,7 +14,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
     public override void ArmMoving()
     {
         base.ArmMoving();
-        if (Input.GetMouseButtonDown(0) && mineCount < 4)
+        if (Input.GetMouseButtonDown(0) && mineCount == 0)
         {
             MineObject mineObj = Global.Pool.GetItem<MineObject>();
 
@@ -30,8 +30,8 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             {
                 mineObj.transform.position = transform.position;
             }
-
-            mineObj.MineMove(dir, () => { mineObj.gameObject.SetActive(false); mineCount--; });
+            this.GetComponent<SpriteRenderer>().enabled = false;
+            mineObj.MineMove(dir, () => { mineObj.gameObject.SetActive(false); mineCount--; this.GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
         }
     }
