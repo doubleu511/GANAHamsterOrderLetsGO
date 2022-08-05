@@ -974,6 +974,7 @@ MonoBehaviour:
   Inventory: {fileID: 2094021495}
   Rigid: {fileID: 0}
   PlayerSpeed: 3
+  head: {fileID: 1126954726159209525}
 --- !u!114 &5640404329441034585
 MonoBehaviour:
   m_ObjectHideFlags: 0
