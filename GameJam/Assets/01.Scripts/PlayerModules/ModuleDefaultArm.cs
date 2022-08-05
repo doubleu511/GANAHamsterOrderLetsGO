@@ -8,7 +8,9 @@ public class ModuleDefaultArm : Module
     protected Transform[] arms;
     [SerializeField]
     protected List<Vector3> dirs= new List<Vector3>();
+    [SerializeField]
     protected float armDistance = .2f;
+    [SerializeField]
     protected float armAngle = 90;
     public override void ModuleEquip()
     {

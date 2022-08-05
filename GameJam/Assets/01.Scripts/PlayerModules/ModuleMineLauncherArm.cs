@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class ModuleMineLauncherArm : ModuleDefaultArm
 {
@@ -14,25 +15,25 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
     public override void ArmMoving()
     {
         base.ArmMoving();
-        if (Input.GetMouseButtonDown(0) && mineCount == 0)
+        if (Input.GetMouseButtonDown(0) && mineCount < 2 && !EventSystem.current.IsPointerOverGameObject())
         {
             MineObject mineObj = Global.Pool.GetItem<MineObject>();
 
-            Vector3 playerPos = GameManager.Player.gameObject.transform.position;
+            Vector3 anglePos = arms[mineCount].position;
 
 
-            RaycastHit2D hit = Physics2D.Raycast(playerPos, dirs[0].normalized, Vector3.Distance(playerPos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
+            RaycastHit2D hit = Physics2D.Raycast(anglePos, dirs[mineCount].normalized, Vector3.Distance(anglePos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
             if (hit.collider != null)
             {
-                mineObj.transform.position = hit.point;
+                mineObj.transform.position = hit.point + new Vector2(0,0.125f);
                 mineObj.isCollision = true;
             }
             else
             {
-                mineObj.transform.position = transform.position;
+                mineObj.transform.position = arms[mineCount].position;
             }
-            this.GetComponent<SpriteRenderer>().enabled = false;
-            mineObj.MineMove(dirs[0], () => { mineObj.gameObject.SetActive(false); mineCount--; this.GetComponent<SpriteRenderer>().enabled = true; });
+            arms[mineCount].GetComponent<SpriteRenderer>().enabled = false;
+            mineObj.MineMove(dirs[mineCount], () => { mineObj.gameObject.SetActive(false); mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
         }
     }

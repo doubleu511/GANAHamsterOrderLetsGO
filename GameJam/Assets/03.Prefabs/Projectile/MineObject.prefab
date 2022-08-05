@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f6cda73547c6f46b785d2e327fc597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 5
   <isCollision>k__BackingField: 0
   isBomb: 0
 --- !u!212 &6502433247013186303
