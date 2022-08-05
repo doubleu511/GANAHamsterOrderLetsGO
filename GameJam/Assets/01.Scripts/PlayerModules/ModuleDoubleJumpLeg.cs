@@ -40,9 +40,13 @@ public class ModuleDoubleJumpLeg : Module, IJumpReset
         }
     }
 
+
     public void JumpReset()
     {
-        jumpPressedTime = 0f;
-        GameManager.Player.JumpCount = GameManager.Player.IsGround ? 0 : 1;
+        if (jumpPressedTime != 0)
+        {
+            jumpPressedTime = 0f;
+        }
+        GameManager.Player.JumpCount++;
     }
 }

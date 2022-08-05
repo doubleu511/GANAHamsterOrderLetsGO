@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.35f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
+        IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
         if (!IsGround) // 공중에있음
         {
@@ -102,6 +102,17 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
+    public void ResetJumpCharge()
+    {
+        foreach (Module module in modules) // 모듈들 장착
+        {
+            if (module is IJumpReset)
+            {
+                (module as IJumpReset).JumpReset();
+            }
+        }
+    }
+
     public void SetHeadAnim(bool isIdle)
     {
         PlayerAnim.SetIsIdleHead(isIdle);
@@ -131,6 +142,6 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(0, -0.35f), 0.3f);
+        Gizmos.DrawWireSphere((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f);
     }
 }

@@ -102,10 +102,13 @@ public class ModuleDefaultLeg : Module, IJumpReset
 
     public void JumpReset()
     {
-        Debug.Log("디버그를 찍는다.");
-        jumpPressedTime = 0f;
-
-        GameManager.Player.JumpCount = GameManager.Player.IsGround ? 0 : 1;
+        if (jumpPressedTime != 0)
+        {
+            jumpPressedTime = 0f;
+            GameManager.Player.head.transform.DOKill();
+            GameManager.Player.head.transform.DOScaleY(1f, 0.6f).SetEase(Ease.OutBack);
+        }
+        GameManager.Player.JumpCount++;
     }
 
 }

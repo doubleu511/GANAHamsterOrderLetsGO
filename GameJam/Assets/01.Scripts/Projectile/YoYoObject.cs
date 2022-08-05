@@ -91,7 +91,6 @@ public class YoYoObject : MonoBehaviour
 
             if (t >= 1)
             {
-                GameManager.Player.ResetJumpCharge();
                 playerPos = GameManager.Player.transform.position;
                 curTime = 0; 
                 isYoYoMovingEnd = false;
@@ -107,6 +106,9 @@ public class YoYoObject : MonoBehaviour
         }
         else if(isPlayerMovingEnd)
         {
+            if(GameManager.Player.JumpCount == 0)
+                GameManager.Player.ResetJumpCharge(); // 버그가 죽기를 기원하며 함수 루프 돌리기
+
             if (yoyoEnum == YoYoEnum.IsCollision)
             {
                 GameManager.Player.transform.position = Vector3.Lerp(playerPos, afterPos, t);
