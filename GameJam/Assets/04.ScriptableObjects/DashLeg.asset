@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: DashLeg
   m_EditorClassIdentifier: 
   moduleName: "\uB300\uC26C"
-  moduleIconSpr: {fileID: 21300000, guid: cce44a3ccfe468a4b83e7d68f99887a3, type: 3}
+  moduleSlot: 2
+  moduleIconSpr: {fileID: 21300000, guid: 70540aefa175bb44da21dac5468fa820, type: 3}

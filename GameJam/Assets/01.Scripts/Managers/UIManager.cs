@@ -38,7 +38,10 @@ public class UIManager
         {
             if (_float)
             {
-                rect.DOAnchorPos(floatPos, duration).SetUpdate(setUpdate).SetEase(Ease.Linear);
+                rect.DOAnchorPos(floatPos, duration).SetUpdate(setUpdate).SetEase(Ease.Linear).OnComplete(() =>
+                {
+                    rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, rect.anchoredPosition.y + 100);
+                });
             }
 
             group.interactable = false;

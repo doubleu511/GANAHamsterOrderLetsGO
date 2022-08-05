@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: HookArm
   m_EditorClassIdentifier: 
   moduleName: "\uAC08\uACE0\uB9AC"
+  moduleSlot: 1
   moduleIconSpr: {fileID: 21300000, guid: cce44a3ccfe468a4b83e7d68f99887a3, type: 3}

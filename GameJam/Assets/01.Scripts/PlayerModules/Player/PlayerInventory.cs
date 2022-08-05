@@ -7,23 +7,11 @@ using DG.Tweening;
 [System.Serializable]
 public class InventoryTab
 {
-    public Module myModule;
-    public Image playerInventoryImg;
+    public DragableUI playerInventoryTab;
 
     public void SetModule(Module module)
     {
-        myModule = module;
-
-        if (myModule != null)
-        {
-            playerInventoryImg.sprite = module.moduleInfo.moduleIconSpr;
-            playerInventoryImg.gameObject.SetActive(true);
-        }
-        else
-        {
-            playerInventoryImg.sprite = null;
-            playerInventoryImg.gameObject.SetActive(false);
-        }
+        playerInventoryTab.SetModule(module);
     }
 }
 
@@ -38,10 +26,17 @@ public class PlayerInventory : MonoBehaviour
     [Range(6, 9)]
     int inventoryCount = 6;
 
+    public Module[] testItems;
+
     private void Start()
     {
         backpackBtn.onClick.AddListener(() => OpenOrClose());
         InventoryInit(inventoryCount);
+
+        foreach (Module item in testItems)
+        {
+            InventoryAdd(item);
+        }
     }
 
     private void OpenOrClose()
@@ -76,7 +71,7 @@ public class PlayerInventory : MonoBehaviour
     {
         for (int i = 0; i < inventoryCount; i++)
         {
-            if (inventoryTabs[i].myModule == null)
+            if (inventoryTabs[i].playerInventoryTab.myModule == null)
             {
                 inventoryTabs[i].SetModule(module);
                 return true;
@@ -84,5 +79,18 @@ public class PlayerInventory : MonoBehaviour
         }
 
         return false;
+    }
+
+    public InventoryTab GetRemainInventoryTab()
+    {
+        for (int i = 0; i < inventoryCount; i++)
+        {
+            if (inventoryTabs[i].playerInventoryTab.myModule == null)
+            {
+                return inventoryTabs[i];
+            }
+        }
+
+        return null;
     }
 }

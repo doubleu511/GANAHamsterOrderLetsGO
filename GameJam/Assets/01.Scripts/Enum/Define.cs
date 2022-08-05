@@ -30,4 +30,11 @@ public class Define
         SHAKE = 1,
     }
     #endregion
+
+    public enum ItemSlot
+    {
+        HEAD,
+        ARM,
+        LEG
+    }
 }

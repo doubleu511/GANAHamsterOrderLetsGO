@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public PlayerInventory Inventory;
     public Rigidbody2D Rigid;
     public float PlayerSpeed = 3;
 
@@ -39,17 +40,20 @@ public class PlayerController : MonoBehaviour
     {
         foreach (Module module in modules) // ¸ðµâµé ÀåÂø
         {
-            module.ModuleEquip();
+            if (module.gameObject.activeSelf)
+            {
+                module.ModuleEquip();
+            }
         }
     }
 
     public void Update()
     {
-        foreach (Module item in modules)
+        foreach (Module module in modules)
         {
-            if (item.gameObject.activeSelf)
+            if (module.gameObject.activeSelf)
             {
-                item.ModuleUpdate();
+                module.ModuleUpdate();
             }
         }
 

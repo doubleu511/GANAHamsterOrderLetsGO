@@ -6,6 +6,6 @@ using UnityEngine;
 public class ModuleInfoSO : ScriptableObject
 {
     public string moduleName;
-
+    public Define.ItemSlot moduleSlot;
     public Sprite moduleIconSpr;
 }

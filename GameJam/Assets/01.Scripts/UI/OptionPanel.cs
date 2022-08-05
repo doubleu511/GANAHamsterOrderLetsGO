@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class OptionPanel : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class OptionPanel : MonoBehaviour
     {
         cancelButton.onClick.AddListener(() =>
         {
+            panelCanvasgroup.DOComplete();
+            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
             Global.UI.UIFade(canvasGroup, false);
             Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
         });
@@ -76,6 +80,18 @@ public class OptionPanel : MonoBehaviour
         {
             Application.Quit();
         });
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            panelCanvasgroup.DOComplete();
+            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+            Global.UI.UIFade(canvasGroup, true);
+            Global.UI.UIFade(panelCanvasgroup, true);
+        }
     }
 
     public static void SetFullScreen(bool value)
