@@ -34,14 +34,22 @@ public class ModuleDefaultLeg : Module
         float chargingSpeedScale = isJumpCharging ? 0.2f : 1f;
 
         float playerDir = Input.GetAxisRaw("Horizontal");
-        if (playerDir != 0)
+        if (playerDir != 0) // 이동중
         {
             GameManager.Player.SpriteFlipX(playerDir > 0);
+
+            // 머리앵그리 다리walk
+            GameManager.Player.SetFaceAnim(true);
             GameManager.Player.SetWalkAnim(true);
         }
-        else
+        else // 이동안하는중
         {
-            GameManager.Player.SetWalkAnim(false);
+            if (jumpPressedTime <= 0) // 차징안하는중
+            {
+                // 머리idle 다리idle
+                GameManager.Player.SetFaceAnim(false);
+                GameManager.Player.SetWalkAnim(false);
+            }
         }
         Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed * chargingSpeedScale, 
                                     GameManager.Player.Rigid.velocity.y);
@@ -56,12 +64,18 @@ public class ModuleDefaultLeg : Module
             {
                 jumpPressedTime += Time.deltaTime;
                 jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0, 1.2f);
+
+                // 머리앵그리 다리idle
+                GameManager.Player.SetFaceAnim(true);
+                GameManager.Player.SetWalkAnim(false);
             }
 
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 GameManager.Player.JumpCount++;
                 GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 10), ForceMode2D.Impulse);
+                
+
                 jumpPressedTime = 0;
             }
         }

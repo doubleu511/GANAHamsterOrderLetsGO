@@ -59,15 +59,33 @@ public class PlayerController : MonoBehaviour
 
         IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
-        if(!IsGround)
+        if (!IsGround) // 공중에있음
         {
-            SetWalkAnim(false);
+            SetFaceAnim(false);
+            SetHeadAnim(true);
+
+            if (!IsFalling) // 상승중
+            {
+                SetJumpAnim(true);
+                SetFallAnim(false);
+            }
+            else
+            {
+                SetJumpAnim(false);
+                SetFallAnim(true);
+            }
+        }
+        else // 땅에있음
+        {
+            SetHeadAnim(false);
         }
 
-        if(IsGround && IsFalling)
+        if (IsGround && IsFalling)
         {
             JumpCount = 0;
             OnGroundCollision?.Invoke();
+            SetJumpAnim(false);
+            SetFallAnim(false);
         }
     }
 
@@ -83,10 +101,30 @@ public class PlayerController : MonoBehaviour
         //}
     }
 
+    public void SetHeadAnim(bool isIdle)
+    {
+        PlayerAnim.SetIsIdleHead(isIdle);
+    }
+
+    public void SetFaceAnim(bool isAngry)
+    {
+        // if (!IsGround) isAngry = false; // 공중일땐 화안남
+        PlayerAnim.SetIsAngry(isAngry);
+    }
+
     public void SetWalkAnim(bool isWalk)
     {
-        if (!IsGround) isWalk = false; // 점프하면 Idle
-        PlayerAnim.SetIsMove(isWalk);
+        PlayerAnim.SetIsWalk(isWalk);
+    }
+
+    public void SetJumpAnim(bool isJump)
+    {
+        PlayerAnim.SetIsJump(isJump);
+    }
+
+    public void SetFallAnim(bool isFall)
+    {
+        PlayerAnim.SetIsFall(isFall);
     }
 
     private void OnDrawGizmos()
