@@ -83,7 +83,7 @@ public class PlayerController : MonoBehaviour
                 SetFallAnim(false);
                 fallTime = 0;
             }
-            else // 하강중
+            else if(Rigid.velocity.y <= -2f) // 하강중
             {
                 fallTime += Time.deltaTime;
 

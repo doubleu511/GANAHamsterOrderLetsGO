@@ -34,7 +34,11 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
         base.ArmMoving();
         if(Input.GetMouseButtonDown(0) && RocketCount == 0 && !EventSystem.current.IsPointerOverGameObject())
         {
-           
+            if(GameManager.Player.IsGround) // ½úÀ»¶§ ¶¥¿¡ ÀÖ¾ú´Ù¸é
+            {
+                GameManager.Player.JumpCount = 1;
+            }
+
             GameManager.Player.Rigid.velocity = Vector2.zero;
             for (int i = 0; i < arms.Length; i++)
             {
