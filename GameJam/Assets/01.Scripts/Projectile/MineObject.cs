@@ -21,11 +21,16 @@ public class MineObject : MonoBehaviour
     private ParticleSystem vfx;
 
     public Rigidbody2D rigid;
+    public bool isLeftMine { get; set; } = false;
+    public bool isLaunched { get; set; } = false;
     
     public void MineMove(Vector3 dir, Action act)
     {
 
+        StopAllCoroutines();
         this.act = act;
+        transform.rotation = Quaternion.Euler(Vector2.zero);
+        rigid.velocity = Vector2.zero;
         rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
         StartCoroutine(MoveProcess(dir));
     }
@@ -33,7 +38,8 @@ public class MineObject : MonoBehaviour
     public IEnumerator LifeProcess(float lifeTime,Action act)
     {
         yield return new WaitForSeconds(lifeTime);
-        Bomb(act);
+        if (!isCollision)
+            Bomb(act);
     }
     private IEnumerator MoveProcess(Vector3 dir)
     {
@@ -42,11 +48,10 @@ public class MineObject : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             
-            if (!isCollision)
+            if (!isCollision && isLaunched)
             {
                 
                 dir = rigid.velocity.normalized;
-                Debug.DrawRay(transform.position, dir.normalized, Color.red, .2f);
                 rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x, -10, 10), Mathf.Clamp(rigid.velocity.y, -10, 10));
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, .4f, (1 << LayerMask.NameToLayer("Ground")) + (1 << LayerMask.NameToLayer("Slope")));
                 if (hit.collider != null)
@@ -61,10 +66,11 @@ public class MineObject : MonoBehaviour
     }
     public void CallOnHit(RaycastHit2D hit,Action act)
     {
+
         isCollision = true;
         rigid.velocity = Vector2.zero;
         rigid.gravityScale = 0;
-        print(hit.transform.name);
+        //print(hit.transform.name);
         Vector2 normal = hit.normal;
         float angle = Vector2.SignedAngle(Vector2.up, normal);
         transform.position = hit.point;
@@ -91,6 +97,7 @@ public class MineObject : MonoBehaviour
         {
             yield return new WaitForSeconds(.05f);
             GetComponent<SpriteRenderer>().sprite = img[isOn ? 1 : 0];
+            print(i);
             lightObj.SetActive(isOn);
             isOn = !isOn;
         }
@@ -103,6 +110,8 @@ public class MineObject : MonoBehaviour
     }
     public void Bomb(Action act)
     {
+        if (!isLaunched) return;
+        StopAllCoroutines();
         print("BOMB");
         // Áö·Ú Æø¹ß È¿°ú
         Effect_MineBomb emb = Global.Pool.GetItem<Effect_MineBomb>();
@@ -112,12 +121,12 @@ public class MineObject : MonoBehaviour
 
         isCollision = false;
         isBomb = false;
+        isLaunched = false;
 
         GetComponent<SpriteRenderer>().sprite = img[0];
         transform.rotation = Quaternion.Euler(Vector3.zero);
         lightObj.SetActive(false);
         rigid.gravityScale = 1;
-        gameObject.SetActive(false);
 
         act?.Invoke();
     }
