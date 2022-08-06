@@ -16,6 +16,7 @@ public class ModuleDoubleJumpLeg : Module, IJumpReset
 
     public override void ModuleUnequip()
     {
+        GameManager.Player.JumpMaxCount = 1;
         GameManager.Player.Feet.ResetFeet();
     }
 
@@ -40,6 +41,8 @@ public class ModuleDoubleJumpLeg : Module, IJumpReset
                 GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 0);
                 GameManager.Player.Rigid.AddForce(new Vector2(0, jumpPressedTime * 5), ForceMode2D.Impulse);
                 jumpPressedTime = 0;
+
+                Global.Sound.Play("SFX/sfx_Jump", Define.Sound.Effect);
             }
         }
     }
