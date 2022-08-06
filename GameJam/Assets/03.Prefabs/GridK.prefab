@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7267203793104990443}
   - component: {fileID: 7267203793104990442}
   - component: {fileID: 7267203793104990441}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlopeK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5529,7 +5529,7 @@ GameObject:
   - component: {fileID: 7267203793104990440}
   - component: {fileID: 7267203793104990439}
   - component: {fileID: 7267203793104990438}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WallK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21204,7 +21204,7 @@ GameObject:
   - component: {fileID: 3400382670219325015}
   - component: {fileID: 7267203793104990445}
   - component: {fileID: 7267203793104990444}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: GroundK
   m_TagString: Untagged
   m_Icon: {fileID: 0}
