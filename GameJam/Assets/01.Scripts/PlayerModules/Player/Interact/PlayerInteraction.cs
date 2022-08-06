@@ -40,6 +40,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
+        if (keyObj != null)
+            keyObj.transform.localScale = new Vector3(GameManager.Player.transform.localScale.x , 1, 1);
         if (interactObj != null)
         {
 
@@ -64,6 +66,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (collision.GetComponent<InteractionObject>())
         {
+            interactObj = null;
             IsKeyActive = false;
         }
     }

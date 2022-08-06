@@ -2751,6 +2751,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: backpackBtnTop
+      value: 
+      objectReference: {fileID: 5797968}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryPanel
+      value: 
+      objectReference: {fileID: 1856853700}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: backpackBtnBottom
+      value: 
+      objectReference: {fileID: 1574967427}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[0].playerInventoryTab
+      value: 
+      objectReference: {fileID: 1091317986}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[1].playerInventoryTab
+      value: 
+      objectReference: {fileID: 528907290}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[2].playerInventoryTab
+      value: 
+      objectReference: {fileID: 1841767921}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[3].playerInventoryTab
+      value: 
+      objectReference: {fileID: 1559811125}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[4].playerInventoryTab
+      value: 
+      objectReference: {fileID: 453732111}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[5].playerInventoryTab
+      value: 
+      objectReference: {fileID: 67173247}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[6].playerInventoryTab
+      value: 
+      objectReference: {fileID: 347922137}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[7].playerInventoryTab
+      value: 
+      objectReference: {fileID: 1261277770}
+    - target: {fileID: 2094021495, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: inventoryTabs.Array.data[8].playerInventoryTab
+      value: 
+      objectReference: {fileID: 1952583542}
+    - target: {fileID: 3003673140761269496, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5640404329441034565, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
