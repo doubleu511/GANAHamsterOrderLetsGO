@@ -2624,6 +2624,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1952583542}
     - target: {fileID: 1126954726159209525, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ee05a5adad3d764ebe8c51c1daff19a, type: 3}
+    - target: {fileID: 1126954726159209525, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_SortingLayer
       value: 2
       objectReference: {fileID: 0}
@@ -2634,6 +2638,10 @@ PrefabInstance:
     - target: {fileID: 4367339678846755921, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_SortingLayer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532714834100763287, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5640404327522803176, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_SortingLayer
@@ -2650,6 +2658,10 @@ PrefabInstance:
     - target: {fileID: 5640404327667620123, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_SortingLayer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640404328001071739, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5640404329441034565, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_RootOrder
@@ -2698,6 +2710,34 @@ PrefabInstance:
     - target: {fileID: 5640404329441034567, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_Name
       value: Player_Foot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809785417989998855, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809785417989998855, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809785417989998855, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5809785417989998855, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589777321699530893, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589777321699530893, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8589777321699530893, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8655618568202419274, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_IsActive
@@ -10415,7 +10455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &836394392
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12560,6 +12600,8 @@ MonoBehaviour:
   PlayerInventoryContainer: {fileID: 184022867}
   DragAndDropContainer: {fileID: 621829520}
   loreBlockTrm: {fileID: 115799502}
+  staticPMat: {fileID: 0}
+  bouncePMat: {fileID: 0}
 --- !u!1 &1206789831
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,12 +6,14 @@ using UnityEngine.EventSystems;
 public class ModuleMineLauncherArm : ModuleDefaultArm
 {
     public GameObject MinePrefab;
+    public GameObject MineBombVfx;
     private int mineCount = 0;
-    
+ 
 
     private void Start()
     {
         Global.Pool.CreatePool<MineObject>(MinePrefab, GameManager.Game.transform);
+        Global.Pool.CreatePool<Effect_MineBomb>(MineBombVfx, GameManager.Game.transform);
     }
     public override void ArmMoving()
     {
@@ -41,7 +43,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
                 mineObj.transform.position = arms[mineCount].position;
             }
             arms[mineCount].GetComponent<SpriteRenderer>().enabled = false;
-            mineObj.MineMove(dirs[mineCount], () => { mineObj.gameObject.SetActive(false); mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
+            mineObj.MineMove(dirs[mineCount], () => {mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
             // 지뢰 런처 발사 효과
         }

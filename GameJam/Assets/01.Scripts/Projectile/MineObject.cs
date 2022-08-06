@@ -17,20 +17,25 @@ public class MineObject : MonoBehaviour
     private Sprite[] img;
     [SerializeField]
     private GameObject lightObj;
+    [SerializeField]
+    private ParticleSystem vfx;
 
     private Rigidbody2D rigid;
     
     public void MineMove(Vector3 dir, Action act)
     {
         rigid = GetComponent<Rigidbody2D>();
+
         this.act = act;
         this.act += () => {
             isCollision = false;
             isBomb = false;
+            
             GetComponent<SpriteRenderer>().sprite = img[0];
             transform.rotation = Quaternion.Euler(Vector3.zero);
             lightObj.SetActive(false);
             rigid.gravityScale = 1;
+            gameObject.SetActive(false);
         };
         rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
         StartCoroutine(MoveProcess(dir));
@@ -94,18 +99,22 @@ public class MineObject : MonoBehaviour
     }
     private IEnumerator BombProcess()
     {
-        yield return new WaitForSeconds(4.5f);
 
-        bool isOn = false;
-        for (int i = 0; i < 5; i++)
+        bool isOn = true;
+        for (int i = 0; i < 8; i++)
         {
-            yield return new WaitForSeconds(.25f);
-            GetComponent<SpriteRenderer>().sprite = img[isOn ? 0:1];
+            yield return new WaitForSeconds(.5f);
+            GetComponent<SpriteRenderer>().sprite = img[isOn ? 1:0];
             lightObj.SetActive(isOn);
             isOn = !isOn;
-            print(isOn);
         }
-
+        for (int i = 0; i < 20; i++)
+        {
+            yield return new WaitForSeconds(.05f);
+            GetComponent<SpriteRenderer>().sprite = img[isOn ? 1 : 0];
+            lightObj.SetActive(isOn);
+            isOn = !isOn;
+        }
         Bomb();
     }
     public IEnumerator CollProcess()
@@ -117,6 +126,9 @@ public class MineObject : MonoBehaviour
     {
         print("BOMB");
         // Áö·Ú Æø¹ß È¿°ú
+        Effect_MineBomb emb = Global.Pool.GetItem<Effect_MineBomb>();
+        emb.transform.position = transform.position;
+        emb.GetComponent<ParticleSystem>().Play();
         act?.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D collision)

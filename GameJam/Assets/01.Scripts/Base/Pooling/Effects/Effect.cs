@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Effect : MonoBehaviour
 {
     public float lifeTime = 1f;
 
     protected WaitForSeconds lifeWait = null;
+
+    public Action OnDisable;
 
     protected void Awake()
     {
@@ -21,7 +24,7 @@ public class Effect : MonoBehaviour
     protected IEnumerator LifeTime()
     {
         yield return lifeWait;
-
+        OnDisable?.Invoke();
         gameObject.SetActive(false);
     }
 }
