@@ -12,7 +12,7 @@ public class SubtitlePanel : MonoBehaviour
     private CanvasGroup canvasGroup;
     private bool isFinished = false;
     private bool isSubtitleLaunched = false;
-    private float subtitleableTimer = 0f;
+    private float subtitleableTimer = 30f;
     private Coroutine subtitleCoroutine;
 
     [Header("ÀÚ¸·µé")]
@@ -75,7 +75,7 @@ public class SubtitlePanel : MonoBehaviour
             int len = TextLength(sub.texts[i]);
 
             Global.UI.UIFade(canvasGroup, Define.UIFadeType.IN, 1, false);
-            float time = Mathf.Clamp(len * 0.1f, 2, len * 0.1f);
+            float time = Mathf.Clamp(len * 0.1f, 2.5f, len * 0.1f);
             yield return new WaitForSeconds(time);
             Global.UI.UIFade(canvasGroup, Define.UIFadeType.OUT, 1, false, () =>
             {
