@@ -6,7 +6,7 @@ public class ModuleBambooHead : Module
 {
     private Animator propellerAnimator;
 
-    private float flyTime = 0f;
+    public float flyTime = 0f;
     private float flyMaxTime = 0.4f;
     private float playerDir;
 
@@ -27,9 +27,12 @@ public class ModuleBambooHead : Module
 
     public override void ModuleUpdate()
     {
-        Fly();
+        if (!GameManager.Player.IsGround)
+        {
+            Fly();
+        }
 
-        if(GameManager.Player.IsGround)
+        if(GameManager.Player.IsGround && GameManager.Player.IsFalling)
         {
             flyTime = 0f;
             propellerAnimator.SetBool("isMove", false);
