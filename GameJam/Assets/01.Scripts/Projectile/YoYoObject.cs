@@ -100,11 +100,17 @@ public class YoYoObject : MonoBehaviour
                 isYoYoMovingEnd = false;
 
                 RaycastHit2D hit = Physics2D.Raycast(playerPos, (afterPos - playerPos).normalized, yoyoDistance, whatIsGround);
-                
+
                 if(hit.collider != null)
                 {
                     afterPos = (Vector3)hit.point - (((Vector3)hit.point - playerPos).normalized * 0.5f);
                     dist = Vector3.Distance(playerPos, afterPos);
+                }
+
+                if(yoyoEnum == YoYoEnum.IsCollision)
+                {
+                    Global.Sound.Play("SFX/sfx_YoYoCollision");
+                    Global.Sound.Play("SFX/sfx_YoYoGrap");
                 }
             }
         }
@@ -120,6 +126,7 @@ public class YoYoObject : MonoBehaviour
 
                 if (t >= 1)
                 {
+                    Global.Sound.Stop("SFX/sfx_YoYoGrap");
                     End();
                 }
             }
