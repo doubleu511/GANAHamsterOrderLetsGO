@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6101150676146444755
 Transform:
   m_ObjectHideFlags: 0
@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 0.93
   m_Color: {r: 0.28235295, g: 0.9960785, b: 0.9960785, a: 1}
-  m_Intensity: 1
-  m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: 00000000
+  m_Intensity: 1.12
+  m_LightVolumeOpacity: 0.03
+  m_ApplyToSortingLayers: 00000000e7f93bcd132d7b33
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   img:
   - {fileID: 21300000, guid: 431226b563a6f2140b37cd99a9b6a23a, type: 3}
   - {fileID: 21300000, guid: c9776e600b8ecaf4db5a6cc0af93db09, type: 3}
-  light: {fileID: 6101150676146444754}
+  lightObj: {fileID: 6101150676146444754}
 --- !u!212 &6101150676197578478
 SpriteRenderer:
   m_ObjectHideFlags: 0

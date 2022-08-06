@@ -11,6 +11,8 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     private Sprite[] onImg;
     [SerializeField]
     private Sprite[] offImg;
+    [SerializeField]
+    private GameObject[] lightObj;
     private void Start()
     {
 
@@ -19,6 +21,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             RocketCount = 0;
             for (int i = 0; i < arms.Length; i++)
             {
+                lightObj[i].SetActive(true);
                 arms[i].GetComponent<SpriteRenderer>().sprite = onImg[i];
             }
         };
@@ -34,6 +37,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             {
                 GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 5, ForceMode2D.Impulse);
                 arms[i].GetComponent<SpriteRenderer>().sprite = offImg[i];
+                lightObj[i].SetActive(false);
                 RocketCount++;
             }
 

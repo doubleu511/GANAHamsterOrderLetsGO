@@ -16,7 +16,7 @@ public class MineObject : MonoBehaviour
     [SerializeField]
     private Sprite[] img;
     [SerializeField]
-    private GameObject light;
+    private GameObject lightObj;
 
     private Rigidbody2D rigid;
     
@@ -29,7 +29,7 @@ public class MineObject : MonoBehaviour
             isBomb = false;
             GetComponent<SpriteRenderer>().sprite = img[0];
             transform.rotation = Quaternion.Euler(Vector3.zero);
-            light.SetActive(false);
+            lightObj.SetActive(false);
             rigid.gravityScale = 1;
         };
         rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
@@ -99,9 +99,9 @@ public class MineObject : MonoBehaviour
         bool isOn = false;
         for (int i = 0; i < 5; i++)
         {
-            yield return new WaitForSeconds(.15f);
+            yield return new WaitForSeconds(.25f);
             GetComponent<SpriteRenderer>().sprite = img[isOn ? 0:1];
-            light.SetActive(isOn);
+            lightObj.SetActive(isOn);
             isOn = !isOn;
             print(isOn);
         }
