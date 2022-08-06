@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
             else if(!isLand)
             {
                 isLand = true;
-                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 0.2f);
+                Global.Sound.Play("SFX/sfx_FallGroundWeak", Define.Sound.Effect);
             }
         }
 
