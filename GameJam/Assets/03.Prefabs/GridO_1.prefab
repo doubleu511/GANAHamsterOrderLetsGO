@@ -18753,6 +18753,7 @@ GameObject:
   - component: {fileID: 7364838621143404441}
   - component: {fileID: 7364838621143404442}
   - component: {fileID: 7364838621143404443}
+  - component: {fileID: 681065032274205270}
   m_Layer: 6
   m_Name: WallO
   m_TagString: Untagged
@@ -58268,6 +58269,18 @@ CompositeCollider2D:
       - {x: 18.252937, y: -7.5}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!114 &681065032274205270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7364838621143404421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd15f55ec4eabbb488ef381f9580ec72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7364838621451182648
 GameObject:
   m_ObjectHideFlags: 0
