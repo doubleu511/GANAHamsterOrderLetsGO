@@ -278,4 +278,4 @@ MonoBehaviour:
   dirs: []
   armDistance: 0.03
   armAngle: 90
-  MinePrefab: {fileID: 6502433247013186289, guid: 685fd225c0d2c704a86eeb7459c1ba1f, type: 3}
+  MinePrefab: {fileID: 6101150676197578474, guid: 685fd225c0d2c704a86eeb7459c1ba1f, type: 3}
