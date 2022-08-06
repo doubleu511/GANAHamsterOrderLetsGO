@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b329292b54683844bde8fa0aab562d2, type: 3}
   m_Name: RocketLauncherArm
   m_EditorClassIdentifier: 
-  moduleName: "\uB85C\uCF13 \uB7F0\uCCD0"
+  moduleName: "\uC2A4\uD0C0 \uB7F0\uCCD0"
   moduleSlot: 1
   moduleIconSpr: {fileID: 21300000, guid: 22f30656fbf258643966330d9218c11e, type: 3}
   moduleLore: "\uBC1C\uC0AC \uC2DC \uD3ED\uBC1C \uBC18\uB3D9\uC73C\uB85C \uBC00\uB824\uB0A9\uB2C8\uB2E4!"

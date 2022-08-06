@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wall : MonoBehaviour
+public class MapCollision : MonoBehaviour
 {
-    Collider2D coll;
+    protected Collider2D coll;
 
     private void Awake()
     {
@@ -15,14 +15,7 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (GameManager.Player.IsGround || ModuleBoosterHead.isBooster)
-            {
-                coll.sharedMaterial = GameManager.Game.staticPMat;
-            }
-            else
-            {
-                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect);
-            }
+            OnEnter();
         }
     }
 
@@ -30,7 +23,17 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            coll.sharedMaterial = GameManager.Game.bouncePMat;
+            OnExit();
         }
+    }
+
+    public virtual void OnEnter()
+    {
+
+    }
+
+    public virtual void OnExit()
+    {
+
     }
 }

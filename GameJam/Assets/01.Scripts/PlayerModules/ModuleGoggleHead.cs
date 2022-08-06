@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ModuleGoggleHead : Module
 {
-    private float goggleSight = 8f;
+    private float goggleSight = 5.75f;
 
     public override void ModuleEquip()
     {

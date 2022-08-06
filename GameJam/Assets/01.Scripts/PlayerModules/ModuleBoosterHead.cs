@@ -12,12 +12,14 @@ public class ModuleBoosterHead : Module
     {
         legModule.gameObject.SetActive(false);
         isBooster = true;
+        CameraMove.ZoomCam(4.75f, 2f);
     }
 
     public override void ModuleUnequip()
     {
         legModule.gameObject.SetActive(true);
         isBooster = false;
+        CameraMove.ZoomCam(3.75f, 2f);
     }
 
     public override void ModuleUpdate()

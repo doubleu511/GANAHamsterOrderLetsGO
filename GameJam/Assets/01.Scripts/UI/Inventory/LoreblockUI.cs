@@ -9,6 +9,7 @@ public class LoreblockUI : MonoBehaviour
 {
     private RectTransform blockRect;
     public RectTransform lorePanel;
+    public GameObject tipPanel;
 
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI slotName;
@@ -28,6 +29,7 @@ public class LoreblockUI : MonoBehaviour
 
         lorePanel.pivot = pivot;
         itemName.text = moduleInfo.moduleName;
+        tipPanel.SetActive(WorkPlace.IsWorkPlaceOpen);
 
         switch (moduleInfo.moduleSlot)
         {
@@ -48,7 +50,7 @@ public class LoreblockUI : MonoBehaviour
 
     public void Disappear()
     {
-        blockRect.DOSizeDelta(new Vector2(0, 150), 0.5f).OnComplete(() =>
+        blockRect.DOSizeDelta(new Vector2(0, blockRect.sizeDelta.y), 0.5f).OnComplete(() =>
         {
             gameObject.SetActive(false);
         });
@@ -60,6 +62,6 @@ public class LoreblockUI : MonoBehaviour
         yield return null;
         lorePanel.anchoredPosition = Vector2.zero;
         LayoutRebuilder.ForceRebuildLayoutImmediate((RectTransform)lorePanel.transform);
-        blockRect.DOSizeDelta(new Vector2(lorePanel.sizeDelta.x * 2, 150), 0.25f);
+        blockRect.DOSizeDelta(new Vector2(lorePanel.sizeDelta.x * 2, blockRect.sizeDelta.y), 0.25f);
     }
 }
