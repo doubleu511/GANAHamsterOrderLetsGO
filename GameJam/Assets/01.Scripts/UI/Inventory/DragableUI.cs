@@ -73,7 +73,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         GameManager.Game.DragAndDropContainer.gameObject.SetActive(true);
         // Set Data
         GameManager.Game.DragAndDropContainer.SetModule(myModule);
-        GameManager.Game.DragAndDropContainer.fromSlot = this;
+        GameManager.Game.DragAndDropContainer.SetFromSlot(this);
         myImg.color = new Color(1, 1, 1, 0);
         myImg.sprite = null;
         myImg.enabled = false;
@@ -115,7 +115,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         // Reset Contatiner
         GameManager.Game.DragAndDropContainer.gameObject.SetActive(false);
         GameManager.Game.DragAndDropContainer.SetModule(null);
-        GameManager.Game.DragAndDropContainer.fromSlot = null;
+        GameManager.Game.DragAndDropContainer.SetFromSlot(null);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -143,7 +143,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
             {
                 // Set Data
                 GameManager.Game.DragAndDropContainer.SetModule(myModule);
-                GameManager.Game.DragAndDropContainer.fromSlot = this;
+                GameManager.Game.DragAndDropContainer.SetFromSlot(this);
 
                 if (bEquipmentInventory)
                 {
@@ -155,7 +155,7 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
                 }
                 myLoreHandler.ExitFunc();
                 GameManager.Game.DragAndDropContainer.SetModule(null);
-                GameManager.Game.DragAndDropContainer.fromSlot = null;
+                GameManager.Game.DragAndDropContainer.SetFromSlot(null);
             }
         }
     }

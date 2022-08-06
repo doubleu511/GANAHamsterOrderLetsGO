@@ -40,8 +40,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (keyObj != null)
-            keyObj.transform.localScale = new Vector3(GameManager.Player.transform.localScale.x , 1, 1);
         if (interactObj != null)
         {
 
@@ -53,6 +51,13 @@ public class PlayerInteraction : MonoBehaviour
             }
         }
     }
+
+    private void LateUpdate()
+    {
+        if (keyObj != null)
+            keyObj.transform.localScale = new Vector3(GameManager.Player.transform.localScale.x, 1, 1);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<InteractionObject>())

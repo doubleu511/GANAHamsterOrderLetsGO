@@ -17,4 +17,14 @@ public class DragAndDropContainer : MonoBehaviour
             image.sprite = module.moduleInfo.moduleIconSpr;
         }
     }
+
+    public void SetFromSlot(DragableUI ui)
+    {
+        fromSlot = ui;
+
+        if (ui != null)
+        {
+            image.rectTransform.sizeDelta = ui.GetComponent<RectTransform>().sizeDelta;
+        }
+    }
 }
