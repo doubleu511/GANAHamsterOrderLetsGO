@@ -13,7 +13,6 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     private Sprite[] offImg;
     private void Start()
     {
-        Global.Pool.CreatePool<RocketObject>(RocketPrefab, GameManager.Game.transform);
 
         GameManager.Player.OnGroundCollision += () =>
         {
