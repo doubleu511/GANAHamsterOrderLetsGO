@@ -23,12 +23,13 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             MineObject mineObj = Global.Pool.GetItem<MineObject>();
 
             Vector3 anglePos = arms[mineCount].position;
+            Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-            RaycastHit2D hit = Physics2D.Raycast(anglePos, dirs[mineCount].normalized, Vector3.Distance(anglePos, transform.position), LayerMask.GetMask("Ground") + LayerMask.GetMask("Slope"));
+            RaycastHit2D hit = Physics2D.Raycast(anglePos, dirs[mineCount].normalized, Vector3.Distance(pos, transform.position),( 1<<LayerMask.GetMask("Ground") )+( 1<< LayerMask.GetMask("Slope")));
             if (hit.collider != null)
             {
-
+                print("AAA");
                 Vector2 normal = hit.normal;
                 float angle = Vector2.SignedAngle(Vector2.up, normal);
                 Vector3 rotation = mineObj.transform.eulerAngles + new Vector3(0, 0, angle);
@@ -41,9 +42,9 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             else
             {
                 mineObj.transform.position = arms[mineCount].position;
+                mineObj.MineMove(dirs[mineCount], () => { mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
             }
             arms[mineCount].GetComponent<SpriteRenderer>().enabled = false;
-            mineObj.MineMove(dirs[mineCount], () => {mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
             // 지뢰 런처 발사 효과
         }
