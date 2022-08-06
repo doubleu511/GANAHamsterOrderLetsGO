@@ -16,7 +16,7 @@ public class Effect : MonoBehaviour
         lifeWait = new WaitForSeconds(lifeTime);
     }
 
-    protected void OnEnable()
+    protected virtual void OnEnable()
     {
         StartCoroutine(LifeTime());
     }
