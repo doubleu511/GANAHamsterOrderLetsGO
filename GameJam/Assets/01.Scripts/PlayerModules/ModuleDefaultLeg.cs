@@ -63,8 +63,7 @@ public class ModuleDefaultLeg : Module, IJumpReset
 
         if (playerDir != 0) // 이동중
         {
-            // 머리앵그리 다리walk
-            GameManager.Player.SetFaceAnimAngry(true);
+            // 다리walk
             GameManager.Player.SetWalkAnim(true);
         }
         else // 이동안하는중
@@ -72,10 +71,11 @@ public class ModuleDefaultLeg : Module, IJumpReset
             if (jumpPressedTime <= 0) // 차징안하는중
             {
                 // 머리idle 다리idle
-                GameManager.Player.SetFaceAnimAngry(false);
                 GameManager.Player.SetWalkAnim(false);
             }
         }
+
+        GameManager.Player.SetFaceAnimAngry(false);
         Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.velocity.y);
         GameManager.Player.Rigid.velocity = dir;
     }
