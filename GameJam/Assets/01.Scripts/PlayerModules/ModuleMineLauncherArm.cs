@@ -43,6 +43,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             arms[mineCount].GetComponent<SpriteRenderer>().enabled = false;
             mineObj.MineMove(dirs[mineCount], () => { mineObj.gameObject.SetActive(false); mineCount--; arms[mineCount].GetComponent<SpriteRenderer>().enabled = true; });
             mineCount++;
+            // 지뢰 런처 발사 효과
         }
     }
 }

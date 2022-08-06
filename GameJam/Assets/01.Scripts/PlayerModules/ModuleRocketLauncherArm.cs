@@ -33,13 +33,12 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             GameManager.Player.Rigid.velocity = Vector2.zero;
             for (int i = 0; i < arms.Length; i++)
             {
-                RocketObject rocketObj = Global.Pool.GetItem<RocketObject>();
-                rocketObj.transform.position = arms[i].position;
-                rocketObj.RocketMove(dirs[i], () => { rocketObj.gameObject.SetActive(false); });
                 GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 5, ForceMode2D.Impulse);
                 arms[i].GetComponent<SpriteRenderer>().sprite = offImg[i];
                 RocketCount++;
             }
+
+            // 로켓런처 발사 사운드 + 이펙트
         }
     }
 }
