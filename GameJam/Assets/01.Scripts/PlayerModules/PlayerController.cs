@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     bool firstFallSoundPlayed = false;
     bool fallFlag = false;
     bool isLand = false;
+    bool firstLand = true;
     float fallTime = 0f;
     
 
@@ -117,17 +118,33 @@ public class PlayerController : MonoBehaviour
             if (firstFallSoundPlayed)
             {
                 Debug.Log("도착");
-                Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
-                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
                 firstFallSoundPlayed = false;
                 fallFlag = false;
                 isLand = true;
+
+                // 사운드
+                if (!firstLand)
+                {
+                    Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
+                    Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
+                }
             }
-            else if(!isLand)
+            else if (!isLand)
             {
                 isLand = true;
-                Global.Sound.Play("SFX/sfx_FallGroundWeak", Define.Sound.Effect);
+
+                // 사운드
+                if (!firstLand)
+                {
+                    Global.Sound.Play("SFX/sfx_FallGroundWeak", Define.Sound.Effect);
+                }
             }
+        }
+
+        if (IsGround)
+        {
+            fallTime = 0f;
+            firstLand = false;
         }
 
         if (!CanMove)
@@ -139,6 +156,8 @@ public class PlayerController : MonoBehaviour
             SetJumpAnim(false);
             return;
         }
+
+
     }
 
     public void SpriteFlipX(bool value)

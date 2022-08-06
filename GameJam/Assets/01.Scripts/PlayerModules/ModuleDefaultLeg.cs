@@ -7,6 +7,7 @@ public class ModuleDefaultLeg : Module, IJumpReset
 {
     // 변수 넣는 용도로 Monobehaviour로 한걸로
     private float jumpPressedTime = 0f;
+    private bool firstFall = false;
 
     private bool isJumpCharging
     {
@@ -32,7 +33,24 @@ public class ModuleDefaultLeg : Module, IJumpReset
             return;
         }
 
-        if (!GameManager.Player.IsGround) return;
+        if (!GameManager.Player.IsGround)
+        {
+            if (firstFall) // 공중에서 막 떨어질때라면
+            {
+                // 리셋
+                GameManager.Player.head.transform.DOKill();
+                GameManager.Player.head.transform.DOScaleY(1f, 0.2f);
+                jumpPressedTime = 0f;
+                firstFall = false;
+            }
+
+            return;
+        }
+        else
+        {
+            firstFall = true;
+        }
+
         JumpInput();
 
         if (jumpPressedTime > 0) return;
