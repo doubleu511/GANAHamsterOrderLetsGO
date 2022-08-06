@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     Module[] modules;
     PlayerAnimation PlayerAnim;
     bool fallSoundPlayed = false;
+    bool isLand = false;
     float fallTime = 0f;
     
 
@@ -66,8 +67,10 @@ public class PlayerController : MonoBehaviour
 
         IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
+
         if (!IsGround) // 공중에있음
         {
+            isLand = false;
             SetFaceAnim(false);
             SetHeadAnim(true);
 
@@ -82,12 +85,18 @@ public class PlayerController : MonoBehaviour
                 fallTime += Time.deltaTime;
                 SetJumpAnim(false);
                 SetFallAnim(true);
+
+                if (fallTime >= 1f && !fallSoundPlayed)
+                {
+                    Debug.Log("추락");
+                    Global.Sound.Play("SFX/sfx_Falling", Define.Sound.Effect, 1f);
+                    fallSoundPlayed = true;
+                }
             }
         }
         else // 땅에있음
         {
             SetHeadAnim(false);
-            fallTime = 0f;
         }
 
         if (IsGround && IsFalling)
@@ -97,20 +106,24 @@ public class PlayerController : MonoBehaviour
             OnGroundCollision?.Invoke();
             SetJumpAnim(false);
             SetFallAnim(false);
+
+            if (fallTime >= 1f && fallSoundPlayed)
+            {
+                Debug.Log("도착");
+                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
+                fallSoundPlayed = false;
+                isLand = true;
+            }
+            else if(!isLand)
+            {
+                isLand = true;
+                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 0.2f);
+            }
         }
 
-        if (fallTime >= 2f)
+        if(IsGround)
         {
-            if (!fallSoundPlayed)
-            {
-                Global.Sound.Play("SFX/sfx_Falling");
-                fallSoundPlayed = true;
-            }
-            else if(IsGround && Rigid.velocity.y < 0)
-            {
-                Global.Sound.Play("SFX/sfx_FallGround");
-                fallSoundPlayed = false;
-            }
+            fallTime = 0f;
         }
 
         if (!CanMove)
