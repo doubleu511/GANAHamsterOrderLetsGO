@@ -28,8 +28,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public bool CanMove { get; set; } = true;
-
     public bool IsGround { get; set; } = false;
+    public bool CanAction { get; set; } = true;
 
     public Action OnGroundCollision { get; set; }
     public Action OnFallGround { get; set; }
@@ -58,18 +58,23 @@ public class PlayerController : MonoBehaviour
 
     public void Update()
     {
-        foreach (Module module in modules)
-        {
-            if (module.gameObject.activeSelf)
-            {
-                module.ModuleUpdate();
-            }
-        }
-
-        
-
         IsGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.4f), 0.3f, 1 << LayerMask.NameToLayer("Ground"));
 
+        if (IsGround)
+        {
+            CanAction = true;
+        }
+
+        if (CanAction) // 벽에박으면
+        {
+            foreach (Module module in modules)
+            {
+                if (module.gameObject.activeSelf)
+                {
+                    module.ModuleUpdate();
+                }
+            }
+        }
 
         if (!IsGround) // 공중에있음
         {
