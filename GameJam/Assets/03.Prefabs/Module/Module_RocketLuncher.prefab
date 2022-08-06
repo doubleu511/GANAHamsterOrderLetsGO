@@ -434,3 +434,4 @@ MonoBehaviour:
   lightObj:
   - {fileID: 6660729225708190353}
   - {fileID: 1237706850251155995}
+  vfx: {fileID: 121188, guid: 27bec7bc47f580b41b60cd2d2cac5908, type: 3}

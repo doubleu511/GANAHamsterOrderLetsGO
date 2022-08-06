@@ -13,8 +13,11 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     private Sprite[] offImg;
     [SerializeField]
     private GameObject[] lightObj;
+    [SerializeField]
+    private GameObject vfx;
     private void Start()
     {
+        Global.Pool.CreatePool<Effect_RocketLaunch>(vfx,GameManager.Game.transform);
 
         GameManager.Player.OnGroundCollision += () =>
         {
@@ -42,6 +45,17 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             }
 
             // 로켓런처 발사 사운드 + 이펙트
+            // 이펙트 풀 에서 가져옴
+            Effect_RocketLaunch erl = Global.Pool.GetItem<Effect_RocketLaunch>();
+            // 마우스위치를 구해서 방향값 구함
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 dir = (transform.position - mousePos).normalized;
+            // 두 팔 사이의 위치
+            Vector2 pos0 = arms[0].position;
+            Vector2 pos1 = arms[1].position;
+            Vector2 midPos = new Vector2(((pos0.x + pos1.x) / 2),(pos0.y+ pos1.y)/2);
+            // 위에서 구한 위치로 이동
+            erl.transform.position = midPos + (dir * Vector2.down * 2);
         }
     }
 }
