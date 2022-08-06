@@ -21,7 +21,7 @@ public class ModuleDashLeg : Module
 
     public override void ModuleUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.F) && dashCount == 0)
+        if (Input.GetKeyDown(KeyCode.F) && dashCount == 0 && !GameManager.Player.IsGround)
         {
             Global.Sound.Play("SFX/sfx_Dash", Define.Sound.Effect);
             GameManager.Player.Rigid.AddForce(new Vector2(Mathf.Sign(GameManager.Player.transform.localScale.x * -1) *6, 0), ForceMode2D.Impulse);

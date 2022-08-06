@@ -19,14 +19,9 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
     {
         Global.Pool.CreatePool<Effect_RocketLaunch>(vfx,GameManager.Game.transform);
 
-        GameManager.Player.OnGroundCollision += () =>
+        GameManager.Player.OnFallGround += () =>
         {
-            RocketCount = 0;
-            for (int i = 0; i < arms.Length; i++)
-            {
-                lightObj[i].SetActive(true);
-                arms[i].GetComponent<SpriteRenderer>().sprite = onImg[i];
-            }
+            RefillRocket();
         };
     }
     public override void ArmMoving()
@@ -47,6 +42,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
                 lightObj[i].SetActive(false);
                 RocketCount++;
             }
+            StartCoroutine(RefillRocketProcess());
 
             // 로켓런처 발사 사운드 + 이펙트
             // 이펙트 풀 에서 가져옴
@@ -60,6 +56,35 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             Vector2 midPos = new Vector2(((pos0.x + pos1.x) / 2),(pos0.y+ pos1.y)/2);
             // 위에서 구한 위치로 이동
             erl.transform.position = midPos + (dir * Vector2.down * 2);
+        }
+    }
+    private IEnumerator RefillRocketProcess()
+    {
+        int count = 0;
+        while (true)
+        {
+            yield return new WaitForSeconds(.01f);
+            count++;
+            if (!GameManager.Player.IsGround)
+            {
+                yield break;
+            }
+            if (count > 400)
+            {
+                break;
+            }
+
+        }
+        RefillRocket();
+
+    }
+    private void RefillRocket()
+    {
+        RocketCount = 0;
+        for (int i = 0; i < arms.Length; i++)
+        {
+            lightObj[i].SetActive(true);
+            arms[i].GetComponent<SpriteRenderer>().sprite = onImg[i];
         }
     }
 }
