@@ -116,6 +116,7 @@ public class MineObject : MonoBehaviour
     public void Bomb()
     {
         print("BOMB");
+        // Áö·Ú Æø¹ß È¿°ú
         act?.Invoke();
     }
     private void OnTriggerEnter2D(Collider2D collision)
