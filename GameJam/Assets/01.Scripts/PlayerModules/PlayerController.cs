@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
 
     Module[] modules;
     PlayerAnimation PlayerAnim;
+    bool fallSoundPlayed = false;
+    float fallTime = 0f;
+    
 
     public bool IsFalling
     {
@@ -76,6 +79,7 @@ public class PlayerController : MonoBehaviour
             else // 하강중
             {
                 // Global.Sound.Play("SFX/sfx_falling");
+                fallTime += Time.deltaTime;
                 SetJumpAnim(false);
                 SetFallAnim(true);
             }
@@ -83,6 +87,7 @@ public class PlayerController : MonoBehaviour
         else // 땅에있음
         {
             SetHeadAnim(false);
+            fallTime = 0f;
         }
 
         if (IsGround && IsFalling)
@@ -92,6 +97,20 @@ public class PlayerController : MonoBehaviour
             OnGroundCollision?.Invoke();
             SetJumpAnim(false);
             SetFallAnim(false);
+        }
+
+        if (fallTime >= 2f)
+        {
+            if (!fallSoundPlayed)
+            {
+                Global.Sound.Play("SFX/sfx_Falling");
+                fallSoundPlayed = true;
+            }
+            else if(IsGround && Rigid.velocity.y < 0)
+            {
+                Global.Sound.Play("SFX/sfx_FallGround");
+                fallSoundPlayed = false;
+            }
         }
 
         if (!CanMove)
