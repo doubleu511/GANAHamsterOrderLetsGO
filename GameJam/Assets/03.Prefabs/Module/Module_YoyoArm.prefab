@@ -196,7 +196,7 @@ MonoBehaviour:
   armAngle: 90
   yoyo: {fileID: 4632911402901655840}
   _yoyoSpeed: 6
-  _yoyoDistance: 10
+  _yoyoDistance: 40
 --- !u!1001 &8395197523140910914
 PrefabInstance:
   m_ObjectHideFlags: 0
