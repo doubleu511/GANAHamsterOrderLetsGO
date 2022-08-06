@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum NotOneShot
+{
+    FirstFalling,
+    MaxCount
+}
+
 public class SoundManager
 {
     float masterVolume = 1.0f;
@@ -9,6 +15,9 @@ public class SoundManager
     AudioSource[] _audioSources = new AudioSource[(int)Define.Sound.MaxCount];
     float[] volumes = new float[(int)Define.Sound.MaxCount];
     Dictionary<string, AudioClip> _audioClips = new Dictionary<string, AudioClip>();
+
+    // 커스텀
+    Dictionary<NotOneShot, AudioSource> _notOneShotDict = new Dictionary<NotOneShot, AudioSource>();
 
     public void Init()
     {
@@ -23,6 +32,15 @@ public class SoundManager
             {
                 GameObject go = new GameObject { name = soundNames[i] };
                 _audioSources[i] = go.AddComponent<AudioSource>();
+                go.transform.parent = root.transform;
+            }
+
+            // 커스텀
+            for (int i = 0; i < (int)NotOneShot.MaxCount; i++)
+            {
+                GameObject go = new GameObject { name = ((NotOneShot)i).ToString() };
+
+                _notOneShotDict.Add((NotOneShot)i, go.AddComponent<AudioSource>());
                 go.transform.parent = root.transform;
             }
 
@@ -84,7 +102,7 @@ public class SoundManager
         if (audioClip == null)
             return;
 
-        if (type == Define.Sound.Bgm) // BGM 배경음악 재생
+        if (type == Define.Sound.Bgm)
         {
             AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
             if (audioSource.isPlaying)
@@ -94,7 +112,7 @@ public class SoundManager
             audioSource.clip = audioClip;
             audioSource.Play();
         }
-        else // Effect 효과음 재생
+        else
         {
             AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
             audioSource.pitch = pitch;
@@ -102,10 +120,61 @@ public class SoundManager
         }
     }
 
+    // 커스텀
+    public void PlayNotOne(string path, NotOneShot type)
+    {
+        AudioClip audioClip = GetOrAddAudioClip(path, Define.Sound.NotOneShot);
+        PlayNotOne(audioClip, type);
+    }
+
+    public void PlayNotOne(AudioClip clip, NotOneShot type)
+    {
+        AudioSource audioSource = _notOneShotDict[type];
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
+
+    public void StopNotOne(string path, NotOneShot type)
+    {
+        AudioClip audioClip = GetOrAddAudioClip(path, Define.Sound.NotOneShot);
+        StopNotOne(audioClip, type);
+    }
+
+    public void StopNotOne(AudioClip clip, NotOneShot type)
+    {
+        AudioSource audioSource = _notOneShotDict[type];
+        audioSource.clip = clip;
+        audioSource.Stop();
+    }
+    //커스텀끝
+
     public void Play(string path, Define.Sound type = Define.Sound.Effect, float pitch = 1.0f)
     {
         AudioClip audioClip = GetOrAddAudioClip(path, type);
         Play(audioClip, type, pitch);
+    }
+
+    public void Stop(string path, Define.Sound type = Define.Sound.Effect)
+    {
+        AudioClip audioClip = GetOrAddAudioClip(path, type);
+        Stop(audioClip, type);
+    }
+
+    public void Stop(AudioClip audioClip, Define.Sound type = Define.Sound.Effect)
+    {
+        if (audioClip == null)
+            return;
+
+        if (type == Define.Sound.Bgm) // BGM 배경음악 재생
+        {
+            AudioSource audioSource = _audioSources[(int)Define.Sound.Bgm];
+            audioSource.Stop();
+        }
+        else
+        {
+            AudioSource audioSource = _audioSources[(int)Define.Sound.Effect];
+            audioSource.Stop();
+        }
     }
 
     AudioClip GetOrAddAudioClip(string path, Define.Sound type = Define.Sound.Effect)
@@ -118,13 +187,17 @@ public class SoundManager
         {
             audioClip = Global.Resource.Load<AudioClip>(path);
         }
-        else // Effect 효과음 클립 붙이기
+        else if (type == Define.Sound.Effect)// Effect 효과음 클립 붙이기
         {
             if (_audioClips.TryGetValue(path, out audioClip) == false)
             {
                 audioClip = Global.Resource.Load<AudioClip>(path);
                 _audioClips.Add(path, audioClip);
             }
+        }
+        else if (type == Define.Sound.NotOneShot)
+        {
+            audioClip = Global.Resource.Load<AudioClip>(path);
         }
 
         if (audioClip == null)
