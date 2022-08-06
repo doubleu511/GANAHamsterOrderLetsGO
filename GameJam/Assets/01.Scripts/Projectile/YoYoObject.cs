@@ -50,6 +50,8 @@ public class YoYoObject : MonoBehaviour
 
     public void YoYoShot(Vector3 dir, float yoyoSpeed, float yoyoDistance, Action callback = null)
     {
+        Global.Sound.Play("SFX/sfx_YoYoShot");
+
         RaycastHit2D yoyoHit = Physics2D.Raycast(GameManager.Player.transform.position, dir, yoyoDistance, whatIsGround);
 
         if(yoyoHit.collider != null)
