@@ -6,18 +6,20 @@ using DG.Tweening;
 public class ModuleItem : CollisionItem
 {
     private SpriteRenderer sr;
+    private SpriteRenderer itemSr;
     public Module moduleItem;
 
     protected override void Awake()
     {
         base.Awake();
         sr = GetComponent<SpriteRenderer>();
+        itemSr = itemTrm.GetComponent<SpriteRenderer>();
     }
 
     protected override void Start()
     {
         base.Start();
-        sr.sprite = moduleItem.moduleInfo.moduleIconSpr;
+        itemSr.sprite = moduleItem.moduleInfo.moduleIconSpr;
     }
 
     public override void OnEnter()
@@ -25,9 +27,9 @@ public class ModuleItem : CollisionItem
         GameManager.Player.Inventory.InventoryAdd(moduleItem);
         Global.Sound.Play("SFX/sfx_GetModule", Define.Sound.Effect);
 
-        transform.DOKill();
-        transform.DOMoveY(1, 1).SetRelative();
-        sr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
+        itemTrm.DOKill();
+        itemTrm.DOMoveY(1, 1).SetRelative();
+        itemSr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
         {
             Destroy(gameObject);
         });
