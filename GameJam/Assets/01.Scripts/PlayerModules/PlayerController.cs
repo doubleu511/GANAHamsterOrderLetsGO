@@ -73,8 +73,9 @@ public class PlayerController : MonoBehaviour
                 SetJumpAnim(true);
                 SetFallAnim(false);
             }
-            else
+            else // ÇÏ°­Áß
             {
+                // Global.Sound.Play("SFX/sfx_falling");
                 SetJumpAnim(false);
                 SetFallAnim(true);
             }
