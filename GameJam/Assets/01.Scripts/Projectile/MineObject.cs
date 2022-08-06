@@ -88,6 +88,7 @@ public class MineObject : MonoBehaviour
         bool isOn = true;
         for (int i = 0; i < 8; i++)
         {
+            Global.Sound.Play("SFX/sfx_MineBeep", Define.Sound.Effect);
             yield return new WaitForSeconds(.5f);
             GetComponent<SpriteRenderer>().sprite = img[isOn ? 1:0];
             lightObj.SetActive(isOn);
@@ -95,6 +96,7 @@ public class MineObject : MonoBehaviour
         }
         for (int i = 0; i < 20; i++)
         {
+            Global.Sound.Play("SFX/sfx_MineBeep", Define.Sound.Effect);
             yield return new WaitForSeconds(.05f);
             GetComponent<SpriteRenderer>().sprite = img[isOn ? 1 : 0];
             print(i);
