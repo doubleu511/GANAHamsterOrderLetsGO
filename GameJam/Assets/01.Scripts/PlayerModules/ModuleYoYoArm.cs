@@ -45,7 +45,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
                _yoyoReturn = true;
            }
 
-           GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 0);
+           GameManager.Player.Rigid.velocity = Vector2.zero;
        };
     }
 
@@ -67,7 +67,6 @@ public class ModuleYoYoArm : ModuleDefaultArm
             mousePos.z = 0;
             Vector3 shotDir = (mousePos - playerPos).normalized;
 
-            Debug.Log("계속 요요를 발사하는가");
             yoyo.YoYoShot(shotDir, _yoyoSpeed, _yoyoDistance, yoyoCallback);
             _yoyoCount++;
         }

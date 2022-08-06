@@ -66,6 +66,7 @@ public class YoYoObject : MonoBehaviour
         }
 
         transform.parent = null;
+        transform.localScale = Vector3.one; // 아주 간편 코드 굿
         isYoYoMovingEnd = true;
         isPlayerMovingEnd = true;
         this.yoyoSpeed = yoyoSpeed;
@@ -122,6 +123,8 @@ public class YoYoObject : MonoBehaviour
                 if (GameManager.Player.JumpCount == 0)
                     GameManager.Player.ResetJumpCharge(); // 버그가 죽기를 기원하며 함수 루프 돌리기
 
+
+                GameManager.Player.Rigid.velocity = Vector2.one; // 관련 이벤트가 생겨서 이 코드 넣음
                 GameManager.Player.transform.position = Vector3.Lerp(playerPos, afterPos, t);
 
                 if (t >= 1)
