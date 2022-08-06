@@ -32,8 +32,9 @@ public class ModuleDefaultLeg : Module, IJumpReset
             return;
         }
 
-        JumpInput();
         if (!GameManager.Player.IsGround) return;
+        JumpInput();
+
         if (jumpPressedTime > 0) return;
 
         // 플레이어 이동 코드가 실행될꺼임
