@@ -33,6 +33,12 @@ public class ModuleDefaultLeg : Module, IJumpReset
             return;
         }
 
+        float playerDir = Input.GetAxisRaw("Horizontal");
+        if (playerDir != 0) // 이동중
+        {
+            GameManager.Player.SpriteFlipX(playerDir > 0);
+        }
+
         if (!GameManager.Player.IsGround)
         {
             if (firstFall) // 공중에서 막 떨어질때라면
@@ -55,16 +61,10 @@ public class ModuleDefaultLeg : Module, IJumpReset
 
         if (jumpPressedTime > 0) return;
 
-        // 플레이어 이동 코드가 실행될꺼임
-        float chargingSpeedScale = isJumpCharging ? 0.2f : 1f;
-
-        float playerDir = Input.GetAxisRaw("Horizontal");
         if (playerDir != 0) // 이동중
         {
-            GameManager.Player.SpriteFlipX(playerDir > 0);
-
             // 머리앵그리 다리walk
-            GameManager.Player.SetFaceAnim(true);
+            GameManager.Player.SetFaceAnimAngry(true);
             GameManager.Player.SetWalkAnim(true);
         }
         else // 이동안하는중
@@ -72,12 +72,11 @@ public class ModuleDefaultLeg : Module, IJumpReset
             if (jumpPressedTime <= 0) // 차징안하는중
             {
                 // 머리idle 다리idle
-                GameManager.Player.SetFaceAnim(false);
+                GameManager.Player.SetFaceAnimAngry(false);
                 GameManager.Player.SetWalkAnim(false);
             }
         }
-        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed * chargingSpeedScale, 
-                                    GameManager.Player.Rigid.velocity.y);
+        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.velocity.y);
         GameManager.Player.Rigid.velocity = dir;
     }
 
@@ -99,7 +98,7 @@ public class ModuleDefaultLeg : Module, IJumpReset
                 jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0, 0.6f);
 
                 // 머리앵그리 다리idle
-                GameManager.Player.SetFaceAnim(true);
+                GameManager.Player.SetFaceAnimAngry(true);
                 GameManager.Player.SetWalkAnim(false);
             }
 

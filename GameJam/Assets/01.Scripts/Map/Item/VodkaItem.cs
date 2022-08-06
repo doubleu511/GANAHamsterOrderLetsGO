@@ -5,12 +5,12 @@ using DG.Tweening;
 
 public class VodkaItem : CollisionItem
 {
-    private SpriteRenderer sr;
+    private SpriteRenderer itemSr;
 
     protected override void Awake()
     {
         base.Awake();
-        sr = GetComponent<SpriteRenderer>();
+        itemSr = itemTrm.GetComponent<SpriteRenderer>();
     }
 
     public override void OnEnter()
@@ -18,9 +18,9 @@ public class VodkaItem : CollisionItem
         SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
         subtitle.ShowSubtitle(subtitle.onObtainVodka);
 
-        transform.DOKill();
-        transform.DOMoveY(1, 1).SetRelative();
-        sr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
+        itemTrm.DOKill();
+        itemTrm.DOMoveY(1, 1).SetRelative();
+        itemSr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
         {
             Destroy(gameObject);
         });

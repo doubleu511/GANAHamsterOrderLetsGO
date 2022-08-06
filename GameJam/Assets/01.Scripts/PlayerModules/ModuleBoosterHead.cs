@@ -33,12 +33,12 @@ public class ModuleBoosterHead : Module
             GameManager.Player.SpriteFlipX(playerDir > 0);
 
             // 머리앵그리 다리walk
-            GameManager.Player.SetFaceAnim(true);
+            GameManager.Player.SetFaceAnimAngry(true);
             GameManager.Player.SetWalkAnim(true);
         }
         else
         {
-            GameManager.Player.SetFaceAnim(false);
+            GameManager.Player.SetFaceAnimAngry(false);
             GameManager.Player.SetWalkAnim(false);
         }
 
@@ -53,7 +53,7 @@ public class ModuleBoosterHead : Module
             GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 3.5f);
 
             // 머리앵그리 다리idle
-            GameManager.Player.SetFaceAnim(true);
+            GameManager.Player.SetFaceAnimAngry(true);
             GameManager.Player.SetWalkAnim(false);
         }
     }

@@ -40,7 +40,7 @@ public class ModuleBambooHead : Module
     {
         if(GameManager.Player.JumpCount == GameManager.Player.JumpMaxCount)
         {
-            if(Input.GetKey(KeyCode.Space) && flyTime <= flyMaxTime)
+            if(Input.GetKey(KeyCode.Space) && flyTime < flyMaxTime)
             {
                 if(flyTime <= 0) // 처음 날때 방향고정
                 {
@@ -51,6 +51,11 @@ public class ModuleBambooHead : Module
 
                 flyTime += Time.deltaTime;
                 GameManager.Player.Rigid.velocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 3f);
+            }
+
+            if(Input.GetKeyUp(KeyCode.Space))
+            {
+                flyTime = flyMaxTime;
             }
         }
     }

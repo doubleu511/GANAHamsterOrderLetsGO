@@ -45,6 +45,7 @@ public class LoreblockUI : MonoBehaviour
         }
         
         itemLore.text = moduleInfo.moduleLore;
+        transform.SetAsLastSibling();
         StartCoroutine(ShowLore());
     }
 

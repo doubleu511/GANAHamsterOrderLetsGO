@@ -77,10 +77,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        SetFaceAnimSad(!CanAction);
+
         if (!IsGround) // 공중에있음
         {
             isLand = false;
-            SetFaceAnim(false);
+            SetFaceAnimAngry(false);
             SetHeadAnim(true);
 
             if (!IsFalling) // 상승중
@@ -158,7 +160,7 @@ public class PlayerController : MonoBehaviour
 
         if (!CanMove)
         {
-            SetFaceAnim(false);
+            SetFaceAnimAngry(false);
             SetHeadAnim(true);
             SetWalkAnim(false);
             SetFallAnim(false);
@@ -197,10 +199,15 @@ public class PlayerController : MonoBehaviour
         PlayerAnim.SetIsIdleHead(isIdle);
     }
 
-    public void SetFaceAnim(bool isAngry)
+    public void SetFaceAnimAngry(bool isAngry)
     {
         // if (!IsGround) isAngry = false; // 공중일땐 화안남
         PlayerAnim.SetIsAngry(isAngry);
+    }
+
+    public void SetFaceAnimSad(bool isSad)
+    {
+        PlayerAnim.SetIsSad(isSad);
     }
 
     public void SetWalkAnim(bool isWalk)

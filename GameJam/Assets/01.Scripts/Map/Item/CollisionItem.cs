@@ -17,7 +17,7 @@ public abstract class CollisionItem : MonoBehaviour
     protected virtual void Start()
     {
         Vector2 pos = transform.position;
-        itemTrm.DOMove(new Vector2(pos.x, pos.y + .1f), 1).SetLoops(-1, LoopType.Yoyo);
+        itemTrm.DOMove(new Vector2(pos.x, pos.y + .2f), 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.InOutSine);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

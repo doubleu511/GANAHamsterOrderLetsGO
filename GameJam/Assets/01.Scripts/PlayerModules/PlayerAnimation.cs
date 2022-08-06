@@ -11,6 +11,7 @@ public class PlayerAnimation : MonoBehaviour
     private readonly int hashIsIdle = Animator.StringToHash("isIdle");
 
     private readonly int hashIsAngry = Animator.StringToHash("isAngry");
+    private readonly int hashIsSad = Animator.StringToHash("isSad");
 
     private readonly int hashIsWalk = Animator.StringToHash("isWalk");
     private readonly int hashIsJump = Animator.StringToHash("isJump");
@@ -29,6 +30,11 @@ public class PlayerAnimation : MonoBehaviour
     public void SetIsAngry(bool value)
     {
         faceAnimator.SetBool(hashIsAngry, value);
+    }
+
+    public void SetIsSad(bool value)
+    {
+        faceAnimator.SetBool(hashIsSad, value);
     }
 
     // ¹ß
