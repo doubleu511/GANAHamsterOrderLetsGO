@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:GameJam/Assets/02.Sprites/UI/UI_ASDF/UI_BLACK.png.meta
-guid: c1f87388a6a592d42b8c761ae5f2792e
-=======
 guid: 7daa68eedc3690345be2bba3b3767c30
->>>>>>> 53043ac85a5eb3acf3a611a7f6912e06c4709cfa:GameJam/Assets/02.Sprites/Tilemap/S_tile_9.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -51,11 +47,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-<<<<<<< HEAD:GameJam/Assets/02.Sprites/UI/UI_ASDF/UI_BLACK.png.meta
-  spriteBorder: {x: 78, y: 78, z: 78, w: 78}
-=======
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
->>>>>>> 53043ac85a5eb3acf3a611a7f6912e06c4709cfa:GameJam/Assets/02.Sprites/Tilemap/S_tile_9.png.meta
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1

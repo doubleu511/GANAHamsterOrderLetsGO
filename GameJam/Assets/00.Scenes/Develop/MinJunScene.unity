@@ -2620,6 +2620,14 @@ PrefabInstance:
       propertyPath: inventoryTabs.Array.data[8].playerInventoryTab
       value: 
       objectReference: {fileID: 1952583542}
+    - target: {fileID: 5368546320771156572, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640404328001071739, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5640404329441034565, guid: ffe2a78621edc4d46b328c028b20c8d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
