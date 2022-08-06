@@ -1817,7 +1817,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &182270773
@@ -3676,6 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe764207db91d64294c1514e662bdbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelBlackScreen: {fileID: 0}
   panelCanvasgroup: {fileID: 914287563}
   cancelButton: {fileID: 1842656462}
   masterVolumeSlider: {fileID: 257263285}
@@ -5819,7 +5820,7 @@ MonoBehaviour:
   m_Follow: {fileID: 233520325}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 8
+    OrthographicSize: 3.75
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -6021,7 +6022,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 3.75
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7891,7 +7892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &672964841
@@ -12241,6 +12242,8 @@ MonoBehaviour:
   PlayerInventoryContainer: {fileID: 184022867}
   DragAndDropContainer: {fileID: 621829520}
   loreBlockTrm: {fileID: 115799502}
+  staticPMat: {fileID: 6200000, guid: 767089c6d6d459843814a0eba37c497f, type: 2}
+  bouncePMat: {fileID: 6200000, guid: 7330af27da2f6994e857199aea25b60b, type: 2}
 --- !u!1 &1206789831
 GameObject:
   m_ObjectHideFlags: 0
@@ -16038,7 +16041,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26, y: 0}
   m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1689301421

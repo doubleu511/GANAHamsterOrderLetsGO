@@ -18,6 +18,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
     public float _yoyoSpeed = 6f;
     public float _yoyoDistance = 10f;
     private int _yoyoCount = 0;
+    private bool _yoyoReturn = false;
 
     private Action yoyoCallback;
 
@@ -28,16 +29,20 @@ public class ModuleYoYoArm : ModuleDefaultArm
             Debug.LogWarning("YoYoObject 스크립트가 없어요");
         }
 
-        GameManager.Player.OnGroundCollision += () => 
-        { 
-            _yoyoCount = 0;
-        };
+        //GameManager.Player.OnGroundCollision += () => 
+        //{ 
+        //    _yoyoCount = 0;
+        //};
 
         yoyoCallback = () =>
        {
            if (GameManager.Player.IsGround)
            {
                _yoyoCount = 0;
+           }
+           else
+           {
+               _yoyoReturn = true;
            }
 
            GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 0);
@@ -48,7 +53,13 @@ public class ModuleYoYoArm : ModuleDefaultArm
     {
         if (_yoyoCount == 0)
             base.ArmMoving();
-        
+
+        if(_yoyoReturn && GameManager.Player.IsGround && _yoyoCount == 1)
+        {
+            _yoyoCount = 0;
+            _yoyoReturn = false;
+        }
+
         if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0) && _yoyoCount == 0)
         {
             Vector3 playerPos = GameManager.Player.transform.position;
@@ -56,6 +67,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
             mousePos.z = 0;
             Vector3 shotDir = (mousePos - playerPos).normalized;
 
+            Debug.Log("계속 요요를 발사하는가");
             yoyo.YoYoShot(shotDir, _yoyoSpeed, _yoyoDistance, yoyoCallback);
             _yoyoCount++;
         }
