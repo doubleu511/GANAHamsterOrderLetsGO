@@ -78,7 +78,7 @@ public class YoYoObject : MonoBehaviour
 
     private void YoYoMove()
     {
-        curTime += Time.deltaTime / dist;
+        curTime += Time.deltaTime / dist * (isYoYoMovingEnd ? 1.4f : 1f);
         float t = Mathf.Clamp(curTime * yoyoSpeed, 0, 1);
 
         if (isYoYoMovingEnd)
