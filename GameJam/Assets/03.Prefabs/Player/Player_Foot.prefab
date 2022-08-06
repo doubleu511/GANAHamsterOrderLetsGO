@@ -1793,10 +1793,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerInteraction
       objectReference: {fileID: 0}
-    - target: {fileID: 2238311590571245366, guid: bcb19356fe399ab4e83b0a97e4bfcfc2, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcb19356fe399ab4e83b0a97e4bfcfc2, type: 3}
 --- !u!4 &2777821272430516487 stripped

@@ -36,7 +36,7 @@ public class SubtitlePanel : MonoBehaviour
     {
         if(!isSubtitleLaunched)
         {
-            subtitleableTimer++;
+            subtitleableTimer += Time.deltaTime;
         }
     }
 
