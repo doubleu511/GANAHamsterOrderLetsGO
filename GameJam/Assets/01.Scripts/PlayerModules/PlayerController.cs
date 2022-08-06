@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
 
     Module[] modules;
     PlayerAnimation PlayerAnim;
-    bool fallSoundPlayed = false;
+    bool firstFallSoundPlayed = false;
+    bool secondFallSoundPlayed = false;
     bool isLand = false;
     float fallTime = 0f;
     
@@ -86,11 +87,17 @@ public class PlayerController : MonoBehaviour
                 SetJumpAnim(false);
                 SetFallAnim(true);
 
-                if (fallTime >= 1f && !fallSoundPlayed)
+                if (fallTime >= 1f && !firstFallSoundPlayed)
                 {
-                    Debug.Log("Ãß¶ô");
-                    Global.Sound.Play("SFX/sfx_Falling", Define.Sound.Effect, 1f);
-                    fallSoundPlayed = true;
+                    Debug.Log("1ÃÊ ³«ÇÏ");
+                    Global.Sound.PlayNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
+                    firstFallSoundPlayed = true;
+                }
+                if(fallTime >= 2f && !secondFallSoundPlayed)
+                {
+                    Debug.Log("2ÃÊ ³«ÇÏ");
+                    // Global.Sound.Play("SFX/sfx_Falling", Define.Sound.Effect, 1f);
+                    secondFallSoundPlayed = true;
                 }
             }
         }
@@ -107,11 +114,13 @@ public class PlayerController : MonoBehaviour
             SetJumpAnim(false);
             SetFallAnim(false);
 
-            if (fallTime >= 1f && fallSoundPlayed)
+            if (fallTime >= 1f && firstFallSoundPlayed)
             {
                 Debug.Log("µµÂø");
+                Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
                 Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
-                fallSoundPlayed = false;
+                firstFallSoundPlayed = false;
+                secondFallSoundPlayed = false;
                 isLand = true;
             }
             else if(!isLand)
