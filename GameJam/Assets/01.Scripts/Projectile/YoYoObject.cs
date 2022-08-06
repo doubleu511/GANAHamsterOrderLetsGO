@@ -110,7 +110,7 @@ public class YoYoObject : MonoBehaviour
                 if(yoyoEnum == YoYoEnum.IsCollision)
                 {
                     Global.Sound.Play("SFX/sfx_YoYoCollision");
-                    Global.Sound.Play("SFX/sfx_YoYoGrap");
+                    Global.Sound.PlayNotOne("SFX/sfx_YoYoGrap", NotOneShot.YoYoGrap);
                 }
             }
         }
@@ -126,7 +126,7 @@ public class YoYoObject : MonoBehaviour
 
                 if (t >= 1)
                 {
-                    Global.Sound.Stop("SFX/sfx_YoYoGrap");
+                    Global.Sound.StopNotOne("SFX/sfx_YoYoGrap", NotOneShot.YoYoGrap);
                     End();
                 }
             }

@@ -5,6 +5,7 @@ using UnityEngine;
 public enum NotOneShot
 {
     FirstFalling,
+    YoYoGrap,
     MaxCount
 }
 
