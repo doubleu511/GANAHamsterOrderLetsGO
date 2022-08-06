@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return Rigid.velocity.y < 0;
+            return Rigid.velocity.y <= 0;
         }
     }
 

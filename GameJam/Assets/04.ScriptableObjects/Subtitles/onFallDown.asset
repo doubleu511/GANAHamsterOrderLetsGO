@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c98b2dc1631bf7646862e1221b52c21f, type: 3}
+  m_Name: onFallDown
+  m_EditorClassIdentifier: 
+  isSkipable: 0
+  subtitles:
+  - texts:
+    - "\u314B\u314B\u314B\u314B\u314B\u314B\u314B\u314B\u314B.. \uC557.."
+  - texts:
+    - "\uC548\uB155\uD558\uC138\uC694, \uB610 \uBD59\uB124\uC694!"
+  - texts:
+    - "\uB370\uC790\uBDF0\uC778\uAC00\uC694?"
+  - texts:
+    - "\uAD1C\uCC2E\uC544\uC694, \uB2E4\uC2DC \uC62C\uB77C\uAC08 \uC218 \uC788\uC744
+      \uAC70\uC608\uC694!"
+  - texts:
+    - "\uD3EC\uAE30\uD558\uC9C0\uB9CC \uC54A\uC73C\uBA74 \uB3FC\uC694!"
+  - texts:
+    - "\uAC00\uB054 \uADF8\uB7F4 \uC218\uB3C4 \uC788\uC8E0.."
+  - texts:
+    - "\uB204\uAD6C\uB098 \uC2E4\uC218\uB294 \uD574\uC694!"
+  - texts:
+    - "\uC5D0\uAD6C"
+  - texts:
+    - "\uC548 \uB2E4\uCCE4\uC5B4\uC694?"
