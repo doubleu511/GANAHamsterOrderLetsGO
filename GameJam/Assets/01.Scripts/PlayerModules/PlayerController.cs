@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public bool IsGround { get; set; } = false;
 
     public Action OnGroundCollision { get; set; }
+    public Action OnFallGround { get; set; }
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
 
@@ -108,40 +109,42 @@ public class PlayerController : MonoBehaviour
             SetHeadAnim(false);
         }
 
-        if (IsGround && IsFalling)
+        if (IsGround && IsFalling) // 땅에 닿아있을때
         {
             JumpCount = 0;
             OnGroundCollision?.Invoke();
             SetJumpAnim(false);
             SetFallAnim(false);
 
-            if (firstFallSoundPlayed)
+            if(!isLand) // 착지안했으면
             {
-                Debug.Log("도착");
-                firstFallSoundPlayed = false;
-                fallFlag = false;
-                isLand = true;
+                isLand = true; // 착지
+                OnFallGround?.Invoke(); // 착지이벤트 실행
 
                 // 사운드
                 if (!firstLand)
                 {
-                    Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
-                    Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
+                    if (firstFallSoundPlayed) // 높은데서 떨어졌다면
+                    {
+                        Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
+                        Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
+                    }
+                    else
+                    {
+                        Global.Sound.Play("SFX/sfx_FallGroundWeak", Define.Sound.Effect);
+                    }
                 }
-            }
-            else if (!isLand)
-            {
-                isLand = true;
 
-                // 사운드
-                if (!firstLand)
+                if (firstFallSoundPlayed) // bool 처리
                 {
-                    Global.Sound.Play("SFX/sfx_FallGroundWeak", Define.Sound.Effect);
+                    Debug.Log("도착");
+                    firstFallSoundPlayed = false;
+                    fallFlag = false;
                 }
             }
         }
 
-        if (IsGround)
+        if (IsGround) // 땅이라면
         {
             fallTime = 0f;
             firstLand = false;
