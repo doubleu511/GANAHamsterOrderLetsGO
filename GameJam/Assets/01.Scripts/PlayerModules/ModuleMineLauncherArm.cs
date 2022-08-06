@@ -14,7 +14,7 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
     private void Start()
     {
         Global.Pool.CreatePool<MineObject>(MinePrefab, GameManager.Game.transform);
-        Global.Pool.CreatePool<Effect_MineBomb>(MineBombVfx, GameManager.Game.transform);
+        Global.Pool.CreatePool<Effect_MineBomb>(MineBombVfx, GameManager.Game.transform,15);
     }
     public override void ArmMoving()
     {
