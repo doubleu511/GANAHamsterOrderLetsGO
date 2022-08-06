@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class ModuleBoosterHead : Module
 {
+    public static bool isBooster = false;
+
     public Module legModule;
 
     public override void ModuleEquip()
     {
         legModule.gameObject.SetActive(false);
+        isBooster = true;
     }
 
     public override void ModuleUnequip()
     {
         legModule.gameObject.SetActive(true);
+        isBooster = false;
     }
 
     public override void ModuleUpdate()

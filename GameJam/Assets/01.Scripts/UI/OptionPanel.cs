@@ -36,6 +36,7 @@ public class OptionPanel : MonoBehaviour
             panelCanvasgroup.DOComplete();
             panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 
+            Global.Sound.Play("SFX/sfx_PopupClose", Define.Sound.Effect);
             Global.UI.UIFade(canvasGroup, false);
             Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
         });
@@ -64,6 +65,7 @@ public class OptionPanel : MonoBehaviour
 
         fullscreenButton.onClick.AddListener(() =>
         {
+            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
             windowScreenButton.interactable = true;
             fullscreenButton.interactable = false;
             SetFullScreen(true);
@@ -71,6 +73,7 @@ public class OptionPanel : MonoBehaviour
 
         windowScreenButton.onClick.AddListener(() =>
         {
+            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
             fullscreenButton.interactable = true;
             windowScreenButton.interactable = false;
             SetFullScreen(false);
@@ -82,6 +85,7 @@ public class OptionPanel : MonoBehaviour
 
         gameEndButton.onClick.AddListener(() =>
         {
+            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
             panelCanvasgroup.DOComplete();
             panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 
@@ -112,6 +116,7 @@ public class OptionPanel : MonoBehaviour
                 panelCanvasgroup.DOComplete();
                 panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 
+                Global.Sound.Play("SFX/sfx_PopupClose", Define.Sound.Effect);
                 Global.UI.UIFade(canvasGroup, false);
                 Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
             }
@@ -119,6 +124,7 @@ public class OptionPanel : MonoBehaviour
             {
                 if (!WorkPlace.IsWorkPlaceOpen)
                 {
+                    Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
                     panelCanvasgroup.DOComplete();
                     panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
 

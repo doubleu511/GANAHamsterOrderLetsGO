@@ -18,7 +18,8 @@ public class InventoryTab
 public class PlayerInventory : MonoBehaviour
 {
     private bool isOpen = false;
-    public Button backpackBtn;
+    public Button backpackBtnTop;
+    public Button backpackBtnBottom;
     public RectTransform inventoryPanel;
 
     public InventoryTab[] inventoryTabs;
@@ -30,7 +31,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void Start()
     {
-        backpackBtn.onClick.AddListener(() => OpenOrClose());
+        backpackBtnTop.onClick.AddListener(() => OpenOrClose());
+        backpackBtnBottom.onClick.AddListener(() => OpenOrClose());
         InventoryInit(inventoryCount);
 
         foreach (Module item in testItems)
@@ -47,8 +49,10 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenOrClose(bool open)
     {
+        isOpen = open;
         inventoryPanel.DOKill();
         CanvasGroup inventoryGroup = inventoryPanel.GetComponent<CanvasGroup>();
+        Global.Sound.Play("SFX/sfx_InventoryOpenAndClose", Define.Sound.Effect);
 
         if (open)
         {

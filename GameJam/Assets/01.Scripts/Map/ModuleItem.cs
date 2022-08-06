@@ -23,6 +23,7 @@ public class ModuleItem : CollisionItem
     public override void OnEnter()
     {
         GameManager.Player.Inventory.InventoryAdd(moduleItem);
+        Global.Sound.Play("SFX/sfx_GetModule", Define.Sound.Effect);
 
         transform.DOKill();
         transform.DOMoveY(1, 1).SetRelative();

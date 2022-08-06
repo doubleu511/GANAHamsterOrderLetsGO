@@ -94,6 +94,8 @@ public class ModuleDefaultLeg : Module, IJumpReset
                 GameManager.Player.head.transform.DOKill();
                 GameManager.Player.head.transform.DOScaleY(1f, 0.6f).SetEase(Ease.OutBack);
 
+                Global.Sound.Play("SFX/sfx_Jump", Define.Sound.Effect);
+
                 jumpPressedTime = 0;
             }
         }

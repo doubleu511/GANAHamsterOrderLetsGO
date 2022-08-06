@@ -15,10 +15,13 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            if (GameManager.Player.IsGround)
+            if (GameManager.Player.IsGround || ModuleBoosterHead.isBooster)
             {
-                print("Enter");
                 coll.sharedMaterial = GameManager.Game.staticPMat;
+            }
+            else
+            {
+                Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect);
             }
         }
     }
@@ -27,7 +30,6 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            print("Exit");
             coll.sharedMaterial = GameManager.Game.bouncePMat;
         }
     }

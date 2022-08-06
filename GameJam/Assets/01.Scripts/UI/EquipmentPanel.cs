@@ -24,6 +24,7 @@ public class EquipmentPanel : MonoBehaviour
 
         cancelButton.onClick.AddListener(() =>
         {
+            Global.Sound.Play("SFX/sfx_PopupClose", Define.Sound.Effect);
             Global.UI.UIFade(canvasGroup, false);
             WorkPlace.IsWorkPlaceOpen = false;
             GameManager.Player.CanMove = true;
@@ -36,6 +37,7 @@ public class EquipmentPanel : MonoBehaviour
         {
             if (WorkPlace.IsWorkPlaceOpen)
             {
+                Global.Sound.Play("SFX/sfx_PopupClose", Define.Sound.Effect);
                 Global.UI.UIFade(canvasGroup, false);
                 WorkPlace.IsWorkPlaceOpen = false;
                 GameManager.Player.CanMove = true;
@@ -45,6 +47,7 @@ public class EquipmentPanel : MonoBehaviour
 
     public void PanelOpen()
     {
+        Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
         Global.UI.UIFade(canvasGroup, true);
         GameManager.Player.Inventory.OpenOrClose(true);
     }

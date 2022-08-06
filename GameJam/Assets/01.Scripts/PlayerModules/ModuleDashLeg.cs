@@ -23,7 +23,7 @@ public class ModuleDashLeg : Module
     {
         if(Input.GetKeyDown(KeyCode.F) && dashCount == 0)
         {
-            
+            Global.Sound.Play("SFX/sfx_Dash", Define.Sound.Effect);
             GameManager.Player.Rigid.AddForce(new Vector2(Mathf.Sign(GameManager.Player.transform.localScale.x * -1) *6, 0), ForceMode2D.Impulse);
             dashCount++;
         }
