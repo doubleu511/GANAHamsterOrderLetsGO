@@ -27,11 +27,13 @@ public class DragableUI : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDr
         {
             if (myModule != null)
             {
+                Global.Sound.Play("SFX/sfx_ModuleChange2", Define.Sound.Effect);
                 myModule.Unequip();
             }
 
             if (module != null)
             {
+                Global.Sound.Play("SFX/sfx_ModuleChange", Define.Sound.Effect);
                 module.Equip();
             }
         }

@@ -9,6 +9,7 @@ public class OptionPanel : MonoBehaviour
     private bool isOpen = false;
 
     private CanvasGroup canvasGroup;
+    public CanvasGroup panelBlackScreen;
     public CanvasGroup panelCanvasgroup;
 
     public Button cancelButton;
@@ -81,7 +82,23 @@ public class OptionPanel : MonoBehaviour
 
         gameEndButton.onClick.AddListener(() =>
         {
-            Application.Quit();
+            panelCanvasgroup.DOComplete();
+            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+            Global.UI.UIFade(canvasGroup, false);
+            Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
+            Global.UI.UIFade(panelBlackScreen, Define.UIFadeType.IN, 1.5f, true);
+            GameManager.Player.CanMove = false;
+
+            SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
+            subtitle.ShowSubtitle(subtitle.onExit, null, () =>
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            });
         });
     }
 
