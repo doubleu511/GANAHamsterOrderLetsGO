@@ -42,7 +42,7 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             GameManager.Player.Rigid.velocity = Vector2.zero;
             for (int i = 0; i < arms.Length; i++)
             {
-                GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 2, ForceMode2D.Impulse);
+                GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 4, ForceMode2D.Impulse);
                 arms[i].GetComponent<SpriteRenderer>().sprite = offImg[i];
                 lightObj[i].SetActive(false);
                 RocketCount++;
