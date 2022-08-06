@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public DragAndDropContainer DragAndDropContainer;
 
     public Transform loreBlockTrm;
+    public PhysicsMaterial2D staticPMat;
+    public PhysicsMaterial2D bouncePMat;
 
     private void Awake()
     {
