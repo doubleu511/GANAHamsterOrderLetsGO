@@ -23,6 +23,11 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
         {
             RefillRocket();
         };
+
+        GameManager.Player.OnCollisionWall += () =>
+        {
+            EmptyRocket();
+        };
     }
     public override void ArmMoving()
     {
@@ -85,6 +90,16 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
         {
             lightObj[i].SetActive(true);
             arms[i].GetComponent<SpriteRenderer>().sprite = onImg[i];
+        }
+    }
+
+    private void EmptyRocket()
+    {
+        RocketCount = 1;
+        for (int i = 0; i < arms.Length; i++)
+        {
+            lightObj[i].SetActive(false);
+            arms[i].GetComponent<SpriteRenderer>().sprite = offImg[i];
         }
     }
 }

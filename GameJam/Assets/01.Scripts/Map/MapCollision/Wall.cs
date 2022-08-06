@@ -14,6 +14,7 @@ public class Wall : MapCollision
         {
             Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect);
             GameManager.Player.CanAction = false;
+            GameManager.Player.OnCollisionWall?.Invoke();
         }
     }
 

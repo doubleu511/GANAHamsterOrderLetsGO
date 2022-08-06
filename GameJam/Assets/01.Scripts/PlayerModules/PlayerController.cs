@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public Action OnGroundCollision { get; set; }
     public Action OnFallGround { get; set; }
+    public Action OnCollisionWall { get; set; }
     public int JumpCount { get; set; } = 0;
     public int JumpMaxCount { get; set; } = 1;
 

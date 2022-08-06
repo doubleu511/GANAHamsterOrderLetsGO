@@ -866,11 +866,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB4DC\uB798\uADF8 \uC564 \uB4DC\uB86D \uD639\uC740 \uC6B0\uD074\uB9AD\uC73C\uB85C
-    \uC7A5\uCC29/\uC7A5\uCC29 \uD574\uC81C"
+  m_text: Drag OR RMB to Equip
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb486e83a8f55b942b58a27ec3368b23, type: 2}
-  m_sharedMaterial: {fileID: 3016006384675432753, guid: cb486e83a8f55b942b58a27ec3368b23, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 79402dfcfe4c9754283a6bbd1453fa11, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -894,11 +893,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.1
-  m_fontSizeBase: 12.9
+  m_fontSize: 18.2
+  m_fontSizeBase: 18.2
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 8
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 6
   m_fontSizeMax: 20
   m_fontStyle: 0
   m_HorizontalAlignment: 2
