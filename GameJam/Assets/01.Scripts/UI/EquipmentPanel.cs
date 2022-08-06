@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EquipmentPanel : MonoBehaviour
 {
     private CanvasGroup canvasGroup;
+
+    public CanvasGroup characterPanel;
+
     public Button cancelButton;
 
     public TextMeshProUGUI[] abilityLores = new TextMeshProUGUI[(int)Define.ItemSlot.MAXCOUNT];
@@ -47,9 +51,27 @@ public class EquipmentPanel : MonoBehaviour
 
     public void PanelOpen()
     {
-        Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
+        Global.Sound.Play("SFX/sfx_ModuleChange2", Define.Sound.Effect, 2);
         Global.UI.UIFade(canvasGroup, true);
         GameManager.Player.Inventory.OpenOrClose(true);
+
+        characterPanel.GetComponent<RectTransform>().DOKill();
+        characterPanel.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 200);
+        characterPanel.GetComponent<RectTransform>().DOSizeDelta(new Vector2(600,425), 0.5f).OnComplete(() =>
+        {
+            Sequence seq = DOTween.Sequence();
+            seq.AppendCallback(() => characterPanel.alpha = 0.5f);
+            seq.AppendInterval(0.2f);
+            seq.AppendCallback(() => characterPanel.alpha = 0.8f);
+            seq.AppendInterval(0.05f);
+            seq.AppendCallback(() => characterPanel.alpha = 0.25f);
+            seq.AppendInterval(0.05f);
+            seq.AppendCallback(() => characterPanel.alpha = 0.7f);
+            seq.AppendInterval(0.1f);
+            seq.AppendCallback(() => characterPanel.alpha = 0.4f);
+            seq.AppendInterval(0.05f);
+            seq.AppendCallback(() => characterPanel.alpha = 1f);
+        }).SetEase(Ease.Linear);
     }
 
     private void LoreInit()
