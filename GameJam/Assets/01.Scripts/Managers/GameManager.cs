@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         GameObject loreBlock = Global.Resource.Load<GameObject>("UI/Loreblock");
         Global.Pool.CreatePool<LoreblockUI>(loreBlock, loreBlockTrm, 5);
 
+        Global.Sound.Play("BGM/bgm_music2", Define.Sound.Bgm);
+
         // 자막실행
         SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
 
