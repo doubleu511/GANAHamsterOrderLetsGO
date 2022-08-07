@@ -23,6 +23,11 @@ public class GoogleSheetManager : MonoBehaviour
 		});
     }
 
+    private void OnEnable()
+    {
+		stopWatch.StopTimer();
+	}
+
     bool SetIDPass(string name, string reviewTxt)
 	{
 		if (name == "" || reviewTxt == "") return false;

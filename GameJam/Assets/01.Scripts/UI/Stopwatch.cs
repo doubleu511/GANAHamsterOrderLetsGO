@@ -27,6 +27,11 @@ public class Stopwatch : MonoBehaviour
             m_Text.text = m_Timer;
     }
 
+    public void StopTimer()
+    {
+        m_IsPlaying = false;
+    }
+
     string StopwatchTimer()
     {
         m_TotalSeconds += Time.deltaTime;
