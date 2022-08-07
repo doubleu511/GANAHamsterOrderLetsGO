@@ -18,8 +18,8 @@ public class ModuleMineLauncherArm : ModuleDefaultArm
             MineObject mineObj = Instantiate(MinePrefab, GameManager.Game.transform).GetComponent<MineObject>();
             mineObj.rigid = mineObj.GetComponent<Rigidbody2D>();
             mineObj.isLeftMine = i != 0;
-            GameManager.Player.OnCollisionWall += () => { if(mineObj.isLaunched)mineObj.gameObject.SetActive(false); };
-            GameManager.Player.OnGroundCollision += () => { mineObj.gameObject.SetActive(true); };
+            GameManager.Player.OnCollisionWall += () => { if(!mineObj.isLaunched)mineObj.GetComponent<SpriteRenderer>().enabled = false; };
+            GameManager.Player.OnGroundCollision += () => { mineObj.GetComponent<SpriteRenderer>().enabled = true; };
             mineObjs.Add(mineObj);
         }
         Global.Pool.CreatePool<Effect_MineBomb>(MineBombVfx, GameManager.Game.transform,15);
