@@ -67,6 +67,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
             mousePos.z = 0;
             Vector3 shotDir = (mousePos - playerPos).normalized;
 
+                
             yoyo.YoYoShot(shotDir, _yoyoSpeed, _yoyoDistance, yoyoCallback);
             _yoyoCount++;
         }

@@ -8,12 +8,20 @@ public class GoogleSheetManager : MonoBehaviour
 {
 	const string URL = "https://script.google.com/macros/s/AKfycbwf54HPVAhcNRzVtCh_3jh2AusLts9DPu9MzgqggZ7oqkscEeXfp_IjWuey9qYv4ORRjA/exec";
 	public InputField NameInput, reviewTxtInput;
+	public Button saveButton;
+	public Transform saveRecord;
+	public Stopwatch stopWatch;
 
-    private void Start()
+    private void Awake()
     {
-		Register("테스트", 10, "ㅁㄴㅇㄹ");
-
-	}
+		saveButton.onClick.AddListener(() =>
+		{
+			if(Register())
+            {
+				saveRecord.gameObject.SetActive(false);
+            }
+		});
+    }
 
     bool SetIDPass(string name, string reviewTxt)
 	{
@@ -22,20 +30,25 @@ public class GoogleSheetManager : MonoBehaviour
 	}
 
 
-	public void Register(string name, int timeScore, string reviewTxt)
+	public bool Register()
 	{
+		string name = NameInput.text;
+		float timeScore = stopWatch.m_TotalSeconds;
+		string reviewTxt = reviewTxtInput.text;
+
 		if (!SetIDPass(name, reviewTxt))
 		{
 			print("아이디 또는 남길말이 비어있습니다");
-			return;
+			return false;
 		}
 
 		WWWForm form = new WWWForm();
 		form.AddField("Name", name);
-		form.AddField("TimeScore", timeScore);
+		form.AddField("TimeScore", timeScore.ToString());
 		form.AddField("ReviewTxt", reviewTxt);
 
 		StartCoroutine(Post(form));
+		return true;
 	}
 
 

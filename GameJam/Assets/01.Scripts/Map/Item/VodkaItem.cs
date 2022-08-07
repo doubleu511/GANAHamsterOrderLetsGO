@@ -6,6 +6,7 @@ using DG.Tweening;
 public class VodkaItem : CollisionItem
 {
     private SpriteRenderer itemSr;
+    public GameObject googleSheet;
 
     protected override void Awake()
     {
@@ -23,6 +24,11 @@ public class VodkaItem : CollisionItem
         itemSr.DOColor(new Color(1, 1, 1, 0), 1).OnComplete(() =>
         {
             Destroy(gameObject);
+        });
+
+        subtitle.ShowSubtitle(subtitle.onExit, null, () =>
+        {
+            googleSheet.SetActive(true);
         });
     }
 }
