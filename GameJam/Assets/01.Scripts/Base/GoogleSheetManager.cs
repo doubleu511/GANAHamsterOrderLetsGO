@@ -7,7 +7,7 @@ using TMPro;
 public class GoogleSheetManager : MonoBehaviour
 {
 	const string URL = "https://script.google.com/macros/s/AKfycbwf54HPVAhcNRzVtCh_3jh2AusLts9DPu9MzgqggZ7oqkscEeXfp_IjWuey9qYv4ORRjA/exec";
-	public InputField NameInput, reviewTxtInput;
+	public TMP_InputField NameInput, reviewTxtInput;
 	public Button saveButton;
 	public Transform saveRecord;
 	public Stopwatch stopWatch;
