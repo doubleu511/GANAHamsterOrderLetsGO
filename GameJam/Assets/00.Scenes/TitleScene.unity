@@ -5645,6 +5645,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charaTrm: {fileID: 1207927288}
   gameStartButton: {fileID: 2083723700}
+  gameSettingButton: {fileID: 1638855092}
+  optionPanel: {fileID: 1840697639}
   creditButton: {fileID: 283321605}
   creditPanel: {fileID: 1862258972}
   creditCancelButton: {fileID: 1458522713}

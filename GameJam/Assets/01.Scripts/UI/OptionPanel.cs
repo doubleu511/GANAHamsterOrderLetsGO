@@ -31,17 +31,6 @@ public class OptionPanel : MonoBehaviour
 
     private void Start()
     {
-        optionButton.onClick.AddListener(() =>
-        {
-            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
-            panelCanvasgroup.DOComplete();
-            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
-
-            Global.UI.UIFade(canvasGroup, true);
-            Global.UI.UIFade(panelCanvasgroup, true);
-            isOpen = true;
-        });
-
         cancelButton.onClick.AddListener(() =>
         {
             isOpen = false;
@@ -140,16 +129,21 @@ public class OptionPanel : MonoBehaviour
             {
                 if (!WorkPlace.IsWorkPlaceOpen)
                 {
-                    Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
-                    panelCanvasgroup.DOComplete();
-                    panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
-
-                    Global.UI.UIFade(canvasGroup, true);
-                    Global.UI.UIFade(panelCanvasgroup, true);
-                    isOpen = true;
+                    OptionStart();
                 }
             }
         }
+    }
+    
+    public void OptionStart()
+    {
+        Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
+        panelCanvasgroup.DOComplete();
+        panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+        Global.UI.UIFade(canvasGroup, true);
+        Global.UI.UIFade(panelCanvasgroup, true);
+        isOpen = true;
     }
 
     public static void SetFullScreen(bool value)

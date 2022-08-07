@@ -9,20 +9,16 @@ public class TitleManager : MonoBehaviour
     [SerializeField]
     private Transform charaTrm;
 
-    [SerializeField]
-    private Button gameStartButton;
+    [SerializeField] Button gameStartButton;
 
-    [SerializeField]
-    private Button creditButton;
+    [SerializeField] Button gameSettingButton;
+    [SerializeField] OptionPanel optionPanel;
 
-    [SerializeField]
-    private CanvasGroup creditPanel;
+    [SerializeField] Button creditButton;
+    [SerializeField] CanvasGroup creditPanel;
+    [SerializeField] Button creditCancelButton;
 
-    [SerializeField]
-    private Button creditCancelButton;
-
-    [SerializeField]
-    private Button gameExitButton;
+    [SerializeField] Button gameExitButton;
 
     private void Start()
     {
@@ -38,6 +34,11 @@ public class TitleManager : MonoBehaviour
         {
             Global.LoadScene.LoadScene("SampleScene");
             Global.Sound.Stop("BGM/bgm_music0", Define.Sound.Bgm);
+        });
+
+        gameSettingButton.onClick.AddListener(() =>
+        {
+            optionPanel.OptionStart();
         });
 
         creditButton.onClick.AddListener(() =>
