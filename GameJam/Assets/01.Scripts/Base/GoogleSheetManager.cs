@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
-
+using TMPro;
 public class GoogleSheetManager : MonoBehaviour
 {
 	const string URL = "https://script.google.com/macros/s/AKfycbwf54HPVAhcNRzVtCh_3jh2AusLts9DPu9MzgqggZ7oqkscEeXfp_IjWuey9qYv4ORRjA/exec";
@@ -11,7 +11,7 @@ public class GoogleSheetManager : MonoBehaviour
 	public Button saveButton;
 	public Transform saveRecord;
 	public Stopwatch stopWatch;
-
+	public TextMeshProUGUI tmp;
     private void Awake()
     {
 		saveButton.onClick.AddListener(() =>
@@ -26,6 +26,7 @@ public class GoogleSheetManager : MonoBehaviour
     private void OnEnable()
     {
 		stopWatch.StopTimer();
+		tmp.text = $"È¹µæÇÑ ¼öÁýÇ° : {GameManager.Game.curGetCollectionCount} / {GameManager.Game.maxGetCollectionCount}";
 	}
 
     bool SetIDPass(string name, string reviewTxt)

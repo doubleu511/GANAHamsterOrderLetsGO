@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class GameManager : MonoBehaviour
 {
     public static PlayerController Player;
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public PhysicsMaterial2D staticPMat;
     public PhysicsMaterial2D bouncePMat;
     public int collectionCount = 0b0000_0000;
+    public int curGetCollectionCount = 0;
+    public int maxGetCollectionCount = 0;
     private void Awake()
     {
         if (!Game)
@@ -36,8 +38,7 @@ public class GameManager : MonoBehaviour
         SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
 
         int gameStartCount = SecurityPlayerPrefs.GetInt("game.startCount", 0);
-        int gameCollection = SecurityPlayerPrefs.GetInt("game.collection", 0b0000_0000);
-        
+        collectionCount = SecurityPlayerPrefs.GetInt("game.collection", 0b0000_0000);
         gameStartCount++;
 
         if(gameStartCount == 1)
@@ -50,5 +51,7 @@ public class GameManager : MonoBehaviour
         }
 
         SecurityPlayerPrefs.SetInt("game.startCount", gameStartCount);
+
+        FindObjectOfType<CollectionSorting>()?.Setting();
     }
 }
