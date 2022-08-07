@@ -149,15 +149,15 @@ public class OptionPanel : MonoBehaviour
     public static void SetFullScreen(bool value)
     {
         SecurityPlayerPrefs.SetBool("option.fullScreen", value);
-        Screen.fullScreen = value;
-
         if(!value)
         {
-            Screen.SetResolution(1600, 900, Screen.fullScreen);
+            Screen.SetResolution(1600, 900, value);
         }
         else
         {
-            Screen.SetResolution(1920, 1080, Screen.fullScreen);
+            Screen.SetResolution(1920, 1080, value);
         }
+        Screen.fullScreen = value;
+
     }
 }
