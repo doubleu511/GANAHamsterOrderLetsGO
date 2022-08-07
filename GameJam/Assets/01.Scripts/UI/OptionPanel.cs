@@ -12,6 +12,7 @@ public class OptionPanel : MonoBehaviour
     public CanvasGroup panelBlackScreen;
     public CanvasGroup panelCanvasgroup;
 
+    public Button optionButton;
     public Button cancelButton;
 
     public Slider masterVolumeSlider;
@@ -30,6 +31,17 @@ public class OptionPanel : MonoBehaviour
 
     private void Start()
     {
+        optionButton.onClick.AddListener(() =>
+        {
+            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
+            panelCanvasgroup.DOComplete();
+            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+            Global.UI.UIFade(canvasGroup, true);
+            Global.UI.UIFade(panelCanvasgroup, true);
+            isOpen = true;
+        });
+
         cancelButton.onClick.AddListener(() =>
         {
             isOpen = false;
@@ -83,27 +95,31 @@ public class OptionPanel : MonoBehaviour
         fullscreenButton.interactable = !fullScreen;
         windowScreenButton.interactable = fullScreen;
 
-        gameEndButton.onClick.AddListener(() =>
+        if (GameManager.Game)
         {
-            Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
-            panelCanvasgroup.DOComplete();
-            panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
-
-            Global.UI.UIFade(canvasGroup, false);
-            Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
-            Global.UI.UIFade(panelBlackScreen, Define.UIFadeType.IN, 1.5f, true);
-            GameManager.Player.CanMove = false;
-
-            SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
-            subtitle.ShowSubtitle(subtitle.onExit, null, () =>
+            gameEndButton.onClick.AddListener(() =>
             {
+                Global.Sound.Play("SFX/sfx_ButtonClick", Define.Sound.Effect);
+                panelCanvasgroup.DOComplete();
+                panelCanvasgroup.GetComponent<RectTransform>().DOComplete();
+
+                Global.UI.UIFade(canvasGroup, false);
+                Global.UI.UIFade(panelCanvasgroup, Define.UIFadeType.FLOATOUT, 0.5f, true);
+                Global.UI.UIFade(panelBlackScreen, Define.UIFadeType.IN, 1.5f, true);
+
+                GameManager.Player.CanMove = false;
+
+                SubtitlePanel subtitle = FindObjectOfType<SubtitlePanel>();
+                subtitle.ShowSubtitle(subtitle.onExit, null, () =>
+                {
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
 #else
                 Application.Quit();
 #endif
             });
-        });
+            });
+        }
     }
 
     private void Update()

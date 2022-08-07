@@ -22,6 +22,7 @@ public class SubtitlePanel : MonoBehaviour
 
     public SubtitleSO onObtainHammer;
     public SubtitleSO onObtainPropeller;
+    public SubtitleSO onObtainMineLauncherItem;
     public SubtitleSO onObtainVodka;
 
     public SubtitleSO onEnterCatPlace;
