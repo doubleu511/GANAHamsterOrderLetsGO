@@ -27,7 +27,7 @@ public class PlayerInteraction : MonoBehaviour
             {
                 DOTween.Kill(keyObj);
                 keyObj.transform.position = transform.GetChild(0).position;
-                keyObj.transform.DOLocalMoveY( .1f, 1).SetLoops(-1,LoopType.Yoyo).SetEase(Ease.Linear).SetRelative();
+                keyObj.transform.DOLocalMoveY(.1f, 1).SetLoops(-1, LoopType.Yoyo).SetEase(Ease.Linear);
             }    
         }
     }
