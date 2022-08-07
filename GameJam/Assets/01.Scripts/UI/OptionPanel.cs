@@ -80,7 +80,7 @@ public class OptionPanel : MonoBehaviour
             SetFullScreen(false);
         });
 
-        bool fullScreen = SecurityPlayerPrefs.GetBool("option.fullScreen", true);
+        bool fullScreen = SecurityPlayerPrefs.GetBool("option.fullScreen", false);
         fullscreenButton.interactable = !fullScreen;
         windowScreenButton.interactable = fullScreen;
 
@@ -154,6 +154,10 @@ public class OptionPanel : MonoBehaviour
         if(!value)
         {
             Screen.SetResolution(1600, 900, Screen.fullScreen);
+        }
+        else
+        {
+            Screen.SetResolution(1920, 1080, Screen.fullScreen);
         }
     }
 }
