@@ -347,7 +347,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
@@ -1115,7 +1115,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.6
+  orthographic size: 0.85
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -1235,7 +1235,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Time: 0.3
   m_Parameters:
     serializedVersion: 3
@@ -1466,6 +1466,10 @@ PrefabInstance:
     - target: {fileID: 7653862140285594784, guid: 0df77acb29907864685f2d925c71a3b0, type: 3}
       propertyPath: m_Name
       value: Module_RocketLuncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653862140285594784, guid: 0df77acb29907864685f2d925c71a3b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653862140285594787, guid: 0df77acb29907864685f2d925c71a3b0, type: 3}
       propertyPath: m_RootOrder
