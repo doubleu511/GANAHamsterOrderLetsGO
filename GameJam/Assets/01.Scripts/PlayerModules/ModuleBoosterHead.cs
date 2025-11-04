@@ -28,11 +28,11 @@ public class ModuleBoosterHead : Module
         JumpInput();
 
         float playerDir = Input.GetAxisRaw("Horizontal");
-        if (playerDir != 0) // ÀÌµ¿Áß
+        if (playerDir != 0) // ï¿½Ìµï¿½ï¿½ï¿½
         {
             GameManager.Player.SpriteFlipX(playerDir > 0);
 
-            // ¸Ó¸®¾Þ±×¸® ´Ù¸®walk
+            // ï¿½Ó¸ï¿½ï¿½Þ±×¸ï¿½ ï¿½Ù¸ï¿½walk
             GameManager.Player.SetFaceAnimAngry(true);
             GameManager.Player.SetWalkAnim(true);
         }
@@ -42,17 +42,17 @@ public class ModuleBoosterHead : Module
             GameManager.Player.SetWalkAnim(false);
         }
 
-        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.velocity.y);
-        GameManager.Player.Rigid.velocity = dir;
+        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.linearVelocity.y);
+        GameManager.Player.Rigid.linearVelocity = dir;
     }
 
     private void JumpInput()
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            GameManager.Player.Rigid.velocity = new Vector2(GameManager.Player.Rigid.velocity.x, 3.5f);
+            GameManager.Player.Rigid.linearVelocity = new Vector2(GameManager.Player.Rigid.linearVelocity.x, 3.5f);
 
-            // ¸Ó¸®¾Þ±×¸® ´Ù¸®idle
+            // ï¿½Ó¸ï¿½ï¿½Þ±×¸ï¿½ ï¿½Ù¸ï¿½idle
             GameManager.Player.SetFaceAnimAngry(true);
             GameManager.Player.SetWalkAnim(false);
         }

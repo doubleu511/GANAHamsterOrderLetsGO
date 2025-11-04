@@ -34,12 +34,12 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
         base.ArmMoving();
         if(Input.GetMouseButtonDown(0) && RocketCount == 0 && !EventSystem.current.IsPointerOverGameObject())
         {
-            if(GameManager.Player.IsGround) // ½úÀ»¶§ ¶¥¿¡ ÀÖ¾ú´Ù¸é
+            if(GameManager.Player.IsGround) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾ï¿½ï¿½Ù¸ï¿½
             {
                 GameManager.Player.JumpCount = 1;
             }
 
-            GameManager.Player.Rigid.velocity = Vector2.zero;
+            GameManager.Player.Rigid.linearVelocity = Vector2.zero;
             for (int i = 0; i < arms.Length; i++)
             {
                 GameManager.Player.Rigid.AddForce((dirs[i] * -1) * 4, ForceMode2D.Impulse);
@@ -49,17 +49,17 @@ public class ModuleRocketLauncherArm : ModuleDefaultArm
             }
             StartCoroutine(RefillRocketProcess());
 
-            // ·ÎÄÏ·±Ã³ ¹ß»ç »ç¿îµå + ÀÌÆåÆ®
-            // ÀÌÆåÆ® Ç® ¿¡¼­ °¡Á®¿È
+            // ï¿½ï¿½ï¿½Ï·ï¿½Ã³ ï¿½ß»ï¿½ ï¿½ï¿½ï¿½ï¿½ + ï¿½ï¿½ï¿½ï¿½Æ®
+            // ï¿½ï¿½ï¿½ï¿½Æ® Ç® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Effect_RocketLaunch erl = Global.Pool.GetItem<Effect_RocketLaunch>();
-            // ¸¶¿ì½ºÀ§Ä¡¸¦ ±¸ÇØ¼­ ¹æÇâ°ª ±¸ÇÔ
+            // ï¿½ï¿½ï¿½ì½ºï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½â°ª ï¿½ï¿½ï¿½ï¿½
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector2 dir = (transform.position - mousePos).normalized;
-            // µÎ ÆÈ »çÀÌÀÇ À§Ä¡
+            // ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
             Vector2 pos0 = arms[0].position;
             Vector2 pos1 = arms[1].position;
             Vector2 midPos = new Vector2(((pos0.x + pos1.x) / 2),(pos0.y+ pos1.y)/2);
-            // À§¿¡¼­ ±¸ÇÑ À§Ä¡·Î ÀÌµ¿
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ìµï¿½
             erl.transform.position = midPos + (dir * Vector2.down * 2);
         }
     }

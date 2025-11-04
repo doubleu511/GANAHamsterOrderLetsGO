@@ -68,7 +68,7 @@ public class YoYoObject : MonoBehaviour
         }
 
         transform.parent = null;
-        transform.localScale = Vector3.one; // ¾ÆÁÖ °£Æí ÄÚµå ±Â
+        transform.localScale = Vector3.one; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½
         isYoYoMovingEnd = true;
         isPlayerMovingEnd = true;
         this.yoyoSpeed = yoyoSpeed;
@@ -123,10 +123,10 @@ public class YoYoObject : MonoBehaviour
             if (yoyoEnum == YoYoEnum.IsCollision)
             {
                 if (GameManager.Player.JumpCount == 0)
-                    GameManager.Player.ResetJumpCharge(); // ¹ö±×°¡ Á×±â¸¦ ±â¿øÇÏ¸ç ÇÔ¼ö ·çÇÁ µ¹¸®±â
+                    GameManager.Player.ResetJumpCharge(); // ï¿½ï¿½ï¿½×°ï¿½ ï¿½×±â¸¦ ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 
-                GameManager.Player.Rigid.velocity = Vector2.one; // °ü·Ã ÀÌº¥Æ®°¡ »ý°Ü¼­ ÀÌ ÄÚµå ³ÖÀ½
+                GameManager.Player.Rigid.linearVelocity = Vector2.one; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ü¼ï¿½ ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½ï¿½ï¿½
                 GameManager.Player.transform.position = Vector3.Lerp(playerPos, afterPos, t);
 
                 if (t >= 1)
@@ -147,7 +147,7 @@ public class YoYoObject : MonoBehaviour
         }
 
         rope.transform.position = Vector3.Lerp(GameManager.Player.transform.position, transform.position, 0.5f);
-        // ¾ðÁ¦³ª ÇÏµåÄÚµùÀ» ½Ç»ýÈ°¿¡¼­ »ç¿ë ÇÒ¼ö ÀÖµµ·Ï ÇÏÀÚ.
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ïµï¿½ï¿½Úµï¿½ï¿½ï¿½ ï¿½Ç»ï¿½È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ò¼ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         rope.transform.rotation = Quaternion.LookRotation((GameManager.Player.transform.position - transform.position).normalized) * Quaternion.Euler(90, 0, 0);
         rope.transform.localRotation *= Quaternion.Euler(0, -90, 0);
         rope.transform.localScale = new Vector3(0.05f, Vector3.Distance(GameManager.Player.transform.position, transform.position), 1f);
@@ -160,7 +160,7 @@ public class YoYoObject : MonoBehaviour
         transform.parent = myParent;
         curTime = 0;
         transform.localPosition = new Vector2(0.35f, -0.175f);
-        transform.localScale = Vector3.one; // ¾ÆÁÖ °£Æí ÄÚµå ±Â
+        transform.localScale = Vector3.one; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Úµï¿½ ï¿½ï¿½
         rope.SetActive(false);
     }
 

@@ -6,12 +6,12 @@ using UnityEngine.EventSystems;
 
 public class ModuleYoYoArm : ModuleDefaultArm
 {
-    // ¿ä¿ä´Â ¾ðÁ¦³ª ÇÑ¹ø¸¸ ¹ß»ç°¡´É
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ï¿½ï¿½ ï¿½ß»ç°¡ï¿½ï¿½
     //
-    // ¿ä¿ä°¡ ´Ù½Ã µ¹¾Æ¿À´Â »óÈ²
+    // ï¿½ï¿½ä°¡ ï¿½Ù½ï¿½ ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½ ï¿½ï¿½È²
     /*
-    1. È­¸é ¹Ù±ùÀ¸·Î ³ª°¬À» ¶§
-    2. ¿ä¿ä¸¦ ÅëÇØ ÀÌµ¿ÀÌ ³¡³µÀ» ¶§
+    1. È­ï¿½ï¿½ ï¿½Ù±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    2. ï¿½ï¿½ä¸¦ ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     */
 
     public YoYoObject yoyo;
@@ -26,7 +26,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
     {
         if (yoyo == null)
         {
-            Debug.LogWarning("YoYoObject ½ºÅ©¸³Æ®°¡ ¾ø¾î¿ä");
+            Debug.LogWarning("YoYoObject ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
         //GameManager.Player.OnGroundCollision += () => 
@@ -45,7 +45,7 @@ public class ModuleYoYoArm : ModuleDefaultArm
                _yoyoReturn = true;
            }
 
-           GameManager.Player.Rigid.velocity = Vector2.zero;
+           GameManager.Player.Rigid.linearVelocity = Vector2.zero;
        };
     }
 

@@ -33,7 +33,7 @@ public class ModuleDoubleJumpLeg : Module
                 float playerDir = Input.GetAxisRaw("Horizontal");
 
                 GameManager.Player.JumpCount++;
-                GameManager.Player.Rigid.velocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 0);
+                GameManager.Player.Rigid.linearVelocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 0);
                 GameManager.Player.Rigid.AddForce(new Vector2(0, 5.7f), ForceMode2D.Impulse);
 
                 Global.Sound.Play("SFX/sfx_Jump", Define.Sound.Effect);

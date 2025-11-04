@@ -30,7 +30,7 @@ public class MineObject : MonoBehaviour
         StopAllCoroutines();
         this.act = act;
         transform.rotation = Quaternion.Euler(Vector2.zero);
-        rigid.velocity = Vector2.zero;
+        rigid.linearVelocity = Vector2.zero;
         rigid.AddForce(dir * moveSpeed, ForceMode2D.Impulse);
         StartCoroutine(MoveProcess(dir));
     }
@@ -51,8 +51,8 @@ public class MineObject : MonoBehaviour
             if (!isCollision && isLaunched)
             {
                 
-                dir = rigid.velocity.normalized;
-                rigid.velocity = new Vector2(Mathf.Clamp(rigid.velocity.x, -10, 10), Mathf.Clamp(rigid.velocity.y, -10, 10));
+                dir = rigid.linearVelocity.normalized;
+                rigid.linearVelocity = new Vector2(Mathf.Clamp(rigid.linearVelocity.x, -10, 10), Mathf.Clamp(rigid.linearVelocity.y, -10, 10));
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, dir.normalized, .4f, (1 << LayerMask.NameToLayer("Ground")) + (1 << LayerMask.NameToLayer("Slope")));
                 if (hit.collider != null)
                 {
@@ -68,7 +68,7 @@ public class MineObject : MonoBehaviour
     {
 
         isCollision = true;
-        rigid.velocity = Vector2.zero;
+        rigid.linearVelocity = Vector2.zero;
         rigid.gravityScale = 0;
         //print(hit.transform.name);
         Vector2 normal = hit.normal;
@@ -115,7 +115,7 @@ public class MineObject : MonoBehaviour
         if (!isLaunched) return;
         StopAllCoroutines();
         print("BOMB");
-        // Áö·Ú Æø¹ß È¿°ú
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È¿ï¿½ï¿½
         Effect_MineBomb emb = Global.Pool.GetItem<Effect_MineBomb>();
         emb.transform.position = transform.position;
         emb.GetComponent<ParticleSystem>().Play();
@@ -139,7 +139,7 @@ public class MineObject : MonoBehaviour
             if(isBomb)
             {
                 Vector3 dir = collision.transform.position - transform.position;
-                GameManager.Player.Rigid.velocity = new Vector2(0, 0);
+                GameManager.Player.Rigid.linearVelocity = new Vector2(0, 0);
                 GameManager.Player.Rigid.AddForce(dir.normalized * 10, ForceMode2D.Impulse);
                 Bomb(act);
             }

@@ -45,7 +45,7 @@ public class ModuleBambooHead : Module
         {
             if(Input.GetKey(KeyCode.Space) && flyTime < flyMaxTime)
             {
-                if(flyTime <= 0) // Ã³À½ ³¯¶§ ¹æÇâ°íÁ¤
+                if(flyTime <= 0) // Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 {
                     Global.Sound.Play("SFX/sfx_Propeller", Define.Sound.Effect);
                     playerDir = Input.GetAxisRaw("Horizontal");
@@ -54,7 +54,7 @@ public class ModuleBambooHead : Module
                 }
 
                 flyTime += Time.deltaTime;
-                GameManager.Player.Rigid.velocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 3f);
+                GameManager.Player.Rigid.linearVelocity = new Vector2(playerDir * GameManager.Player.PlayerSpeed, 3f);
             }
 
             if(Input.GetKeyUp(KeyCode.Space))

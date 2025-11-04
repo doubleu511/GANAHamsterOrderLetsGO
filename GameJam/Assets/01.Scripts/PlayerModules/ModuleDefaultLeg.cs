@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class ModuleDefaultLeg : Module, IJumpReset
 {
-    // º¯¼ö ³Ö´Â ¿ëµµ·Î Monobehaviour·Î ÇÑ°É·Î
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ëµµï¿½ï¿½ Monobehaviourï¿½ï¿½ ï¿½Ñ°É·ï¿½
     private float jumpPressedTime = 0f;
     private bool firstFall = false;
 
@@ -34,16 +34,16 @@ public class ModuleDefaultLeg : Module, IJumpReset
         }
 
         float playerDir = Input.GetAxisRaw("Horizontal");
-        if (playerDir != 0) // ÀÌµ¿Áß
+        if (playerDir != 0) // ï¿½Ìµï¿½ï¿½ï¿½
         {
             GameManager.Player.SpriteFlipX(playerDir > 0);
         }
 
         if (!GameManager.Player.IsGround)
         {
-            if (firstFall) // °øÁß¿¡¼­ ¸· ¶³¾îÁú¶§¶ó¸é
+            if (firstFall) // ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                // ¸®¼Â
+                // ï¿½ï¿½ï¿½ï¿½
                 GameManager.Player.head.transform.DOKill();
                 GameManager.Player.head.transform.DOScaleY(1f, 0.2f);
                 jumpPressedTime = 0f;
@@ -61,23 +61,23 @@ public class ModuleDefaultLeg : Module, IJumpReset
 
         if (jumpPressedTime > 0) return;
 
-        if (playerDir != 0) // ÀÌµ¿Áß
+        if (playerDir != 0) // ï¿½Ìµï¿½ï¿½ï¿½
         {
-            // ´Ù¸®walk
+            // ï¿½Ù¸ï¿½walk
             GameManager.Player.SetWalkAnim(true);
         }
-        else // ÀÌµ¿¾ÈÇÏ´ÂÁß
+        else // ï¿½Ìµï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½
         {
-            if (jumpPressedTime <= 0) // Â÷Â¡¾ÈÇÏ´ÂÁß
+            if (jumpPressedTime <= 0) // ï¿½ï¿½Â¡ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½
             {
-                // ¸Ó¸®idle ´Ù¸®idle
+                // ï¿½Ó¸ï¿½idle ï¿½Ù¸ï¿½idle
                 GameManager.Player.SetWalkAnim(false);
             }
         }
 
         GameManager.Player.SetFaceAnimAngry(false);
-        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.velocity.y);
-        GameManager.Player.Rigid.velocity = dir;
+        Vector2 dir = new Vector2(playerDir * GameManager.Player.PlayerSpeed, GameManager.Player.Rigid.linearVelocity.y);
+        GameManager.Player.Rigid.linearVelocity = dir;
     }
 
     private void JumpInput()
@@ -86,7 +86,7 @@ public class ModuleDefaultLeg : Module, IJumpReset
         {
             if(Input.GetKeyDown(KeyCode.Space))
             {
-                GameManager.Player.Rigid.velocity = Vector2.zero;
+                GameManager.Player.Rigid.linearVelocity = Vector2.zero;
 
                 GameManager.Player.head.transform.DOKill();
                 GameManager.Player.head.transform.DOScaleY(0.8f, 0.6f);
@@ -97,7 +97,7 @@ public class ModuleDefaultLeg : Module, IJumpReset
                 jumpPressedTime += Time.deltaTime;
                 jumpPressedTime = Mathf.Clamp(jumpPressedTime, 0, 0.6f);
 
-                // ¸Ó¸®¾Þ±×¸® ´Ù¸®idle
+                // ï¿½Ó¸ï¿½ï¿½Þ±×¸ï¿½ ï¿½Ù¸ï¿½idle
                 GameManager.Player.SetFaceAnimAngry(true);
                 GameManager.Player.SetWalkAnim(false);
             }

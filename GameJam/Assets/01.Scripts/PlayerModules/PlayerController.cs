@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return Rigid.velocity.y <= 0;
+            return Rigid.linearVelocity.y <= 0;
         }
     }
 
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        foreach (Module module in modules) // ¸ðµâµé ÀåÂø
+        foreach (Module module in modules) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             if (module.gameObject.activeSelf)
             {
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             CanAction = true;
         }
 
-        if (CanAction) // º®¿¡¹ÚÀ¸¸é
+        if (CanAction) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             foreach (Module module in modules)
             {
@@ -79,19 +79,19 @@ public class PlayerController : MonoBehaviour
 
         SetFaceAnimSad(!CanAction);
 
-        if (!IsGround) // °øÁß¿¡ÀÖÀ½
+        if (!IsGround) // ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             isLand = false;
             SetFaceAnimAngry(false);
             SetHeadAnim(true);
 
-            if (!IsFalling) // »ó½ÂÁß
+            if (!IsFalling) // ï¿½ï¿½ï¿½ï¿½ï¿½
             {
                 SetJumpAnim(true);
                 SetFallAnim(false);
                 fallTime = 0;
             }
-            else if(Rigid.velocity.y <= -2f) // ÇÏ°­Áß
+            else if(Rigid.linearVelocity.y <= -2f) // ï¿½Ï°ï¿½ï¿½ï¿½
             {
                 fallTime += Time.deltaTime;
 
@@ -111,28 +111,28 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        else // ¶¥¿¡ÀÖÀ½
+        else // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             fallTime = 0f;
             SetHeadAnim(false);
         }
 
-        if (IsGround && IsFalling) // ¶¥¿¡ ´ê¾ÆÀÖÀ»¶§
+        if (IsGround && IsFalling) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             JumpCount = 0;
             OnGroundCollision?.Invoke();
             SetJumpAnim(false);
             SetFallAnim(false);
 
-            if(!isLand) // ÂøÁö¾ÈÇßÀ¸¸é
+            if(!isLand) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             {
-                isLand = true; // ÂøÁö
-                OnFallGround?.Invoke(); // ÂøÁöÀÌº¥Æ® ½ÇÇà
+                isLand = true; // ï¿½ï¿½ï¿½ï¿½
+                OnFallGround?.Invoke(); // ï¿½ï¿½ï¿½ï¿½ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 
-                // »ç¿îµå
+                // ï¿½ï¿½ï¿½ï¿½
                 if (!firstLand)
                 {
-                    if (firstFallSoundPlayed) // ³ôÀºµ¥¼­ ¶³¾îÁ³´Ù¸é
+                    if (firstFallSoundPlayed) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½
                     {
                         Global.Sound.StopNotOne("SFX/sfx_Falling", NotOneShot.FirstFalling);
                         Global.Sound.Play("SFX/sfx_FallGround", Define.Sound.Effect, 1f);
@@ -143,16 +143,16 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
-                if (firstFallSoundPlayed) // bool Ã³¸®
+                if (firstFallSoundPlayed) // bool Ã³ï¿½ï¿½
                 {
-                    Debug.Log("µµÂø");
+                    Debug.Log("ï¿½ï¿½ï¿½ï¿½");
                     firstFallSoundPlayed = false;
                     fallFlag = false;
                 }
             }
         }
 
-        if (IsGround) // ¶¥ÀÌ¶ó¸é
+        if (IsGround) // ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½
         {
             fallTime = 0f;
             firstLand = false;
@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
     public void ResetJumpCharge()
     {
-        foreach (Module module in modules) // ¸ðµâµé ÀåÂø
+        foreach (Module module in modules) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             if (module is IJumpReset)
             {
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetFaceAnimAngry(bool isAngry)
     {
-        // if (!IsGround) isAngry = false; // °øÁßÀÏ¶© È­¾È³²
+        // if (!IsGround) isAngry = false; // ï¿½ï¿½ï¿½ï¿½ï¿½Ï¶ï¿½ È­ï¿½È³ï¿½
         PlayerAnim.SetIsAngry(isAngry);
     }
 
